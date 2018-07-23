@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<toolcatalog>
+	<tool name="drupal">
+		<path>/usr/local/bin/droopescan</path>
+		<targ>scan</targ>
+		<targ>drupal</targ>
+		<targ>-u</targ>
+		<targ>{url}</targ>
+		<tflag score="5">[+]</tflag>
+	</tool>
+	<tool name="joomla">
+		<path>/usr/bin/joomscan</path>
+		<targ>-u</targ>
+		<targ>{url}</targ>
+		<targ>-nvf</targ>
+		<tflag score="5">#</tflag>
+	</tool>
+	<tool name="magento">
+		<path>/usr/bin/php</path>
+		<targ>/home/chaos/tools/magescan.phar</targ>
+		<targ>scan:all</targ>
+		<targ>{url}</targ>
+		<tflag score="1">Yes</tflag>
+		<tflag score="5">Fail</tflag>
+	</tool>
+	<tool name="moodle">
+		<path>/usr/local/bin/droopescan</path>
+		<targ>scan</targ>
+		<targ>moodle</targ>
+		<targ>-u</targ>
+		<targ>{url}</targ>
+		<tflag score="5">[+]</tflag>
+	</tool>
+	<tool name="wordpress">
+		<path>/usr/bin/wpscan</path>
+		<targ>--url</targ>
+		<targ>{url}</targ>
+		<targ>--disable-tls-checks</targ>
+		<targ>--batch</targ>
+		<targ>--force</targ>
+		<tflag score="1">[+]</tflag>
+		<tflag score="5">[!]</tflag>
+	</tool>		
+</toolcatalog>

@@ -1,0 +1,110 @@
+Problemas y pendientes:
+	Faltan los modulos:
+		Magento themes
+			http://172.16.16.176/magento17/skin/frontend/default/modern/favicon.ico
+		OJS
+			https://forum.pkp.sfu.ca/t/security-issue-hacking-via-submission-in-ojs-2-4-8/16382/4
+			https://bagasunix.blogspot.com/2016/06/cara-deface-web-dengan-teknik-ojs-exploit.html
+	Parameter scanner:
+		detection/swdetection.py
+		Ver como almacenar los resultados
+	>>>> Si file se deja vacio en el data.xml entonces acepta todo
+	Indicar cuantos sitios lleva
+	Los enlaces del sitemap tienen doble diagonal despues del dominio
+	Intentar leer codigo fuente aun cuando haya un 404
+	Cambiar el metodo getLinks si se recibe un xhtml no puede parsearlo debido a la instruccion dom=lxml.html.fromString
+	Ver la puntuacion de joomla
+	Manejar el CtrlC
+	El reporte html no reporta todos los archivos encontrados, pej para pued: Con nivel 4 deberia reportar xls pero no lo hace
+	##############################################################################
+	Instalar droopescan
+		pip install droopescan
+	##############################################################################
+	###############################################################################
+	objeto map como atributos tiene 3 listas map absurls y xml
+	Y como metodos getMap y getUrls getxml
+	Estos atributos se llenan en sitemap de test
+	##############################################################################
+
+	###############################################################################
+	Hablar del cmsroot detection
+	Integracion externa: uso de burp
+	###############################################################################
+
+	################################################################################
+	SI SE USA EL PROXY ES NECESARIO DESHABILITAR LA VERIFICACION DE LOS CERTIFICADOS
+	################################################################################
+
+	###################################################################################
+	###############################################################################
+	Para ver desde donde empezar a lanzar la herramienta externa:
+		buscar las coincidencias de las carpetas
+		Por ejemplo wordpress
+			si esta wp-admin entonces el cms esta a un nivel mas arriba
+			Ejemplo para wp-admin nivel  = 1
+			->	cuentadiag = cuento los directorios de wp-admin
+				cuentacms  = cuentadiag+nivel (en este caso) 
+			Por lo tanto debo quitar cuentacms diagonales del recurso
+		Como cada detector tiene una lista de urls (dirs) conocidas:
+			Solo 1er nivel
+			Ej para wpress: wpcontent, wpadmin , etc
+		Puedo buscar estas en las detectadas, si encuentra alguna ->
+		se que debo empezar desde un nivel mas arriba
+	###############################################################################
+
+	Parece que el metodo de scan fromCode solo busca hasta encontrar la primera aparicion de los
+	patterns, por el return:
+	Ejemplo
+		https://www.becarios.unam.mx/portal/imgs/favicon.ico
+		Puedo tener una variable local que cheque si hay detecciones, si hay cambio la var a True
+		Sino no. Al final regreso la variable
+
+	###############################################################################
+	Mejoras
+		Classycrawler
+			Bruteforce
+			Ver como manejar la fuerza bruta, con directorios
+		Scope:
+			Si entro por ip y el aplicativo resuelve por dominio, no indexa				<<<
+
+	###############################################################################
+	swdetector
+		Expresiones para codigo si parentizo -> puedo obtener el valor de lo encontrado
+	###################################################################################################
+
+************************************************************************************************
+Recursos
+Magento
+	http://www.libros.unam.mx/inicio.html
+	http://www.ecos.unam.mx/		<<<
+
+Wordpress
+	http://webcast.unam.mx
+	http://www.cepetaxco.unam.mx/es/
+	http://webcast.unam.mx
+	http://www.pueg.unam.mx/
+	http://podcastdgcs.unam.mx/
+	https://apps.unam.mx/
+	www.incubadoras.unam.mx
+	www.generoytiempo.unam.mx
+	www.educacionintercultural.unam.mx
+	catedrabullock.muac.unam.mx
+
+Joomla 
+	http://computo.matem.unam.mx/
+
+Drupal
+	https://www.box.com
+Moodle
+	http://pudh.pueg.unam.mx/moodle/	<<<
+Fingerprint
+	https://github.com/steverobbins/magescan
+
+Paginas para hacer lo de los subdominios
+	https://geekflare.com/find-subdomains/
+
+Tools:
+Magento
+	https://github.com/steverobbins/magescan
+Headers
+	https://www.smashingmagazine.com/2017/04/secure-web-app-http-headers/
