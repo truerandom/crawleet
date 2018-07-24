@@ -42,8 +42,8 @@ The tool is extensible using xml files.
 	* anytree
 	* lxml
 ## Usage
-* `python -u <starting url>`
-* `python -l <file with sites>`
+* `python crawleet.py -u <starting url>`
+* `python crawleet.py -l <file with sites>`
 
 ## Report
 It generates reports in the following formats
