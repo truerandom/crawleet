@@ -1,0 +1,4 @@
+TODO:
+	Agregar una guardia para que verifique si el subdominio existe en los links
+		Si existe: done
+		Si no agrega subdominio entre http y / :V  :'v 

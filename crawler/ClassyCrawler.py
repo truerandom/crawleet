@@ -427,16 +427,21 @@ class ClassyCrawler:
 			estadisticas.append(tmp[0]+': '+str(len(tmp[1:])))
 		self.reportex.fromList(['statistics']+estadisticas)
 		######################### DETALLES #############################
-		self.reportex.fromList(['directory listing']+sorted(self.directories),True)
+		if len(self.directories) > 0:
+			self.reportex.fromList(['directory listing']+sorted(self.directories),True)
 		##########################Files#################################
 		filelist = []
 		for f in self.flist: filelist.append(f.getUrl())
-		self.reportex.fromList(['files']+sorted(filelist),True)
-		self.reportex.fromList(['broken links']+sorted(self.brokenlist))
-		self.reportex.fromList(['external links']+sorted(self.extlinks),True)
+		if len(filelist)>0:
+			self.reportex.fromList(['files']+sorted(filelist),True)
+		if len(self.brokenlist)>0:
+			self.reportex.fromList(['broken links']+sorted(self.brokenlist))
+		if len(self.extlinks)>0:
+			self.reportex.fromList(['external links']+sorted(self.extlinks),True)
 		# Genera los reportes para los hallazgos de los modulos de deteccion
 		for detected in detectionres:
 			self.reportex.fromList(detected)
+			print "\nDEBUG\n".join(detected)
 		###################### RESOURCES ########################
 		self.reportex.fromResources(self.visitedresources)
 		print "\nPuntuacion: ",self.puntuacion
@@ -462,14 +467,17 @@ class ClassyCrawler:
 		else:
 			print '\n','*'*40,'FORMS','*'*40
 		for form in listforms: print form
-		self.reportex.fromForms(listforms)
+		if len(listforms)> 0:
+			self.reportex.fromForms(listforms)
 		#################### VULNERABILITIES ###########################
 		vulnres = []
 		for res in self.vulndetector.results():
 			# Tomo los resultados del detector
 			tmp = res
+			print 'DEBUG VULN \n',tmp
 			vulnres.append(tmp)
 		for detected in vulnres:
+			print 'DEBUG DETECTED\n',detected
 			self.reportex.fromList(detected)
 		#################### REPORT EXTRESULTS #########################
 		if self.color:

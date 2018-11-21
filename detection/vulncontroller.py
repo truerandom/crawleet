@@ -33,7 +33,10 @@ class vulncontroller:
 		joomlascanner = joomlascan(self.req,self.color)
 		moodlescanner = moodlescan(self.req,self.color)
 		magentoscanner = magentoscan(self.req,self.color)
-		self.tools = [strutscanner,drupalscanner,wordpresscanner,joomlascanner,moodlescanner,magentoscanner]		
+		# nuevo modulo 
+		xssscanner = xssscan(self.req,self.color)
+		sqliscanner = sqliscan(self.req,self.color)
+		self.tools = [strutscanner,drupalscanner,wordpresscanner,joomlascanner,moodlescanner,magentoscanner,xssscanner,sqliscanner]		
 		
 	def fromHeaders(self,rheaders,direccion):
 		for tool in self.tools:

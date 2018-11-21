@@ -56,6 +56,7 @@
 		</headers>
 		<wordpatterns>
 			name=\"generator\"\s*content=\"(Drupal.*)\"\s*/>,
+			name=\"generator\"\s*content=\"Drupal.*\"/?>
 			data-drupal-selector,data-drupal-link
 		</wordpatterns>
 		<files>
@@ -125,7 +126,7 @@
 			/administrator/language,/administrator/manifests,
 			/administrator/modules,/administrator/templates,
 			/cache/index.html,/components/index.html,
-			/includes,/language/en-GB,/layouts/index.html,/layouts/joomla,
+			/language/en-GB,/layouts/index.html,/layouts/joomla,
 			/layouts/libraries,/layouts/plugins,/libraries/cms,
 			/libraries/fof,	/libraries/idna_convert,/libraries/joomla,
 			/libraries/vendor,/media/com_contenthistory,
@@ -138,7 +139,7 @@
 			/administrator/language,/administrator/manifests,
 			/administrator/modules,/administrator/templates,
 			/cache/index.html,/components/index.html,
-			/includes,/language/en-GB,/layouts/index.html,/layouts/joomla,
+			/language/en-GB,/layouts/index.html,/layouts/joomla,
 			/layouts/libraries,/layouts/plugins,/libraries/cms,
 			/libraries/fof,	/libraries/idna_convert,/libraries/joomla,
 			/libraries/vendor,/media/com_contenthistory,
@@ -185,7 +186,7 @@
 			Gruntfile.js,behat.yml.dist,
 			composer.lock,npm-shrinkwrap.json,package.json,
 			phpunit.xml.dist,struct,admin/environment.xml,
-			admin/roles/role_schema.xml
+			admin/roles/role_schema.xml,/lib/upgrade.txt
 		</juicyfiles>
 		<themes>
 			/theme/serenity/config.php,

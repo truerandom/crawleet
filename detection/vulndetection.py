@@ -206,7 +206,8 @@ class strutscan(vulndetector):
 		response = self.req.getHTMLCode(fullurl)
 		try:
 			if tocheck in response.text:
-				self.detections.append("[ "+fullurl+" ] ====== "+cve)
+				#self.detections.append("[ "+fullurl+" ] ====== "+cve)
+				self.detections.append("[ "+fullurl+" ] ====== VULNERABLE TO: "+cve+" =====")
 				return True
 			return False
 		except Exception as e:
@@ -260,11 +261,10 @@ class drupalscan(vulndetector):
 		try:
 			if response is not None and tocheck in response.text:
 				print '*'*30,'\nVulnerable to %s\n' % cve,'*'*30
-				self.detections.append("[ "+dirurl+" ] ====== "+cve)
+				self.detections.append("[ "+dirurl+" ] ====== VULNERABLE TO: "+cve+" ========")
 				return True
 			return False
 		except Exception as e:
-			#print 'excepcion cachada '+str(e)
 			return False
 
 	def launchDrupalgeddon2(self):
@@ -278,7 +278,8 @@ class drupalscan(vulndetector):
 		try:
 			response = self.req.s.post(self.cmsroot, data=post_params, params=get_params,timeout=4,verify=False)
 			if response is not None and tocheck in response.text:
-				self.detections.append("[ "+dirurl+" ] ====== "+cve)
+				print response.text
+				self.detections.append("[ "+dirurl+" ] ====== VULNERABLE TO: "+cve+" ======\n"+response.text)
 				print '*'*30,'\nVulnerable to %s\n' % cve,'*'*30
 				return True
 			return False
@@ -317,7 +318,7 @@ class wordpresscan(vulndetector):
 			self.launchXMLRPC()
 		
 	def launchXMLRPC(self):
-		#print 'DRUPAL VULN trying xmlrpc'
+		#print 'WORDPRESS VULN trying xmlrpc'
 		cve = 'xmlrpc'
 		fullurl = self.cmsroot+'xmlrpc.php'
 		#print "fullurl ",fullurl
@@ -326,12 +327,13 @@ class wordpresscan(vulndetector):
 		try:
 			if tocheck in response.text:
 				print 'es vulnerable ',fullurl
-				self.detections.append("[ "+fullurl+" ] ====== "+cve)
+				self.detections.append("[ "+fullurl+" ] ====== VULNERABLE TO: "+cve+" ===========")
 				return True
 			return False
 		except Exception as e:
 			print 'excepcion cachada '+str(e)
 			return False
+
 			
 class joomlascan(vulndetector):
 	def __init__(self,req,color=False):
@@ -373,7 +375,7 @@ class joomlascan(vulndetector):
 		try:
 			if tocheck in response.text:
 				print 'es vulnerable ',fullurl
-				self.detections.append("[ "+fullurl+" ] ====== "+cve)
+				self.detections.append("[ "+fullurl+" ] ====== VULNERABLE TO: "+cve+" ==========")
 				return True
 			return False
 		except Exception as e:
@@ -420,7 +422,7 @@ class moodlescan(vulndetector):
 		try:
 			if tocheck in response.text:
 				print 'es vulnerable ',fullurl
-				self.detections.append("[ "+fullurl+" ] ====== "+cve)
+				self.detections.append("[ "+fullurl+" ] ====== VULNERABLE TO: "+cve+" =====")
 				return True
 			return False
 		except Exception as e:
@@ -477,10 +479,127 @@ class magentoscan(vulndetector):
 		try:
 			if r.ok:
 				print 'vuln detected: ',fullurl
-				self.detections.append("[ "+fullurl+" ] ====== "+cve + " ==== Login as admin with truerandom:truerandomtruerandom")
+				self.detections.append("[ "+fullurl+" ] ====== VULNERABLE TO: "+cve + "  ==== Login as admin with truerandom:truerandomtruerandom")
 				return True
 			return False
 		except Exception as e:
 			print 'exception '+str(e)
 			return False
+			
+class xssscan(vulndetector):
+	def __init__(self,req,color=False):
+		self.name = 'xssscan'
+		self.color = color
+		self.req = req
+		self.cmsroot = None
+		self.toolflags = []
+		self.headers = []
+		self.filelist = ['']
+		self.wordpatterns = ['']
+		self.defaultdirs = ['']
+		self.defaultfiles = ['']
+		self.dicdefdirs = {}
+		self.toolpath = None
+		self.standalone = False
+		self.postcrawl = True
+		self.detections = []
+		self.toolargs = []
+		self.resources = []
+		self.output = None
+		# Puntuacion de este scanner
+		self.puntuation = 0	
+		self.standalone = True
+		self.cmsroot = None
 		
+	def launchExploitFilename(self,dirurl):
+		if self.testXSS(dirurl):
+			print "VULNERABLE TO XSS: ",dirurl
+		
+	def testXSS(self,dirurl):
+		cve = 'XSSVULN'	
+		payload = ("")
+		tocheck = '<script>alert(/TRUERANDOM/)</script>'
+		injectionurl = self.getInjectionPoint(dirurl)
+		if injectionurl is not None:
+			fullurl = injectionurl+tocheck
+			response = self.req.getHTMLCode(fullurl)
+			try:
+				if tocheck in response.text:
+					toappend = "[ "+injectionurl+" ] ====== VULNERABLE TO: "+cve+" ====="
+					if toappend not in self.detections:
+						self.detections.append(toappend)
+					#self.detections.append("[ "+injectionurl+" ] ====== VULNERABLE TO: "+cve+" =====")
+					return True
+				return False
+			except Exception as e:
+				print 'excepcion cachada '+str(e)
+				return False
+		else:
+			return False
+		
+			
+	def getInjectionPoint(self,dirurl):
+		try:
+			for i in range(len(dirurl)-1,-1,-1):
+					if dirurl[i] == '=':
+						return dirurl[0:i+1]
+		except Exception as e:
+			return None
+
+class sqliscan(vulndetector):
+	def __init__(self,req,color=False):
+		self.name = 'sqliscan'
+		self.color = color
+		self.req = req
+		self.cmsroot = None
+		self.toolflags = []
+		self.headers = []
+		self.filelist = ['']
+		self.wordpatterns = ['']
+		self.defaultdirs = ['']
+		self.defaultfiles = ['']
+		self.dicdefdirs = {}
+		self.toolpath = None
+		self.standalone = False
+		self.postcrawl = True
+		self.detections = []
+		self.toolargs = []
+		self.resources = []
+		self.output = None
+		# Puntuacion de este scanner
+		self.puntuation = 0	
+		self.standalone = True
+		self.cmsroot = None
+		self.pat = re.compile('ERROR|MYSQL|SYNTAX',re.IGNORECASE)
+		
+	def launchExploitFilename(self,dirurl):
+		if self.testSQLi(dirurl):
+			print "VULNERABLE TO SQLi: ",dirurl
+		
+	def testSQLi(self,dirurl):
+		cve = 'SQLi'	
+		payload = "'"
+		injectionurl = self.getInjectionPoint(dirurl)
+		if injectionurl is not None:
+			fullurl = injectionurl+payload
+			response = self.req.getHTMLCode(fullurl)
+			try:
+				if re.findall(self.pat,response.text):
+					toappend = "[ "+injectionurl+" ] ====== VULNERABLE TO: "+cve+" ====="
+					if toappend not in self.detections:
+						self.detections.append(toappend)
+					return True
+				return False
+			except Exception as e:
+				print 'excepcion cachada '+str(e)
+				return False
+		else:
+			return False
+			
+	def getInjectionPoint(self,dirurl):
+		try:
+			for i in range(len(dirurl)-1,-1,-1):
+					if dirurl[i] == '=':
+						return dirurl[0:i+1]
+		except Exception as e:
+			return None
