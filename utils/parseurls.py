@@ -1,5 +1,7 @@
 #import html
 import re
+#import urllib
+from urlparse import urljoin
 '''
 Metodos auxiliares para el tratamiento de urls
 Utilizado en la union de recursos y la union de sus formularios
@@ -88,28 +90,38 @@ def uncommonDirectories(dirs,defdirs):
 # recurl:- url del padre ie pagina que llama al formulario
 # actionurl ruta del formulario (puede ser relativa).
 def normalize(recurl,actionurl):
+	if esAbsoluta(actionurl):
+		return actionurl
+	return urljoin(recurl,actionurl)
+	"""
 	try:
 		recurl = quitaRecFinal(recurl)
 		if esAbsoluta(actionurl):	# CASO A
-			
+			print 'Debug @normalize %s es absoluta ' % actionurl
 			return actionurl
 		# No es absoluta caso B
+		print 'Debug @normalize %s no es absoluta ' % actionurl
 		pts = cuentaSubcadenas(actionurl,'..')
 		if pts == 0:	# Caso B.1
+			#print 'Caso B.1'
 			if cuentaSubcadenas(actionurl,'/') > 0: # B.1.1
 				if actionurl.startswith('/'):	# B.1.1.1
 					#return recurl+actionurl[1:]
+					print 'Caso B.1.1'
 					return getDomain(recurl)+actionurl
 				else:						# B.1.1.2
+					print 'Caso B.1.1.2'
 					return recurl+actionurl
 			else:
+				print 'Caso B.1.2'
 				return recurl+actionurl		#B.1.2
 		else:
+			print 'Caso B.2'
 			recurl = quitaDiagonales(recurl,pts)	# B.2
 			return recurl+getRecFinal(actionurl)
 	except Exception as e:
 		print "Error @normalize\n%s recurl %s actionurl %s "%(e,recurl,actionurl)
-		
+	"""
 def removeExtraSlashes(acturl):
 	slashlist = acturl.split('//')
 	endslash = ''

@@ -82,15 +82,21 @@ class ClassyCrawler:
 	
 	def fixUrl(self,url):
 		try:
-			if url is not None:
+			if url is not None:				
 				parsed = urlparse(url)
 				new_path = posixpath.normpath(parsed.path)
 				cleaned = parsed._replace(path=new_path)
+				cleanurl = cleaned.geturl()
 				if url[-1] == '/':
-					return cleaned.geturl()+'/'
-				return cleaned.geturl()
+					cleanurl+='/'
+				if self.verbose:
+					print 'Entre a fixUrl con %s ' % url
+					#print 'Parsed %s ' % parsed
+					print 'Cleaned %s ' % cleanurl
+				return cleanurl
 		except Exception as e:
 			print "FixUrl Something wrong with %s "%url
+			print e
 			return None
     		
 	# tupla que regresa:
@@ -185,6 +191,8 @@ class ClassyCrawler:
 							if link.strip() not in self.extlinks:
 								self.extlinks.append(link.strip())
 					else:
+						if self.verbose:
+							print 'entre a normalize con %s ' % link
 						newlink = parseurls.normalize(actualpage,link)
 						intlinks.append(newlink)
 				except Exception as e:
@@ -253,6 +261,7 @@ class ClassyCrawler:
 			actreq = self.req.getHeadRequest(actualpage)
 			# Determino si es un recurso html (con los headers)
 			status = self.isHTML(actreq)
+			#print 'Status %s ' % status
 			self.visited[actualpage]=elem
 			if status is not None and status[0] == True:
 				# Analizo por posibles vulnerabilidades en el recurso
@@ -273,6 +282,9 @@ class ClassyCrawler:
 						# Debo pasar la url de este nodo, para que sus links
 						# hijos relativos lo tengan
 						links = self.getLinks(actualcode,actualpage)
+						if self.verbose:
+							print 'Links'
+							print links
 						intlinks = links[0]
 						# agrego los links al recurso
 						elem.setLinks(intlinks)
