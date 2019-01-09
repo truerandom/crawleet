@@ -104,7 +104,7 @@ class rutils:
 		return pxysdict
 
 	#################### new methods ###########################
-	def getOPTIONS(self,host):
+	def test_OPTIONS(self,host):
 		try:
 			req = self.s.request('OPTIONS',host,timeout=self.timeout)
 			if req.status_code == 200 and req.reason == 'OK' and 'Allow' in req.headers.keys(): # y allow
@@ -113,11 +113,29 @@ class rutils:
 		except Exception as e:
 			print e
 			return None
-	
+
+	def test_Method(self,host):
+		try:
+			print("entre a test_Method")
+			exit(0)
+		except Exception as e:
+			print(e)
+			return None
+
 	# Regresa un diccionario con los metodos disponibles en el servidor
 	# web. Donde la llave es el metodo y el valor los headers de respuesta
 	def getMethods(self,host):
-		methods = ['GET', 'POST', 'PUT', 'OPTIONS', 'TRACE']
+		"""
+		supportedm = {}
+		methods=[self.test_GET,
+			self.test_OPTIONS,
+			]
+		for m in methods:
+			print m
+			res = m(host)
+		return supportedm
+		"""
+		methods = ['GET','OPTIONS','PUT','OPTIONS','TRACE']
 		supportedm = {}
 		for m in methods:
 			try:
@@ -127,7 +145,6 @@ class rutils:
 			except:
 				print 'Method not supported %s'%m
 		return supportedm
-		
 	def redirects(self): return self.s.allow_redirects
 	def verifyCert(self): return self.s.verify
 	def cookies(self): return self.s.cookies

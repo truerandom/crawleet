@@ -90,9 +90,13 @@ def uncommonDirectories(dirs,defdirs):
 # recurl:- url del padre ie pagina que llama al formulario
 # actionurl ruta del formulario (puede ser relativa).
 def normalize(recurl,actionurl):
-	if esAbsoluta(actionurl):
-		return actionurl
-	return urljoin(recurl,actionurl)
+	try:
+		if esAbsoluta(actionurl):
+			return actionurl
+		return urljoin(recurl,actionurl)
+	except Exception as e:
+		print 'error@normalize with recurl %s acurl %s ' % (recurl,actionurl)
+		return None
 	"""
 	try:
 		recurl = quitaRecFinal(recurl)
