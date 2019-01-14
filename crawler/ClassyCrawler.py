@@ -89,10 +89,12 @@ class ClassyCrawler:
 				cleanurl = cleaned.geturl()
 				if url[-1] == '/':
 					cleanurl+='/'
+				"""
 				if self.verbose:
-					print 'Entre a fixUrl con %s ' % url
+					# print 'Entre a fixUrl con %s ' % url
 					#print 'Parsed %s ' % parsed
-					print 'Cleaned %s ' % cleanurl
+					# print 'Cleaned %s ' % cleanurl
+				"""
 				return cleanurl
 		except Exception as e:
 			print "FixUrl Something wrong with %s "%url
@@ -191,8 +193,7 @@ class ClassyCrawler:
 							if link.strip() not in self.extlinks:
 								self.extlinks.append(link.strip())
 					else:
-						if self.verbose:
-							print 'entre a normalize con %s ' % link
+						#if self.verbose: print 'entre a normalize con %s ' % link
 						newlink = parseurls.normalize(actualpage,link)
 						intlinks.append(newlink)
 				except Exception as e:
@@ -453,7 +454,7 @@ class ClassyCrawler:
 		# Genera los reportes para los hallazgos de los modulos de deteccion
 		for detected in detectionres:
 			self.reportex.fromList(detected)
-			print "\nDEBUG\n".join(detected)
+			#print "\nDEBUG\n".join(detected)
 		###################### RESOURCES ########################
 		self.reportex.fromResources(self.visitedresources)
 		print "\nPuntuacion: ",self.puntuacion
@@ -486,10 +487,10 @@ class ClassyCrawler:
 		for res in self.vulndetector.results():
 			# Tomo los resultados del detector
 			tmp = res
-			print 'DEBUG VULN \n',tmp
+			#print 'DEBUG VULN \n',tmp
 			vulnres.append(tmp)
 		for detected in vulnres:
-			print 'DEBUG DETECTED\n',detected
+			#print 'DEBUG DETECTED\n',detected
 			self.reportex.fromList(detected)
 		#################### REPORT EXTRESULTS #########################
 		if self.color:
