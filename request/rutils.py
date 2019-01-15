@@ -103,15 +103,41 @@ class rutils:
 			pxysdict[proto] = ipadd
 		return pxysdict
 
-	#################### new methods ###########################
+	#################### methods testing ###########################
 	def test_OPTIONS(self,host):
 		try:
 			req = self.s.request('OPTIONS',host,timeout=self.timeout)
 			if req.status_code == 200 and req.reason == 'OK' and 'Allow' in req.headers.keys(): # y allow
-				return req.headers['Allow']
+				return req.headers
 			return None
 		except Exception as e:
-			print e
+			return None
+			
+	def test_GET(self,host):
+		try:
+			req = self.s.request('GET',host,timeout=self.timeout)
+			if req.status_code == 200 and req.reason == 'OK': # y allow
+				return req.headers
+			return None
+		except Exception as e:
+			return None
+			
+	def test_PUT(self,host):
+		try:
+			req = self.s.request('PUT',host,timeout=self.timeout)
+			if req.status_code == 200 and req.reason == 'OK': # y allow
+				return req.headers
+			return None
+		except Exception as e:
+			return None
+			
+	def test_TRACE(self,host):
+		try:
+			req = self.s.request('TRACE',host,timeout=self.timeout)
+			if req.status_code == 200 and req.reason == 'OK': # y allow
+				return req.headers
+			return None
+		except Exception as e:
 			return None
 
 	def test_Method(self,host):
@@ -125,26 +151,19 @@ class rutils:
 	# Regresa un diccionario con los metodos disponibles en el servidor
 	# web. Donde la llave es el metodo y el valor los headers de respuesta
 	def getMethods(self,host):
-		"""
+		print 'entre a getMethods'
 		supportedm = {}
-		methods=[self.test_GET,
-			self.test_OPTIONS,
-			]
-		for m in methods:
-			print m
-			res = m(host)
+		methods={self.test_GET:"GET",
+			self.test_OPTIONS:"OPTIONS",
+			self.test_PUT:"OPTIONS",
+			self.test_TRACE:"TRACE",
+			}
+		for method in methods.keys():
+			res = method(host)
+			if res is not None:
+				supportedm[methods[method]] = res
 		return supportedm
-		"""
-		methods = ['GET','OPTIONS','PUT','OPTIONS','TRACE']
-		supportedm = {}
-		for m in methods:
-			try:
-				resp = self.s.request(m,host,timeout=self.timeout)
-				if resp.status_code == 200 and resp.reason == 'OK':
-					supportedm[m] = resp.headers
-			except:
-				print 'Method not supported %s'%m
-		return supportedm
+		
 	def redirects(self): return self.s.allow_redirects
 	def verifyCert(self): return self.s.verify
 	def cookies(self): return self.s.cookies
