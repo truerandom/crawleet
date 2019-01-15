@@ -37,6 +37,7 @@ class ClassyCrawler:
 		self.maxfiles = maxfiles			# maximum files to analize
 		self.wordlist = wordlist			# wordlist to bruteforce
 		self.exclude = exclude				# excluir archivos o directorios
+		self.startlinks = []
 		self.tovisit = collections.OrderedDict()
 		self.visited = collections.OrderedDict()
 		self.extlinks = []					# link externos del aplicativo
@@ -219,15 +220,40 @@ class ClassyCrawler:
 				if not self.visited.has_key(actlink) and not self.tovisit.has_key(actlink) and not toexclude:
 					self.tovisit[actlink]=nodoresultado(actlink,pnode.getUrl(),nivel+1,pnode)
 					self.puntuacion = self.puntuacion + 1
-				
+	
+	# Set additional start links, this will be queued in tovisit
+	def setStartLinks(self,links):
+		new_links = []
+		for link in links:
+			if self.isAbsolute(link):
+				# si baseurl esta contenida en el link absoluto es un link interno
+				if self.domain in self.getDomain(link) and self.getDomain(link).startswith(self.domain):
+						new_links.append(link.strip())
+			else:
+				#if self.verbose: print 'entre a normalize con %s ' % link
+				# get full domain
+				full_domain = parseurls.getDomain(self.url)
+				newlink = '%s/%s' % (full_domain,link)
+				newlink = parseurls.normalize('',newlink)
+				new_links.append(newlink)
+		self.startlinks = new_links
+		
 	def crawl(self):
 		startpage = self.url
-		self.tovisit = collections.OrderedDict()
-		self.tovisit[startpage.strip()] = nodoresultado(startpage.strip(),'',0)
 		externallinks = []
+		# para que es la i ?
+		i = 0
 		# lista de archivos encontrados
 		self.visited=collections.OrderedDict()
-		i = 0
+		self.tovisit = collections.OrderedDict()
+		
+		# aqui se define el parent node
+		self.tovisit[startpage.strip()] = nodoresultado(startpage.strip(),'',0)
+		# quick patch for adding the startup links
+		node_res = self.tovisit[startpage.strip()]
+		# agrego los starlinks como nodo padre el inicial
+		self.addLinks(self.startlinks,1,node_res)
+
 		while len(self.tovisit)>0 and len(self.visited) < self.maxfiles:
 			if self.verbose:
 				if self.color:
@@ -283,9 +309,6 @@ class ClassyCrawler:
 						# Debo pasar la url de este nodo, para que sus links
 						# hijos relativos lo tengan
 						links = self.getLinks(actualcode,actualpage)
-						if self.verbose:
-							print 'Links'
-							print links
 						intlinks = links[0]
 						# agrego los links al recurso
 						elem.setLinks(intlinks)
@@ -355,6 +378,7 @@ class ClassyCrawler:
 						if nivel+1 < self.depth:
 							self.addLinks(blinks,nivel,elem)
 		####################### FIN CRAWLING ###########################
+		
 		
 		####################### IMPRESION CONSOLA ######################
 		####################### Recursos ###############################

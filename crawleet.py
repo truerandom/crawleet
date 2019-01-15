@@ -30,6 +30,7 @@ class argsparser:
 		parser.add_option('-d', "--depth",dest="depth",default=2,help="Crawling depth")
 		parser.add_option("-e", "--exclude", dest="exclude", default='',help="Resource to exclude (comma delimiter)")
 		parser.add_option("-f", "--redirects",dest="redirects",default=False,action="store_true",help="Follow Redirects")
+		parser.add_option("-g", "--startlinks",dest="startlinks",default=[],help="Add additional start links to crawl")
 		parser.add_option('-i', "--time",dest="time",default=0.2,help="Interval period between requests")		
 		parser.add_option("-k", "--cookies", dest="cookies", default=None,help="Cookies for navigation")
 		parser.add_option("-l", "--site-list", dest="sitelist", default=None,help="File with sites to scan (one per line)")
@@ -79,6 +80,9 @@ class argsparser:
 		if opts.extensions is not None:
 			opts.extensions = opts.extensions.split(',')
 			
+		if len(opts.startlinks) > 0:
+			opts.startlinks = opts.startlinks.split(',')
+			
 		try:
 			opts.time = float(opts.time)
 			opts.timeout = float(opts.timeout)
@@ -120,6 +124,7 @@ for site in opts.sites:
 				'MaxFiles: '+str(opts.maxfiles),
 				'Run External Tools: '+str(opts.runexternaltools),
 				'Excluded dirs: '+','.join(opts.exclude),
+				'Start links: '+','.join(opts.startlinks),
 				'Bruteforce: '+str(opts.bruteforce),
 				'Wordlist: '+str(opts.wordlist),
 				'Bruteforce extensions: '+','.join(opts.extensions),
@@ -162,6 +167,11 @@ for site in opts.sites:
 
 	# Crawling
 	crawly = ClassyCrawler(req,reportex,site,opts.depth,opts.time,opts.bruteforce,opts.backups,opts.wordlist,opts.runexternaltools,opts.cfgfile,opts.datadir,opts.extensions,opts.verbose,opts.exclude,opts.maxfiles,opts.color)
+	
+	# Si se proporcionaron links adicionales para hacer el crawling
+	crawly.setStartLinks(opts.startlinks)
+	
+	# crawling
 	crawly.crawl()
 
 	# Registros DNS 

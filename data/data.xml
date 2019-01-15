@@ -309,16 +309,16 @@
 			webmine.pro/,webminepool.com/,webminepool.tk/,zlx.com.br/
 		</wordpatterns>
 		<files>
-			todo
+			this_is_pending
 		</files>
 		<directories>
-			todo
+			this_is_pending
 		</directories>
 		<juicyfiles>
-			todo
+			this_is_pending
 		</juicyfiles>
 		<themes>
-			todo
+			this_is_pending
 		</themes>
 		<postcrawl>
 			False
