@@ -186,17 +186,48 @@ class ClassyCrawler:
 			for linkx in dom.iterlinks():
 				try:
 					link = linkx[2]	# nuevo
+					"""
+					if self.verbose:
+						print "\n****** getLinks ******"
+						print "self.domain -> %s " % self.domain
+						print "link -> %s " % link
+						print "self.getDomain(link) -> %s " % self.getDomain(link)
+						print "self.getDomain(link).startswith(self.domain) -> %s " % self.getDomain(link).startswith(self.domain)
+					"""
 					if self.isAbsolute(link):
 						# si baseurl esta contenida en el link absoluto es un link interno
+						#if self.domain in self.getDomain(link) and self.getDomain(link).startswith(self.domain):
 						if self.domain in self.getDomain(link) and self.getDomain(link).startswith(self.domain):
+							"""
+							if self.verbose:
+								print "link interno %s " % link.strip()
+								print "adding to intlinks"
+							"""
 							intlinks.append(link.strip())
 						else:
 							if link.strip() not in self.extlinks:
+								"""
+								print "link externo %s " % link.strip()
+								print "adding to extlinks"
+								"""
 								self.extlinks.append(link.strip())
 					else:
 						#if self.verbose: print 'entre a normalize con %s ' % link
 						newlink = parseurls.normalize(actualpage,link)
-						intlinks.append(newlink)
+						if self.domain in self.getDomain(newlink) and self.getDomain(newlink).startswith(self.domain):
+							"""
+							if self.verbose:
+								print "link relativo %s " % newlink
+								print "adding to intlinks"
+							"""
+							intlinks.append(newlink)
+						else:
+							"""
+							if self.verbose:
+								print "link relativo %s " % newlink
+								print "adding to extlinks"
+							"""
+							extlinks.append(newlink)
 				except Exception as e:
 					print e
 			# Aqui debo hacer el bruteforce de links
