@@ -8,12 +8,15 @@ def getHeaders(req,host):
 # Returns headers with sensitive info
 def getInfoHeaders(req,host):
 	try:
-		hs = ['Server', 'Via', 'X-Powered-By', 'X-Country-Code','E-Tag'
-		'Authorization','WWW-Authenticate','Proxy-Authenticate','Proxy-Authorization',
-		'Accept','X-JAL','X-JSL','Cookie','X-AspNet-Version','X-Accel-Version',
-		'X-Whom','X-Cache','X-Generator','X-Forwarded-For','X-Forwarded-By',
-		'X-Drupal-Cache','CF-RAY','X-Varnish']
-		foundheaders = getHeaders(req,host)
+		hs = ['last-modified','server', 'via', 'x-powered-by', 'x-country-code','e-tag'
+		'authorization','www-authenticate','proxy-authenticate','proxy-authorization',
+		'accept','x-jal','x-jsl','cookie','x-aspnet-version','x-accel-version',
+		'x-whom','x-cache','x-generator','x-forwarded-for','x-forwarded-by',
+		'x-drupal-cache','cf-ray','x-varnish']
+		foundheadersorig = getHeaders(req,host)
+		foundheaders = {}
+		for key, value in foundheadersorig.iteritems():
+			foundheaders[key.lower()] = value
 		headers = ['************ Info Headers **************']
 		if foundheaders is not None:
 			for header in hs:
@@ -31,10 +34,13 @@ con el valor para los que estan y reporta si no estan
 '''
 def secureHeaders(req,host):
 	try:
-		hs = ['X-Content-Type-Options','X-Frame-Options',
-		'Strict-Transport-Security',
-		'X-XSS-Protection','Content-Security-Policy','Public-Key-Pins']
-		foundheaders = getHeaders(req,host)
+		hs = ['x-content-type-options','x-frame-options',
+		'strict-transport-security',
+		'x-xxs-protection','content-security-policy','public-key-pins']
+		foundheadersorig = getHeaders(req,host)
+		foundheaders = {}
+		for key, value in foundheadersorig.iteritems():
+			foundheaders[key.lower()] = value
 		headers = ['************Secure Headers**************']
 		notfoundheaders=['*********Missing Secure Headers*********']
 		if foundheaders is not None:
