@@ -139,6 +139,15 @@ class rutils:
 			return None
 		except Exception as e:
 			return None
+			
+	def test_POST(self,host):
+		try:
+			req = self.s.request('POST',host,timeout=self.timeout)
+			if req.status_code == 200 and req.reason == 'OK': # y allow
+				return req.headers
+			return None
+		except Exception as e:
+			return None
 
 	def test_Method(self,host):
 		try:
@@ -155,7 +164,8 @@ class rutils:
 		supportedm = {}
 		methods={self.test_GET:"GET",
 			self.test_OPTIONS:"OPTIONS",
-			self.test_PUT:"OPTIONS",
+			self.test_POST:"POST",
+			self.test_PUT:"PUT",
 			self.test_TRACE:"TRACE",
 			}
 		for method in methods.keys():

