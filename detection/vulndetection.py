@@ -318,7 +318,7 @@ class wordpresscan(vulndetector):
 		# resources to test on
 		if self.cmsroot is not None:
 			self.launchXMLRPC()
-		
+			self.SimpleSocialButtons()
 	def launchXMLRPC(self):
 		#print 'WORDPRESS VULN trying xmlrpc'
 		cve = 'xmlrpc methods exposed'
@@ -343,7 +343,7 @@ class wordpresscan(vulndetector):
 				#print '*'*30,'\nVulnerable to %s\n' % cve,'*'*30
 				print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
 				print response.text
-				self.detections.append("[ "+fullurl+" ] ====== VULNERABLE TO: "+cve+" ===========" + response.text)
+				self.detections.append("[ "+fullurl+" ] ====== Possible VULNERABLE TO: "+cve+" ===========" + response.text)
 				return True
 			return False
 		except Exception as e:
@@ -368,7 +368,7 @@ class wordpresscan(vulndetector):
 					#print '*'*30,'\nVulnerable to %s\n' % cve,'*'*30
 					print '*'*(len(cve)+15),'\nPossible vulnerable to %s\n' % cve,'*'*(len(cve)+15)
 					print response.text
-					self.detections.append("[ "+fullurl+" ] ====== VULNERABLE TO: "+cve+" ===========" + response.text)
+					self.detections.append("[ "+fullurl+" ] ====== VULNERABLE TO: "+cve+" ===========")
 					return True
 				return False
 			except Exception as e:
