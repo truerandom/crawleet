@@ -350,6 +350,30 @@ class wordpresscan(vulndetector):
 			print 'excepcion cachada '+str(e)
 			return False
 
+	def SimpleSocialButtons(self):
+			#print 'WORDPRESS VULN trying xmlrpc'
+			cve = 'Simple Social Buttons'
+			fullurl = self.cmsroot+'/wp-content/plugins/simple-social-buttons/readme.txt'
+			#print "fullurl ",fullurl
+			try:
+				response = self.req.s.get(fullurl)
+			except Exception as e:
+				print e
+				return False
+			tocheck = 'Simple Social Media Share Buttons'
+			try:
+				if tocheck in response.text:
+					#print 'es vulnerable ',fullurl
+					
+					#print '*'*30,'\nVulnerable to %s\n' % cve,'*'*30
+					print '*'*(len(cve)+15),'\nPossible vulnerable to %s\n' % cve,'*'*(len(cve)+15)
+					print response.text
+					self.detections.append("[ "+fullurl+" ] ====== VULNERABLE TO: "+cve+" ===========" + response.text)
+					return True
+				return False
+			except Exception as e:
+				print 'excepcion cachada '+str(e)
+				return False
 			
 class joomlascan(vulndetector):
 	def __init__(self,req,color=False):
