@@ -66,6 +66,8 @@ Options:
                         Resources to exclude (comma delimiter)
   -f,			--redirects       
 			Follow Redirects
+  -g STARTLINKS, --startlinks=STARTLINKS
+                        Add additional start links to crawl
   -i TIME,		--time=TIME
 			Delay between requests 
   -k COOKIES,		--cookies=COOKIES
@@ -99,4 +101,6 @@ Options:
   -z MAXFILES,		--maxfiles=MAXFILES
                         Max files in the site to analyze
   --datadir=DATADIR	data directory
+  --save                Save the start page source code
+  --threads=THREADS     Number of threads to use
 ```
