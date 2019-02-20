@@ -1,4 +1,5 @@
 #!/usr/bin/env python2
+from multiprocessing.dummy import Pool as ThreadPool
 from optparse import OptionParser
 from detection.dnsenum import *
 from analysis import headers
@@ -11,10 +12,10 @@ from request.rutils import * 	# Objeto para peticiones
 from utils import parseurls
 from utils.bruteforcer import *	# nuevo
 from time import gmtime, strftime
-try:
-	from colorama import init, Fore,Back, Style
-except:
-	pass
+
+try: from colorama import init, Fore,Back, Style
+except:pass
+
 class argsparser:
 	def __init__(self):
 		self.parser = self.getParser()
@@ -48,6 +49,7 @@ class argsparser:
 		parser.add_option("-y", "--backups", dest="backups",default=False,action="store_true",help = "Search for backup files")
 		parser.add_option("-z", "--maxfiles", dest="maxfiles",default=1000,help = "Max files in the site to analyze")
 		parser.add_option("--datadir", dest="datadir", default='%s/data/data.xml'%(sys.path[0]),help="data directory ")
+		parser.add_option("--threads",dest="threads",default=1,help = "Number of threads to use")
 		return parser 
 
 	def checkOptions(self,opts):
@@ -82,7 +84,14 @@ class argsparser:
 			
 		if len(opts.startlinks) > 0:
 			opts.startlinks = opts.startlinks.split(',')
-			
+		
+		if opts.threads is not None:
+			try:
+				nt = int(opts.threads)
+				opts.threads = nt
+			except Exception as e :
+				opts.threads = 1
+				
 		try:
 			opts.time = float(opts.time)
 			opts.timeout = float(opts.timeout)
@@ -96,19 +105,10 @@ class argsparser:
 			print e
 
 # Chanfle: hacer la clase url utils
-def getDomain(direccion):
-	return direccion.split("//")[-1].split("/")[0].replace('www.','')
-
+def getDomain(direccion): return direccion.split("//")[-1].split("/")[0].replace('www.','')
 print ubanner.getBanner()
-##################### PARAMETROS ########################
-argp = argsparser()
-opts, args = argp.parser.parse_args()
-argp.checkOptions(opts)
 
-# Iteracion de sitios
-print 'Number of sites to scan: %s' % len(opts.sites)
-for site in opts.sites:
-	################### Objeto Request ######################
+def scan(site):
 	req = rutils(not opts.skipcerts,opts.redirects,opts.cookies,opts.useragent,opts.tor,opts.timeout,opts.proxy)
 	# Obtenemos el domain
 	domain = getDomain(site)
@@ -138,7 +138,6 @@ for site in opts.sites:
 				'Timeout: '+str(req.getTimeout()),
 				'IP used: '+str(req.getIP()).rstrip()
 	]
-
 	# ejecucion
 	if opts.color:
 		try: print (Fore.BLUE+"Execution\n"+Style.RESET_ALL+'\n'.join(ejecucion))
@@ -166,7 +165,10 @@ for site in opts.sites:
 	reportex.fromList(['http methods']+metodos)
 
 	# Crawling
-	crawly = ClassyCrawler(req,reportex,site,opts.depth,opts.time,opts.bruteforce,opts.backups,opts.wordlist,opts.runexternaltools,opts.cfgfile,opts.datadir,opts.extensions,opts.verbose,opts.exclude,opts.maxfiles,opts.color)
+	crawly = ClassyCrawler(req,reportex,site,opts.depth,opts.time,
+		opts.bruteforce,opts.backups,opts.wordlist,opts.runexternaltools,
+		opts.cfgfile,opts.datadir,opts.extensions,opts.verbose,
+		opts.exclude,opts.maxfiles,opts.color)
 	
 	# Si se proporcionaron links adicionales para hacer el crawling
 	crawly.setStartLinks(opts.startlinks)
@@ -186,3 +188,18 @@ for site in opts.sites:
 
 	# Terminamos el reporte
 	reportex.finish()
+	
+##################### PARAMETROS ########################
+argp = argsparser()
+opts, args = argp.parser.parse_args()
+argp.checkOptions(opts)
+
+# Iteracion de sitios aki van los hilos
+print 'Number of sites to scan: %s' % len(opts.sites)
+try:
+	pool = ThreadPool(opts.threads)
+	scans = pool.map(scan,opts.sites)
+	pool.close()
+	pool.join()
+except Exception as e:
+	print e

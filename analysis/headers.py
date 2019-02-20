@@ -26,7 +26,7 @@ def getInfoHeaders(req,host):
 					headers.append('%s: %s' % (header,foundheaders[header]))
 		return headers
 	except Exception as e:
-		return None
+		return []
 
 '''
 Busca una serie de headers definidos en una lista y regresa una lista
@@ -54,7 +54,7 @@ def secureHeaders(req,host):
 		if len(notfoundheaders) > 1: res = res+notfoundheaders
 		return res
 	except Exception as e:
-		return None
+		return []
 
 
 def headersAnalysis(req,host):
