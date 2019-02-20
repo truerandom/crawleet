@@ -49,6 +49,7 @@ class argsparser:
 		parser.add_option("-y", "--backups", dest="backups",default=False,action="store_true",help = "Search for backup files")
 		parser.add_option("-z", "--maxfiles", dest="maxfiles",default=1000,help = "Max files in the site to analyze")
 		parser.add_option("--datadir", dest="datadir", default='%s/data/data.xml'%(sys.path[0]),help="data directory ")
+		parser.add_option("--save",dest="save",default=False,action="store_true",help = "Save the start page source code")
 		parser.add_option("--threads",dest="threads",default=1,help = "Number of threads to use")
 		return parser 
 
@@ -119,6 +120,7 @@ def scan(site):
 	ejecucion=[	
 				'Scan date: '+strftime("%Y-%m-%d", gmtime()),
 				'Startpage: '+site,
+				'Site IP: '+req.getSiteIP(site),
 				'Depth: '+str(opts.depth),
 				'Delay: '+str(opts.time),
 				'MaxFiles: '+str(opts.maxfiles),
@@ -138,6 +140,11 @@ def scan(site):
 				'Timeout: '+str(req.getTimeout()),
 				'IP used: '+str(req.getIP()).rstrip()
 	]
+	
+	if opts.save:
+		print 'Saving startpage'
+		req.savePage(site)
+		
 	# ejecucion
 	if opts.color:
 		try: print (Fore.BLUE+"Execution\n"+Style.RESET_ALL+'\n'.join(ejecucion))

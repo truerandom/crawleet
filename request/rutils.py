@@ -5,6 +5,8 @@ Hace falta pasar el user agent
 import requests
 import sys
 import re
+from utils import parseurls
+import socket
 class rutils:
 	'''
 	Constructor
@@ -151,7 +153,6 @@ class rutils:
 
 	def test_Method(self,host):
 		try:
-			print("entre a test_Method")
 			exit(0)
 		except Exception as e:
 			print(e)
@@ -160,7 +161,6 @@ class rutils:
 	# Regresa un diccionario con los metodos disponibles en el servidor
 	# web. Donde la llave es el metodo y el valor los headers de respuesta
 	def getMethods(self,host):
-		print 'entre a getMethods'
 		supportedm = {}
 		methods={self.test_GET:"GET",
 			self.test_OPTIONS:"OPTIONS",
@@ -174,6 +174,28 @@ class rutils:
 				supportedm[methods[method]] = res
 		return supportedm
 		
+	def savePage(self,page,finame=None):
+		try:
+			r = self.getHTMLCode(page)
+			if r is not None and r.text is not None:
+				dom = parseurls.domainOnly(page)
+				if finame is None:
+					finame = '%s_saved.html' % dom
+				f = open(finame,"w")
+				f.write(r.text)
+				f.close()
+		except Exception as e:
+			print e
+			
+	def getSiteIP(self,page):
+		try:
+			dom = parseurls.domainOnly(page)
+			act_ip = socket.gethostbyname(dom)
+			return str(act_ip)
+		except Exception as e:
+			print e
+			return ""
+			
 	def redirects(self): return self.s.allow_redirects
 	def verifyCert(self): return self.s.verify
 	def cookies(self): return self.s.cookies

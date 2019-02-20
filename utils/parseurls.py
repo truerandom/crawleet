@@ -44,11 +44,17 @@ Casos de action url:
 			y regreso esto
 '''
 
-#Funcion que regresa el dominio de una url sin la diagonal al final
+#Funcion que regresa http[s]://dominio de una url sin la diagonal al final
 def getDomain(url):
 	proto = "".join(url.split('//')[0])+'//'
 	domain = "".join(url.split('//')[1]).split('/')[0]
 	return proto+domain
+
+# regresa solo el dominio sin protocolo
+def domainOnly(url):
+	proto = "".join(url.split('//')[0])+'//'
+	domain = "".join(url.split('//')[1]).split('/')[0]
+	return domain
 	
 # Obtiene todos los directorios basados en los recursos encontrados
 def getDirectories(urls):
