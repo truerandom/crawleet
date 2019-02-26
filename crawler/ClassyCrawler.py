@@ -205,12 +205,15 @@ class ClassyCrawler:
 							"""
 							intlinks.append(link.strip())
 						else:
-							if link.strip() not in self.extlinks:
+							ext_link = "%s -> %s" % (link.strip(),actualpage)
+							#if link.strip() not in self.extlinks:
+							if ext_link not in self.extlinks:
 								"""
 								print "link externo %s " % link.strip()
 								print "adding to extlinks"
 								"""
-								self.extlinks.append(link.strip())
+								#self.extlinks.append(link.strip())
+								self.extlinks.append(ext_link)
 					else:
 						#if self.verbose: print 'entre a normalize con %s ' % link
 						newlink = parseurls.normalize(actualpage,link)
@@ -227,8 +230,13 @@ class ClassyCrawler:
 								print "link relativo %s " % newlink
 								print "adding to extlinks"
 							"""
-							extlinks.append(newlink)
+							ext_link = "%s -> %s" % (newlink,actualpage)
+							#print 'tmp es %s' % tmp
+							if ext_link not in self.extlinks:
+								self.extlinks.append(ext_link)
+								#print self.extlinks
 				except Exception as e:
+					print "error @getLinks"
 					print e
 			# Aqui debo hacer el bruteforce de links
 			if self.bruteforce == True:
