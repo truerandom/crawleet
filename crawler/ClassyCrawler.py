@@ -205,7 +205,7 @@ class ClassyCrawler:
 							"""
 							intlinks.append(link.strip())
 						else:
-							ext_link = "%s -> %s" % (link.strip(),actualpage)
+							ext_link = "%s#%s" % (link.strip(),actualpage)
 							#if link.strip() not in self.extlinks:
 							if ext_link not in self.extlinks:
 								"""
@@ -230,7 +230,7 @@ class ClassyCrawler:
 								print "link relativo %s " % newlink
 								print "adding to extlinks"
 							"""
-							ext_link = "%s -> %s" % (newlink,actualpage)
+							ext_link = "%s#%s" % (newlink,actualpage)
 							#print 'tmp es %s' % tmp
 							if ext_link not in self.extlinks:
 								self.extlinks.append(ext_link)
