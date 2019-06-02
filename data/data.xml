@@ -7,16 +7,31 @@
 			name=\"generator\"\s*content=\"(Wordpress.*)\"\s*/>,wp-includes
 		</wordpatterns>
 		<files>
-			wp-config,wp-admin,wp-login,wp-content,wlwmanifest.xml
+			wp-config,
+			wp-admin,
+			wp-login,
+			wp-content,
+			wlwmanifest.xml
 		</files>
 		<directories>
-			wp-admin/,wp-content/,wp-includes/
+			wp-admin/,
+			wp-content/,
+			wp-includes/
 		</directories>
 		<juicyfiles>
-			index.php,wp-activate.php,wp-comments-post.php,wp-config-sample.php,
-			wp-links-opml.php,wp-load.php,wp-mail.php,
-			wp-settings.php,wp-signup.php,wp-trackback.php,xmlrpc.php,
-			readme.html,license.txt
+			index.php,
+			wp-activate.php,
+			wp-comments-post.php,
+			wp-config-sample.php,
+			wp-links-opml.php,
+			wp-load.php,
+			wp-mail.php,
+			wp-settings.php,
+			wp-signup.php,
+			wp-trackback.php,
+			xmlrpc.php,
+			readme.html,
+			license.txt
 		</juicyfiles>
 		<themes>
 			/wp-content/themes/twentyfifteen/rtl.css,
@@ -57,26 +72,53 @@
 		<wordpatterns>
 			name=\"generator\"\s*content=\"(Drupal.*)\"\s*/>,
 			name=\"generator\"\s*content=\"Drupal.*\"/?>
-			data-drupal-selector,data-drupal-link
+			data-drupal-selector,
+			data-drupal-link
 		</wordpatterns>
 		<files>
-			drupal-config,drupal-admin,sites/default/files/,
-			/modules/comment/,/modules/field/theme/,/modules/node/,
-			/modules/search/,/modules/user/,/modules/system/,
+			drupal-config,
+			drupal-admin,
+			sites/default/files/,
+			/modules/comment/,
+			/modules/field/theme/,
+			/modules/node/,
+			/modules/search/,
+			/modules/system/,
 			/modules/user/
 		</files>
 		<directories>
-			sites/all/,misc/,sites/default/,includes/,modules/,profiles/,
-			/modules/comment/,/modules/field/theme/,/modules/node/,
-			/modules/search/,/modules/user/,/modules/system/,
+			sites/all/,
+			misc/,
+			sites/default/,
+			includes/,
+			modules/,
+			profiles/,
+			/modules/comment/,
+			/modules/field/theme/,
+			/modules/node/,
+			/modules/search/,
+			/modules/user/,
+			/modules/system/,
 			/modules/user/
 		</directories>
 		<juicyfiles>
-			README.txt,autoload.php,composer.json,composer.lock,
-			example.gitignore,robots.txt,web.config,CHANGELOG.txt,
-			composer.json,core.libraries.yml,core.link_relation_types.yml,
-			core.services.yml,package.json,phpcs.xml.dist,phpunit.xml.dist,
-			.gitignore,.htaccess
+			README.txt,
+			autoload.php,
+			composer.json,
+			composer.lock,
+			example.gitignore,
+			robots.txt,
+			web.config,
+			CHANGELOG.txt,
+			composer.json,
+			core.libraries.yml,
+			core.link_relation_types.yml,
+			core.services.yml,
+			package.json,
+			phpcs.xml.dist,
+			phpunit.xml.dist,
+			.gitignore,
+			.htaccess
 		</juicyfiles>
 		<themes>
 			themes/bartik/screenshot.png,
@@ -122,33 +164,72 @@
 			name=\"generator\"\s*content=\"(Joomla.*)\"\s*/>
 		</wordpatterns>
 		<files>
-			/administrator/cache,/administrator/components,
-			/administrator/language,/administrator/manifests,
-			/administrator/modules,/administrator/templates,
-			/cache/index.html,/components/index.html,
-			/language/en-GB,/layouts/index.html,/layouts/joomla,
-			/layouts/libraries,/layouts/plugins,/libraries/cms,
-			/libraries/fof,	/libraries/idna_convert,/libraries/joomla,
-			/libraries/vendor,/media/com_contenthistory,
-			/media/jui,/media/media,/media/system,/plugins/content,
-			/plugins/editors,/plugins/finder,/plugins/search,
-			/plugins/system,/plugins/user,/templates/,/templates/system
+			/administrator/cache,
+			/administrator/components,
+			/administrator/language,
+			/administrator/manifests,
+			/administrator/modules,
+			/administrator/templates,
+			/cache/index.html,
+			/components/index.html,
+			/language/en-GB,
+			/layouts/index.html,
+			/layouts/joomla,
+			/layouts/libraries,
+			/layouts/plugins,
+			/libraries/cms,
+			/libraries/fof,
+			/libraries/idna_convert,
+			/libraries/joomla,
+			/libraries/vendor,
+			/media/com_contenthistory,
+			/media/jui,
+			/media/media,
+			/media/system,
+			/plugins/content,
+			/plugins/editors,
+			/plugins/finder,
+			/plugins/search,
+			/plugins/system,
+			/plugins/user,
+			/templates/,
+			/templates/system
 		</files>
 		<directories>
-			/administrator/cache,/administrator/components,
-			/administrator/language,/administrator/manifests,
-			/administrator/modules,/administrator/templates,
-			/cache/index.html,/components/index.html,
-			/language/en-GB,/layouts/index.html,/layouts/joomla,
-			/layouts/libraries,/layouts/plugins,/libraries/cms,
-			/libraries/fof,	/libraries/idna_convert,/libraries/joomla,
-			/libraries/vendor,/media/com_contenthistory,
-			/media/jui,/media/media,/media/system,/plugins/content,
-			/plugins/editors,/plugins/finder,/plugins/search,
-			/plugins/system,/plugins/user,/templates/,/templates/system
+			/administrator/cache,
+			/administrator/components,
+			/administrator/language,
+			/administrator/manifests,
+			/administrator/modules,
+			/administrator/templates,
+			/cache/index.html,
+			/components/index.html,
+			/language/en-GB,
+			/layouts/index.html,
+			/layouts/joomla,
+			/layouts/libraries,
+			/layouts/plugins,
+			/libraries/cms,
+			/libraries/fof,
+			/libraries/idna_convert,
+			/libraries/joomla,
+			/libraries/vendor,
+			/media/com_contenthistory,
+			/media/jui,
+			/media/media,
+			/media/system,
+			/plugins/content,
+			/plugins/editors,
+			/plugins/finder,
+			/plugins/search,
+			/plugins/system,
+			/plugins/user,
+			/templates/,
+			/templates/system
 		</directories>
 		<juicyfiles>
-			/web.config.txt,/web.config,
+			/web.config.txt,
+			/web.config,
 			/administrator/components/com_admin/admin.xml,
 			/administrator/logs/index.html
 		</juicyfiles>
@@ -163,30 +244,79 @@
 	</software>	
 	<software name="moodle">
 		<headers>
-			MoodleSession,moodle
+			MoodleSession,
+			moodle
 		</headers>
 		<wordpatterns>
 			name=\"generator\"\s*content=\"(Moodle.*)\"\s*/>,
 			name=\"keywords\"\s*content=\"(Moodle.*)\"\s*/>,moodle-core
 		</wordpatterns>
 		<files>
-			moodledata,my_moodle_themes
+			moodledata,
+			my_moodle_themes
 		</files>
 		<directories>
-			admin/,analytics/,auth/,availability/,
-			backup/,badges/,blocks/,blog/,cache/,calendar/,cohort/,
-			comment/,competency/,completion/,course/,dataformat/,
-			enrol/,error/,files/,filter/,grade/,group/,install/,
-			iplookup/,lang/,lib/,local/,login/,media/,message/,
-			mnet/,mod/,my/,notes/,pix/,plagiarism/,portfolio/,question/,
-			rating/,report/,repository/,rss/,search/,struct/,tag/,
-			theme/,user/,userpix/,webservice/
+			admin/,
+			analytics/,
+			auth/,
+			availability/,
+			backup/,
+			badges/,
+			blocks/,
+			blog/,
+			cache/,
+			calendar/,
+			cohort/,
+			comment/,
+			competency/,
+			completion/,
+			course/,
+			dataformat/,
+			enrol/,
+			error/,
+			files/,
+			filter/,
+			grade/,
+			group/,
+			install/,
+			iplookup/,
+			lang/,
+			lib/,
+			local/,
+			login/,
+			media/,
+			message/,
+			mnet/,
+			mod/,
+			my/,
+			notes/,
+			pix/,
+			plagiarism/,
+			portfolio/,
+			question/,
+			rating/,
+			report/,
+			repository/,
+			rss/,
+			search/,
+			struct/,
+			tag/,
+			theme/,
+			user/,
+			userpix/,
+			webservice/
 		</directories>
 		<juicyfiles>
-			Gruntfile.js,behat.yml.dist,
-			composer.lock,npm-shrinkwrap.json,package.json,
-			phpunit.xml.dist,struct,admin/environment.xml,
-			admin/roles/role_schema.xml,/lib/upgrade.txt
+			Gruntfile.js,
+			behat.yml.dist,
+			composer.lock,
+			npm-shrinkwrap.json,
+			package.json,
+			phpunit.xml.dist,
+			struct,
+			admin/environment.xml,
+			admin/roles/role_schema.xml,
+			/lib/upgrade.txt
 		</juicyfiles>
 		<themes>
 			/theme/serenity/config.php,
@@ -224,13 +354,28 @@
 		</wordpatterns>
 		<files>ojs</files>
 		<directories>
-			api/,cache/,classes/,controllers/,
-			dbscripts/,docs/,js/,lib/,locale/,pages/,plugins/,public/,
-			registry/,styles/,templates/
+			api/,
+			cache/,
+			classes/,
+			controllers/,
+			dbscripts/,
+			docs/,
+			js/,
+			lib/,
+			locale/,
+			pages/,
+			plugins/,
+			public/,
+			registry/,
+			styles/,
+			templates/
 		</directories>
 		<juicyfiles>
-			config.TEMPLATE.inc.php,favicon.ico,
-			robots.txt,tools/xmllint-exclusions.txt,/lib/pkp/libraries.txt
+			config.TEMPLATE.inc.php,
+			favicon.ico,
+			robots.txt,
+			tools/xmllint-exclusions.txt,
+			/lib/pkp/libraries.txt
 		</juicyfiles>
 		<themes>
 			/plugins/themes/custom//classicBrown/version.xml,
@@ -256,20 +401,40 @@
 			magento
 		</headers>
 		<wordpatterns>
-			Mage.Cookies,BASE_SKIN_URL
+			Mage.Cookies,
+			BASE_SKIN_URL
 		</wordpatterns>
 		<files>
 			shell/,media/customer,skin/frontend,media/customer,js/mage
 		</files>
 		<directories>
-			app/,bin/,dev/,generated/,lib/,
-			phpserver/,pub/,setup/,update/,var/,vendor/,downloader/,
-			errors/,includes/,skin/frontend/,media/customer/,js/mage/
+			app/,
+			bin/,
+			dev/,
+			generated/,
+			lib/,
+			phpserver/,
+			pub/,
+			setup/,
+			update/,
+			var/,
+			vendor/,
+			downloader/,
+			errors/,
+			includes/,
+			skin/frontend/,
+			media/customer/,
+			js/mage/
 		</directories>
 		<juicyfiles>
-			Gruntfile.js,Gruntfile.js.sample,
-			LICENSE.txt,auth.json,auth.json.sample,composer.json,
-			composer.json.sample,composer.lock,app/etc/di.xml
+			Gruntfile.js,
+			Gruntfile.js.sample,
+			LICENSE.txt,
+			auth.json,
+			auth.json.sample,composer.json,
+			composer.json.sample,
+			composer.lock,
+			app/etc/di.xml
 		</juicyfiles>
 		<themes>
 			/skin/frontend/default/modern/favicon.ico,
@@ -287,26 +452,91 @@
 			ufasoft
 		</headers>
 		<wordpatterns>
-			1q2w3.fun/,2giga.link/hive/lib/,a-o.ninja/apk-AO/kingofthenorth/,ad-miner.com/,
-			afminer.com/code/,amazonaws.com/doubleclick13/,anime.reactor.cc/js/ch/,
-			baiduccdn1.com/lib/,bewhoyouare.gq/,candid.zone/,cdn.cloudcoins.co/javascript/,
-			chainblock.science/,chmproxy.bid/lib/,coin-have.com/,coin-hive.com/,
-			coinblind.com/lib/,coinerra.com/lib/,coinhive.com/,coinlab.biz/lib/,
-			coinnebula.com/lib/,coinpirate.cf/,cookiescript.info/libs/,
-			cookiescriptcdn.pro/libs/,cpu2cash.link/,crypto-loot.com/,cryptobara.com/,
-			cryptoloot.pro/lib/,doubleclick1.xyz/,doubleclick2.xyz/,doubleclick3.xyz/,
-			doubleclick4.xyz/,doubleclick5.xyz/,doubleclick6.xyz/,freecontent.bid/,freecontent.loan/,
-			freecontent.racing,gasolina.ml/,googleanalytcs.com/,goredirect.party/assets/,
-			gtg02.bestsecurepractice.com/,hemnes.win/,hodling.faith/,host.d-ns.ga/,joyreactor.cc/ws/ch/,
-			jsccnn.com/content/,jscdndel.com/content/,jsecoin.com/,kickass.cd/,kickass.cd/,kissdoujin.com/,
-			kisshentai.net/,kiwifarms.net/,l33tsite.info/,lewd.ninja/,listat.biz/,lmodr.biz/,
-			mataharirama.xyz/,mine.nahnoji.cz/,mine.torrent.pw/,minecrunch.co/web/,
-			minemytraffic.com/,miner.pr0gramm.com/,minero.pw/,minescripts.info/,monerise.com/,
-			monerominer.rocks/,morningdigit.com/,mutuza.win/,papoto.com/lib/,party-nngvitbizn.now.sh/,
-			playerassets.info/,plugins/ajcryptominer/assets/,ppoi.org/,punchsub.net/,
-			reasedoper.pw/,rocks.io/,sen-to-zdrowie.ml/,stackpathdns.com/assets/javascript/,
-			tokyodrift.ga/,tubetitties.com/,turnsocial.com/,turnsocial.now.sh/,webmine.cz/,
-			webmine.pro/,webminepool.com/,webminepool.tk/,zlx.com.br/
+			1q2w3.fun/,
+			2giga.link/hive/lib/,
+			a-o.ninja/apk-AO/kingofthenorth/,
+			ad-miner.com/,
+			afminer.com/code/,
+			amazonaws.com/doubleclick13/,
+			anime.reactor.cc/js/ch/,
+			baiduccdn1.com/lib/,
+			bewhoyouare.gq/,
+			candid.zone/,
+			cdn.cloudcoins.co/javascript/,
+			chainblock.science/,
+			chmproxy.bid/lib/,
+			coin-have.com/,
+			coin-hive.com/,
+			coinblind.com/lib/,
+			coinerra.com/lib/,
+			coinhive.com/,
+			coinlab.biz/lib/,
+			coinnebula.com/lib/,
+			coinpirate.cf/,
+			cookiescript.info/libs/,
+			cookiescriptcdn.pro/libs/,
+			cpu2cash.link/,
+			crypto-loot.com/,
+			cryptobara.com/,
+			cryptoloot.pro/lib/,
+			doubleclick1.xyz/,
+			doubleclick2.xyz/,
+			doubleclick3.xyz/,
+			doubleclick4.xyz/,
+			doubleclick5.xyz/,
+			doubleclick6.xyz/,
+			freecontent.bid/,
+			freecontent.loan/,
+			freecontent.racing,gasolina.ml/,
+			googleanalytcs.com/,
+			goredirect.party/assets/,
+			gtg02.bestsecurepractice.com/,
+			hemnes.win/,
+			hodling.faith/,
+			host.d-ns.ga/,
+			joyreactor.cc/ws/ch/,
+			jsccnn.com/content/,
+			jscdndel.com/content/,
+			jsecoin.com/,
+			kickass.cd/,
+			kissdoujin.com/,
+			kisshentai.net/,
+			kiwifarms.net/,
+			l33tsite.info/,
+			lewd.ninja/,
+			listat.biz/,
+			lmodr.biz/,
+			mataharirama.xyz/,
+			mine.nahnoji.cz/,
+			mine.torrent.pw/,
+			minecrunch.co/web/,
+			minemytraffic.com/,
+			miner.pr0gramm.com/,
+			minero.pw/,
+			minescripts.info/,
+			monerise.com/,
+			monerominer.rocks/,
+			morningdigit.com/,
+			mutuza.win/,
+			papoto.com/lib/,
+			party-nngvitbizn.now.sh/,
+			playerassets.info/,
+			plugins/ajcryptominer/assets/,
+			ppoi.org/,
+			punchsub.net/,
+			reasedoper.pw/,
+			rocks.io/,
+			sen-to-zdrowie.ml/,
+			stackpathdns.com/assets/javascript/,
+			tokyodrift.ga/,
+			tubetitties.com/,
+			turnsocial.com/,
+			turnsocial.now.sh/,
+			webmine.cz/,
+			webmine.pro/,
+			webminepool.com/,
+			webminepool.tk/,
+			zlx.com.br/
 		</wordpatterns>
 		<files>
 			this_is_pending
