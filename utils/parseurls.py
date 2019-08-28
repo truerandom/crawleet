@@ -251,3 +251,34 @@ def getCMSRootX(baseurl,defdir,level):
 		print "Error @getCMSRoot: ",e
 		return None
 
+def get_injection_points(url):
+	new_url = re.sub('&+','&',url)
+	# now we split with the token ?
+	list_split_base_url = new_url.split('?')
+	# el primer elemento del split es la base de la url
+	# el elemento de la derecha son los parametros
+	if len(list_split_base_url) < 2:
+		return []
+	else:
+		# http://dom/resource
+		base_url = "%s?" % list_split_base_url[0]
+		# url_vars_string = var1=val1&var2=val2&...&varn=valn
+		url_vars_string = ''.join(list_split_base_url[1:])
+		# [var1 = val1, var2=val2, ..., varn=valn]
+		var_list = url_vars_string.split('&')
+		#print('base_url: %s' % base_url)
+		#print('url_vars: %s' % url_vars_string)
+		injection_points = []
+		for i in range(0,len(var_list)):
+			var_info = var_list[i]
+			var_name = var_info.split('=')[0]
+			var_fixed = '%s={TO_REPLACE}' % var_name
+			fixed_url = '%s%s' % (base_url,'&'.join(var_list[0:i]+[var_fixed]+var_list[i+1:]))
+			injection_points.append(fixed_url)
+		return injection_points
+
+"""
+tmp_url = 'https://www.domain.com/0/res.php?u=2017&&id=1496'
+print('tmp_url: %s' % tmp_url)
+print('\n'.join(get_injection_points(tmp_url)))
+"""
