@@ -203,7 +203,7 @@ class rutils:
 			r = self.getHTMLCode(url)
 			if r is not None and r.text is not None:
 				for word in words:
-					if word not in r.text:
+					if word.lower() not in r.text.lower():
 						words_not_found.append(word)
 				return words_not_found
 			else:

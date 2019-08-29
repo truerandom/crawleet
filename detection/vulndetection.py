@@ -614,48 +614,69 @@ class sqliscan(vulndetector):
 			print "VULNERABLE TO SQLi: ",dirurl
 		
 	def testSQLi(self,dirurl):
-		cve = 'SQLi'	
+		self.error_based_sqli(dirurl)
+		self.blind_sqli(dirurl)
+		
+	def error_based_sqli(self,dirurl):
+		cve = 'SQLi (Error Based)'
 		payload = "'"
 		injection_points = parseurls.get_injection_points(dirurl)
-		sql_keywords = ["ERROR","MYSQL","SYNTAX"]
 		if injection_points is None: return 
+		orig_url = dirurl
+		# TODO: add pgsql|mssql... keywords
+		sql_keywords = ["error","mysql","syntax","manual","server"]
+		sql_payloads = ["1","1'","a'","a'-"]
 		for injection_point in injection_points:
-			orig_url = injection_point.replace("{TO_REPLACE}","1")
-			mod_url = injection_point.replace("{TO_REPLACE}","'")
-			words_not_in_orig = self.req.word_not_in_response(sql_keywords,injection_point)
-			words_not_in_mod = self.req.word_not_in_response(sql_keywords,mod_url)
-			if words_not_in_orig != words_not_in_mod:
-				return True
-		return False	
-		
-	"""
-	def testSQLi(self,dirurl):
-		cve = 'SQLi'	
-		payload = "'"
-		injectionurl = self.getInjectionPoint(dirurl)
-		if injectionurl is not None:
-			fullurl = injectionurl+payload
-			response = self.req.getHTMLCode(fullurl)
-			try:
-				if re.findall(self.pat,response.text):
+			for sql_p in sql_payloads:
+				mod_url = injection_point.replace("{TO_REPLACE}",sql_p)
+				words_not_in_orig_req = self.req.word_not_in_response(sql_keywords,orig_url)
+				words_not_in_mod_req = self.req.word_not_in_response(sql_keywords,mod_url)
+				if words_not_in_orig_req != words_not_in_mod_req:
 					print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
-					toappend = "[ "+injectionurl+" ] ====== VULNERABLE TO: "+cve+" ====="
+					toappend = "[ "+injection_point+" ] ====== VULNERABLE TO: "+cve+" ====="
 					if toappend not in self.detections:
 						self.detections.append(toappend)
 					return True
-				return False
-			except Exception as e:
-				print 'excepcion cachada '+str(e)
-				return False
-		else:
-			return False
-			
+		return False	
+		
+	def blind_sqli(self,dirurl):
+		cve = 'SQLi (Blind Based)'
+		payload = "'"
+		injection_points = parseurls.get_injection_points(dirurl)
+		if injection_points is None: return 
+		# true_cases,false_cases = [(AND TRUE,AND FALSO)]
+		# if resp[orig_url] == resp[true_cases and resp[orig_url] != resp[false_case]
+		blind_cases  = [
+			("1","1 AND 2=2","1 AND 2=3"),
+			("1","1 AND 2>1","1 AND 2>3"),
+			("1","1 AND 2=2 -- -v","1 AND 2=3 -- -v"),
+			("1","1 AND 2>1 -- -v","1 AND 2>3 -- -v"),
+			("a","a' AND '1'='1","a' AND '1'='2"),
+			("a","a' AND '2'='2","a' AND '2'='3"),
+			("a","a' AND '2'='2' -- -v","a' AND '2'='3' -- -v"),
+			("a","a' AND '2'>'1' -- -v","a' AND '2'>'3' -- -v")
+		]
+		for injection_point in injection_points:
+			for sql_p in blind_cases:
+				base_case,true_case,false_case = sql_p
+				
+				base_url = injection_point.replace("{TO_REPLACE}",base_case)
+				true_url = injection_point.replace("{TO_REPLACE}",true_case)
+				false_url = injection_point.replace("{TO_REPLACE}",false_case)
+				try:
+					base_r = self.req.getHTMLCode(base_url)
+					true_r = self.req.getHTMLCode(true_url)
+					false_r = self.req.getHTMLCode(false_url)
+				except Exception as e: pass
+				
+				if (true_r is not None and true_r.text is not None and
+					false_r is not None and false_r.text is not None and
+					base_r is not None and base_r.text is not None):
+					if true_r.text == base_r.text and true_r.text != false_r.text:
+						print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
+						toappend = "[ "+injection_point+" ] ====== VULNERABLE TO: "+cve+" ====="
+						if toappend not in self.detections:
+							self.detections.append(toappend)
+					return True
+		return False	
 	
-	def getInjectionPoint(self,dirurl):
-		try:
-			for i in range(len(dirurl)-1,-1,-1):
-					if dirurl[i] == '=':
-						return dirurl[0:i+1]
-		except Exception as e:
-			return None
-	"""
