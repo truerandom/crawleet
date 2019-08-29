@@ -560,39 +560,29 @@ class xssscan(vulndetector):
 	def launchExploitFilename(self,dirurl):
 		if self.testXSS(dirurl):
 			print "VULNERABLE TO XSS: ",dirurl
-		
+	
 	def testXSS(self,dirurl):
 		cve = 'XSSVULN'	
 		payload = ("")
 		tocheck = '<script>alert(/TRUERANDOM/)</script>'
-		injectionurl = self.getInjectionPoint(dirurl)
-		if injectionurl is not None:
-			fullurl = injectionurl+tocheck
-			response = self.req.getHTMLCode(fullurl)
+		injection_points= parseurls.get_injection_points(dirurl)
+		if injection_points is None: return
+		for injection_point in injection_points:
+			full_url = injection_point.replace('{TO_REPLACE}',tocheck)
 			try:
-				if tocheck in response.text:
+				res = self.req.getHTMLCode(full_url)
+			except Exception as e:
+				pass
+			if res is not None and res.text is not None:
+				if tocheck in res.text:
 					print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
-					toappend = "[ "+injectionurl+" ] ====== VULNERABLE TO: "+cve+" ====="
+					toappend = "[ "+injection_point+" ] ====== VULNERABLE TO: "+cve+" ====="
 					if toappend not in self.detections:
 						self.detections.append(toappend)
-					#self.detections.append("[ "+injectionurl+" ] ====== VULNERABLE TO: "+cve+" =====")
-					return True
-				return False
-			except Exception as e:
-				print 'excepcion cachada '+str(e)
-				return False
-		else:
-			return False
-		
-			
-	def getInjectionPoint(self,dirurl):
-		try:
-			for i in range(len(dirurl)-1,-1,-1):
-					if dirurl[i] == '=':
-						return dirurl[0:i+1]
-		except Exception as e:
-			return None
-
+						print('full_url es: %s' % full_url)
+						return True
+		return False					
+					
 class sqliscan(vulndetector):
 	def __init__(self,req,color=False):
 		self.name = 'sqliscan'
@@ -626,6 +616,22 @@ class sqliscan(vulndetector):
 	def testSQLi(self,dirurl):
 		cve = 'SQLi'	
 		payload = "'"
+		injection_points = parseurls.get_injection_points(dirurl)
+		sql_keywords = ["ERROR","MYSQL","SYNTAX"]
+		if injection_points is None: return 
+		for injection_point in injection_points:
+			orig_url = injection_point.replace("{TO_REPLACE}","1")
+			mod_url = injection_point.replace("{TO_REPLACE}","'")
+			words_not_in_orig = self.req.word_not_in_response(sql_keywords,injection_point)
+			words_not_in_mod = self.req.word_not_in_response(sql_keywords,mod_url)
+			if words_not_in_orig != words_not_in_mod:
+				return True
+		return False	
+		
+	"""
+	def testSQLi(self,dirurl):
+		cve = 'SQLi'	
+		payload = "'"
 		injectionurl = self.getInjectionPoint(dirurl)
 		if injectionurl is not None:
 			fullurl = injectionurl+payload
@@ -644,6 +650,7 @@ class sqliscan(vulndetector):
 		else:
 			return False
 			
+	
 	def getInjectionPoint(self,dirurl):
 		try:
 			for i in range(len(dirurl)-1,-1,-1):
@@ -651,3 +658,4 @@ class sqliscan(vulndetector):
 						return dirurl[0:i+1]
 		except Exception as e:
 			return None
+	"""

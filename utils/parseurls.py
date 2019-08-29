@@ -258,7 +258,7 @@ def get_injection_points(url):
 	# el primer elemento del split es la base de la url
 	# el elemento de la derecha son los parametros
 	if len(list_split_base_url) < 2:
-		return []
+		return None
 	else:
 		# http://dom/resource
 		base_url = "%s?" % list_split_base_url[0]

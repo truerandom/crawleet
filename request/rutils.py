@@ -195,6 +195,23 @@ class rutils:
 		except Exception as e:
 			print e
 			return ""
+	
+	# Used by SQLi 
+	def word_not_in_response(self,words,url):
+		try:
+			words_not_found = []
+			r = self.getHTMLCode(url)
+			if r is not None and r.text is not None:
+				for word in words:
+					if word not in r.text:
+						words_not_found.append(word)
+				return words_not_found
+			else:
+				return []
+		except Exception as e:
+			print e
+			# Something happens, we assume we dont know anything about url
+			return []
 			
 	def redirects(self): return self.s.allow_redirects
 	def verifyCert(self): return self.s.verify
