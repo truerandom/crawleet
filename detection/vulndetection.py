@@ -616,6 +616,7 @@ class sqliscan(vulndetector):
 	def testSQLi(self,dirurl):
 		self.error_based_sqli(dirurl)
 		self.blind_sqli(dirurl)
+		self.union_sqli(dirurl)
 		
 	def error_based_sqli(self,dirurl):
 		cve = 'SQLi (Error Based)'
@@ -679,4 +680,37 @@ class sqliscan(vulndetector):
 							self.detections.append(toappend)
 					return True
 		return False	
-	
+		
+	def union_sqli(self,dirurl):
+		cve = 'SQLi (UNION BASED)'
+		payload = "'"
+		injection_points = parseurls.get_injection_points(dirurl)
+		if injection_points is None: return 
+		blind_cases  = [
+			("1","1 ORDER BY 1","1 ORDER BY 10000"),
+			("1'","1' ORDER BY 1 -- -v","1' ORDER BY 10000 -- -v"),
+			("a'","a' ORDER BY 1 -- -v","a' ORDER BY 10000 -- -v")
+		]
+		for injection_point in injection_points:
+			for sql_p in blind_cases:
+				base_case,true_case,false_case = sql_p
+				
+				base_url = injection_point.replace("{TO_REPLACE}",base_case)
+				true_url = injection_point.replace("{TO_REPLACE}",true_case)
+				false_url = injection_point.replace("{TO_REPLACE}",false_case)
+				try:
+					base_r = self.req.getHTMLCode(base_url)
+					true_r = self.req.getHTMLCode(true_url)
+					false_r = self.req.getHTMLCode(false_url)
+				except Exception as e: pass
+				
+				if (true_r is not None and true_r.text is not None and
+					false_r is not None and false_r.text is not None and
+					base_r is not None and base_r.text is not None):
+					if true_r.text == base_r.text and true_r.text != false_r.text:
+						print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
+						toappend = "[ "+injection_point+" ] ====== VULNERABLE TO: "+cve+" ====="
+						if toappend not in self.detections:
+							self.detections.append(toappend)
+					return True
+		return False
