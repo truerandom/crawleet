@@ -6,7 +6,7 @@ from anytree.dotexport import RenderTreeGraph
 from sitemap.mapobj import *
 from utils import parseurls
 #import html
-import test
+import site_mapper
 import sys
 import cgi
 # Genera el sitemap a partir de un nodo raiz

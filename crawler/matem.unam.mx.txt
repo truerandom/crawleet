@@ -1,0 +1,657 @@
+
+
+############################################################
+execution
+############################################################
+Crawleet by truerandom
+Scan date: 2019-12-21
+Startpage: https://www.matem.unam.mx/
+Site IP: 132.248.17.108
+Depth: 3
+Delay: 0.0
+MaxFiles: 100
+Run External Tools: False
+Excluded dirs: 
+Start links: 
+Bruteforce: False
+Wordlist: /root/crawleet/data/wordlist.txt
+Bruteforce extensions: 
+Config file: /root/crawleet/data/scanningtools.xml
+Allow Redirects: False
+Verify Certs: False
+Cookies: &lt;RequestsCookieJar[]&gt;
+Useragent: Mozilla/5.0 (X11; Linux x86_64; rv:55.0) Gecko
+Tor: False
+Proxies:{}
+Timeout: 3.0
+IP used: 187.143.62.173
+
+############################################################
+headers
+############################################################
+************ Info Headers **************
+server: Zope/(2.13.22, python 2.7.13, linux2) ZServer/1.1
+************Secure Headers**************
+x-frame-options: SAMEORIGIN
+*********Missing Secure Headers*********
+x-content-type-options not found
+strict-transport-security not found
+x-xxs-protection not found
+content-security-policy not found
+public-key-pins not found
+
+############################################################
+http methods
+############################################################
+POST
+OPTIONS
+GET
+
+############################################################
+statistics
+############################################################
+Puntuation: 419.2
+Priority: 
+5.98857142857
+Resources: 9
+Broken Links: 30
+Files found: 61
+External links: 207
+Directory listing: 0
+mail: 2
+parameter scanner: 2
+content: 10
+backup: 5
+
+############################################################
+files
+############################################################
+https://www.matem.unam.mx/++resource++imtheme.complex/images/entrar.png
+https://www.matem.unam.mx/++resource++imtheme.complex/images/facebook.png
+https://www.matem.unam.mx/++resource++imtheme.complex/images/instagram.png
+https://www.matem.unam.mx/++resource++imtheme.complex/images/lupa.png
+https://www.matem.unam.mx/++resource++imtheme.complex/images/mail.png
+https://www.matem.unam.mx/++resource++imtheme.complex/images/twitter.png
+https://www.matem.unam.mx/++theme++complex/favicon.ico?v=2
+https://www.matem.unam.mx/++theme++complex/less/theme-compiled.css
+https://www.matem.unam.mx/acerca-de
+https://www.matem.unam.mx/acerca-de/avisos
+https://www.matem.unam.mx/acerca-de/estructura-interna
+https://www.matem.unam.mx/acerca-de/estructura-interna/consejo-interno
+https://www.matem.unam.mx/acerca-de/estructura-interna/secretaria-academica
+https://www.matem.unam.mx/acerca-de/ingresos-y-visitantes
+https://www.matem.unam.mx/acerca-de/noticias
+https://www.matem.unam.mx/fsd/plazas
+https://www.matem.unam.mx/investigacion
+https://www.matem.unam.mx/investigacion/fordecyt
+https://www.matem.unam.mx/investigacion/proyectos
+https://www.matem.unam.mx/investigacion/red
+https://www.matem.unam.mx/investigacion/red/2016
+https://www.matem.unam.mx/investigacion/red/2017
+https://www.matem.unam.mx/login
+https://www.matem.unam.mx/portal_css/IM%20Responsive%20Theme/base-cachekey-0a20429196d5414ba78b585baf08d9f0.css
+https://www.matem.unam.mx/portal_css/IM%20Responsive%20Theme/collage-cachekey-99de0646f20b4987c3466af6248e4ccc.css
+https://www.matem.unam.mx/portal_css/IM%20Responsive%20Theme/collective.js.jqueryui.custom.min-cachekey-b0ccd3f64233b9e106f4a7b5b829bfb9.css
+https://www.matem.unam.mx/portal_css/IM%20Responsive%20Theme/columns-cachekey-1fc317929ec2ae56fda35a0f16688fbb.css
+https://www.matem.unam.mx/portal_css/IM%20Responsive%20Theme/mainpage-cachekey-07106f2c77a57dd7db04c75017a9ad14.css
+https://www.matem.unam.mx/portal_css/IM%20Responsive%20Theme/mediaqueries-cachekey-6991097d5faebd5265fbbacf0026cb75.css
+https://www.matem.unam.mx/portal_css/IM%20Responsive%20Theme/ploneCustom-cachekey-6dd0fcd60ccf400c552a6196ad767064.css
+https://www.matem.unam.mx/portal_css/IM%20Responsive%20Theme/print-cachekey-3654183099d648723c5c644d26b5104d.css
+https://www.matem.unam.mx/portal_css/IM%20Responsive%20Theme/reset-cachekey-b283c96f2b7e35f811777eb3da2d0db9.css
+https://www.matem.unam.mx/portal_css/IM%20Responsive%20Theme/resourcecollective.js.colorpicker-cachekey-97b7333ff7d15697942af596b02ae0ad.css
+https://www.matem.unam.mx/portal_css/IM%20Responsive%20Theme/resourcecollective.js.fullcalendarfullcalendar-cachekey-091bcc66c28691157b24a95e05d7f9a2.css
+https://www.matem.unam.mx/portal_css/IM%20Responsive%20Theme/resourceimtheme.complexstylesheetsportalimmain-cachekey-b8f1e9b36efeec2258b636dfb963c6ea.css
+https://www.matem.unam.mx/portal_css/IM%20Responsive%20Theme/resourceimtheme.complexstylesheetssearch-cachekey-45d7a46dfca7ddb3d344ffdf431abdcb.css
+https://www.matem.unam.mx/portal_css/IM%20Responsive%20Theme/resourcejquery-cachekey-7d5c2d9bd0a21b4c0ca22d5b51f0bbab.css
+https://www.matem.unam.mx/portal_css/IM%20Responsive%20Theme/resourcematem.cv.listnav-cachekey-7ecebd675fd613c415810d9ac2e8dd6e.css
+https://www.matem.unam.mx/portal_css/IM%20Responsive%20Theme/resourceplone.app.discussion.stylesheetsdiscussion-cachekey-aeb1d841ce625517df8fdb83493ef2a5.css
+https://www.matem.unam.mx/portal_css/IM%20Responsive%20Theme/resourceplone.app.jquerytools.dateinput-cachekey-0e64aee6f6d84d1944a23a1bcf9bb99d.css
+https://www.matem.unam.mx/portal_css/IM%20Responsive%20Theme/resourceplonetruegallery-portlet-cachekey-03fcb52f15019159d05c60915f9fbb3d.css
+https://www.matem.unam.mx/portal_css/IM%20Responsive%20Theme/resourcetinymce.stylesheetstinymce-cachekey-7cb004c08cdc92523e45e079187f09df.css
+https://www.matem.unam.mx/portal_css/IM%20Responsive%20Theme/solgema_contextualcontentmenu-cachekey-9ad567a6a5cb35a2628fc67857fc3fea.css
+https://www.matem.unam.mx/portal_javascripts/IM%20Responsive%20Theme/++resource++collective.mathjax.resources/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+https://www.matem.unam.mx/portal_javascripts/IM%20Responsive%20Theme/++resource++matem.cv.jquery-listnav-min.js
+https://www.matem.unam.mx/portal_javascripts/IM%20Responsive%20Theme/faceted_view-cachekey-d4927733289428499a652c080738a955.js
+https://www.matem.unam.mx/portal_javascripts/IM%20Responsive%20Theme/jquery.readmore-cachekey-80cffea85e14cbb6a71b38c81c971a5c.js
+https://www.matem.unam.mx/portal_javascripts/IM%20Responsive%20Theme/kss-bbb-cachekey-c8c19b31812c63eee731af2fd5d6a200.js
+https://www.matem.unam.mx/portal_javascripts/IM%20Responsive%20Theme/resourcechartform-cachekey-236a84acd1ee204a144748098e7e829c.js
+https://www.matem.unam.mx/portal_javascripts/IM%20Responsive%20Theme/resourcecollage-resourcescollage-cachekey-0bbe4d0a7dee06a92ec0e1519d3c1e15.js
+https://www.matem.unam.mx/portal_javascripts/IM%20Responsive%20Theme/resourcecollective.js.colorpicker.jseye-cachekey-6e024afaaa6bd3d3cbb957283ca97623.js
+https://www.matem.unam.mx/portal_javascripts/IM%20Responsive%20Theme/resourcecollective.js.fullcalendarfullcalendar.min-cachekey-aaac6a0542c25ec1b4dd3e87532bdf51.js
+https://www.matem.unam.mx/portal_javascripts/IM%20Responsive%20Theme/resourcejquery.ajaxfileupload-cachekey-4074748140bad86f0fcf6c1fa6052e9a.js
+https://www.matem.unam.mx/portal_javascripts/IM%20Responsive%20Theme/resourcematem.responsivetheme.javascriptsios-orientationchange-fix-cachekey-c0ad1f3560976f4c0590d1cf86a73b12.js
+https://www.matem.unam.mx/portal_javascripts/IM%20Responsive%20Theme/resourcematem.responsivetheme.javascriptsjquery.slicebox.min-cachekey-4f29fe9a458a00fd653d6cf2d8af5615.js
+https://www.matem.unam.mx/portal_javascripts/IM%20Responsive%20Theme/resourcematem.responsivetheme.javascriptsplone-rwd-nav-cachekey-18ec998fbc7711f0c0be2b53449178b0.js
+https://www.matem.unam.mx/portal_javascripts/IM%20Responsive%20Theme/resourcematem.responsivetheme.javascriptsrespond.src-cachekey-9dc8270116ac2d650471809b70306b5a.js
+https://www.matem.unam.mx/portal_javascripts/IM%20Responsive%20Theme/resourceplone.app.jquery-cachekey-e2e7dc4583abc9d82ea055375581e82f.js
+https://www.matem.unam.mx/portal_javascripts/IM%20Responsive%20Theme/resourceplone.formwidget.autocompletejquery.autocomplete.min-cachekey-58475346d307d1ad487d03f07bdfccc6.js
+https://www.matem.unam.mx/portal_javascripts/IM%20Responsive%20Theme/resourceplonetruegallery-portlet-cachekey-b31e7a44292d30a3cf8e3d3e0a1f30cb.js
+https://www.matem.unam.mx/servicios/correo-interno
+
+############################################################
+broken links
+############################################################
+https://www.matem.unam.mx/@@search
+https://www.matem.unam.mx/RSS
+https://www.matem.unam.mx/atom.xml
+https://www.matem.unam.mx/fsd
+https://www.matem.unam.mx/fsd/becarios
+https://www.matem.unam.mx/fsd/becarios/cu
+https://www.matem.unam.mx/fsd/becarios/juriquilla
+https://www.matem.unam.mx/fsd/becarios/matcuer
+https://www.matem.unam.mx/fsd/becarios/oaxaca
+https://www.matem.unam.mx/fsd/catedras-conacyt
+https://www.matem.unam.mx/fsd/catedras-conacyt/cuernavaca
+https://www.matem.unam.mx/fsd/catedras-conacyt/juriquilla
+https://www.matem.unam.mx/fsd/catedras-conacyt/oaxaca
+https://www.matem.unam.mx/fsd/investigadores
+https://www.matem.unam.mx/fsd/investigadores/cu
+https://www.matem.unam.mx/fsd/investigadores/juriquilla
+https://www.matem.unam.mx/fsd/investigadores/matcuer
+https://www.matem.unam.mx/fsd/investigadores/oaxaca
+https://www.matem.unam.mx/fsd/posdoc
+https://www.matem.unam.mx/fsd/posdoc/cu
+https://www.matem.unam.mx/fsd/posdoc/juriquilla
+https://www.matem.unam.mx/fsd/posdoc/matcuer
+https://www.matem.unam.mx/fsd/posdoc/oaxaca
+https://www.matem.unam.mx/fsd/tecnicos-academicos
+https://www.matem.unam.mx/fsd/tecnicos-academicos/cu
+https://www.matem.unam.mx/fsd/tecnicos-academicos/juriquilla
+https://www.matem.unam.mx/fsd/tecnicos-academicos/matcuer
+https://www.matem.unam.mx/inicio/
+https://www.matem.unam.mx/investigacion/lineas
+https://www.matem.unam.mx/rss.xml
+
+############################################################
+external links
+############################################################
+http://biblio.unam.mx/matcuer#http://www.matem.unam.mx/servicios/becarios
+http://biblio.unam.mx/matcuer#https://www.matem.unam.mx/
+http://biblio.unam.mx/matcuer#https://www.matem.unam.mx/#menu
+http://biblio.unam.mx/matcuer#https://www.matem.unam.mx/.
+http://biblio.unam.mx/matcuer#https://www.matem.unam.mx/acerca-de/copy_of_historia
+http://biblio.unam.mx/matcuer#https://www.matem.unam.mx/acerca-de/estructura-interna/directorio
+http://biblio.unam.mx/matcuer#https://www.matem.unam.mx/acerca-de/estructura-interna/organigrama
+http://biblio.unam.mx/matcuer#https://www.matem.unam.mx/acerca-de/mision-vision
+http://biblio.unam.mx/matcuer#https://www.matem.unam.mx/investigacion/red/2015
+http://biblioteca.matem.unam.mx/#http://www.matem.unam.mx/servicios/becarios
+http://biblioteca.matem.unam.mx/#https://www.matem.unam.mx/
+http://biblioteca.matem.unam.mx/#https://www.matem.unam.mx/#menu
+http://biblioteca.matem.unam.mx/#https://www.matem.unam.mx/.
+http://biblioteca.matem.unam.mx/#https://www.matem.unam.mx/acerca-de/copy_of_historia
+http://biblioteca.matem.unam.mx/#https://www.matem.unam.mx/acerca-de/estructura-interna/directorio
+http://biblioteca.matem.unam.mx/#https://www.matem.unam.mx/acerca-de/estructura-interna/organigrama
+http://biblioteca.matem.unam.mx/#https://www.matem.unam.mx/acerca-de/mision-vision
+http://biblioteca.matem.unam.mx/#https://www.matem.unam.mx/investigacion/red/2015
+http://computo.matem.unam.mx/#https://www.matem.unam.mx/acerca-de/estructura-interna/directorio
+http://festival.matem.unam.mx/#http://www.matem.unam.mx/servicios/becarios
+http://festival.matem.unam.mx/#https://www.matem.unam.mx/
+http://festival.matem.unam.mx/#https://www.matem.unam.mx/#menu
+http://festival.matem.unam.mx/#https://www.matem.unam.mx/.
+http://festival.matem.unam.mx/#https://www.matem.unam.mx/acerca-de/copy_of_historia
+http://festival.matem.unam.mx/#https://www.matem.unam.mx/acerca-de/estructura-interna/directorio
+http://festival.matem.unam.mx/#https://www.matem.unam.mx/acerca-de/estructura-interna/organigrama
+http://festival.matem.unam.mx/#https://www.matem.unam.mx/acerca-de/mision-vision
+http://festival.matem.unam.mx/#https://www.matem.unam.mx/investigacion/red/2015
+http://festivalmcc.matem.unam.mx/#http://www.matem.unam.mx/servicios/becarios
+http://festivalmcc.matem.unam.mx/#https://www.matem.unam.mx/
+http://festivalmcc.matem.unam.mx/#https://www.matem.unam.mx/#menu
+http://festivalmcc.matem.unam.mx/#https://www.matem.unam.mx/.
+http://festivalmcc.matem.unam.mx/#https://www.matem.unam.mx/acerca-de/copy_of_historia
+http://festivalmcc.matem.unam.mx/#https://www.matem.unam.mx/acerca-de/estructura-interna/directorio
+http://festivalmcc.matem.unam.mx/#https://www.matem.unam.mx/acerca-de/estructura-interna/organigrama
+http://festivalmcc.matem.unam.mx/#https://www.matem.unam.mx/acerca-de/mision-vision
+http://festivalmcc.matem.unam.mx/#https://www.matem.unam.mx/investigacion/red/2015
+http://forocanadamexico.matem.unam.mx/#http://www.matem.unam.mx/servicios/becarios
+http://forocanadamexico.matem.unam.mx/#https://www.matem.unam.mx/
+http://forocanadamexico.matem.unam.mx/#https://www.matem.unam.mx/#menu
+http://forocanadamexico.matem.unam.mx/#https://www.matem.unam.mx/.
+http://forocanadamexico.matem.unam.mx/#https://www.matem.unam.mx/acerca-de/copy_of_historia
+http://forocanadamexico.matem.unam.mx/#https://www.matem.unam.mx/acerca-de/estructura-interna/directorio
+http://forocanadamexico.matem.unam.mx/#https://www.matem.unam.mx/acerca-de/estructura-interna/organigrama
+http://forocanadamexico.matem.unam.mx/#https://www.matem.unam.mx/acerca-de/mision-vision
+http://forocanadamexico.matem.unam.mx/#https://www.matem.unam.mx/investigacion/red/2015
+http://hablandodematematicas.matem.unam.mx#http://www.matem.unam.mx/servicios/becarios
+http://hablandodematematicas.matem.unam.mx#https://www.matem.unam.mx/
+http://hablandodematematicas.matem.unam.mx#https://www.matem.unam.mx/#menu
+http://hablandodematematicas.matem.unam.mx#https://www.matem.unam.mx/.
+http://hablandodematematicas.matem.unam.mx#https://www.matem.unam.mx/acerca-de/copy_of_historia
+http://hablandodematematicas.matem.unam.mx#https://www.matem.unam.mx/acerca-de/estructura-interna/directorio
+http://hablandodematematicas.matem.unam.mx#https://www.matem.unam.mx/acerca-de/estructura-interna/organigrama
+http://hablandodematematicas.matem.unam.mx#https://www.matem.unam.mx/acerca-de/mision-vision
+http://hablandodematematicas.matem.unam.mx#https://www.matem.unam.mx/investigacion/red/2015
+http://motivos.matem.unam.mx/vol2/num1/#https://www.matem.unam.mx/
+http://motivos.matem.unam.mx/vol2/num1/#https://www.matem.unam.mx/#menu
+http://motivos.matem.unam.mx/vol2/num1/#https://www.matem.unam.mx/.
+http://paginas.matem.unam.mx/calendario/#http://www.matem.unam.mx/servicios/becarios
+http://paginas.matem.unam.mx/calendario/#https://www.matem.unam.mx/
+http://paginas.matem.unam.mx/calendario/#https://www.matem.unam.mx/#menu
+http://paginas.matem.unam.mx/calendario/#https://www.matem.unam.mx/.
+http://paginas.matem.unam.mx/calendario/#https://www.matem.unam.mx/acerca-de/copy_of_historia
+http://paginas.matem.unam.mx/calendario/#https://www.matem.unam.mx/acerca-de/estructura-interna/directorio
+http://paginas.matem.unam.mx/calendario/#https://www.matem.unam.mx/acerca-de/estructura-interna/organigrama
+http://paginas.matem.unam.mx/calendario/#https://www.matem.unam.mx/acerca-de/mision-vision
+http://paginas.matem.unam.mx/calendario/#https://www.matem.unam.mx/investigacion/red/2015
+http://paginas.matem.unam.mx/inria/index.php#https://www.matem.unam.mx/investigacion/red/2015
+http://paginas.matem.unam.mx/oaxaca#https://www.matem.unam.mx/acerca-de/estructura-interna/directorio
+http://paginas.matem.unam.mx/oaxaca/#https://www.matem.unam.mx/
+http://paginas.matem.unam.mx/oaxaca/#https://www.matem.unam.mx/#menu
+http://paginas.matem.unam.mx/oaxaca/#https://www.matem.unam.mx/.
+http://paginas.matem.unam.mx/oaxaca/actividades/#https://www.matem.unam.mx/
+http://paginas.matem.unam.mx/oaxaca/actividades/#https://www.matem.unam.mx/#menu
+http://paginas.matem.unam.mx/oaxaca/actividades/#https://www.matem.unam.mx/.
+http://paginas.matem.unam.mx/oaxaca/actividades/coloquio#http://www.matem.unam.mx/servicios/becarios
+http://paginas.matem.unam.mx/oaxaca/actividades/coloquio#https://www.matem.unam.mx/
+http://paginas.matem.unam.mx/oaxaca/actividades/coloquio#https://www.matem.unam.mx/#menu
+http://paginas.matem.unam.mx/oaxaca/actividades/coloquio#https://www.matem.unam.mx/.
+http://paginas.matem.unam.mx/oaxaca/actividades/coloquio#https://www.matem.unam.mx/acerca-de/copy_of_historia
+http://paginas.matem.unam.mx/oaxaca/actividades/coloquio#https://www.matem.unam.mx/acerca-de/estructura-interna/directorio
+http://paginas.matem.unam.mx/oaxaca/actividades/coloquio#https://www.matem.unam.mx/acerca-de/estructura-interna/organigrama
+http://paginas.matem.unam.mx/oaxaca/actividades/coloquio#https://www.matem.unam.mx/acerca-de/mision-vision
+http://paginas.matem.unam.mx/oaxaca/actividades/coloquio#https://www.matem.unam.mx/investigacion/red/2015
+http://prima2017.math.unam.mx/#https://www.matem.unam.mx/investigacion/red/2015
+http://texedores.matem.unam.mx/publicaciones/#http://www.matem.unam.mx/servicios/becarios
+http://texedores.matem.unam.mx/publicaciones/#https://www.matem.unam.mx/
+http://texedores.matem.unam.mx/publicaciones/#https://www.matem.unam.mx/#menu
+http://texedores.matem.unam.mx/publicaciones/#https://www.matem.unam.mx/.
+http://texedores.matem.unam.mx/publicaciones/#https://www.matem.unam.mx/acerca-de/copy_of_historia
+http://texedores.matem.unam.mx/publicaciones/#https://www.matem.unam.mx/acerca-de/estructura-interna/directorio
+http://texedores.matem.unam.mx/publicaciones/#https://www.matem.unam.mx/acerca-de/estructura-interna/organigrama
+http://texedores.matem.unam.mx/publicaciones/#https://www.matem.unam.mx/acerca-de/mision-vision
+http://texedores.matem.unam.mx/publicaciones/#https://www.matem.unam.mx/investigacion/red/2015
+http://www.circulosmatematicos.matem.unam.mx#http://www.matem.unam.mx/servicios/becarios
+http://www.circulosmatematicos.matem.unam.mx#https://www.matem.unam.mx/
+http://www.circulosmatematicos.matem.unam.mx#https://www.matem.unam.mx/#menu
+http://www.circulosmatematicos.matem.unam.mx#https://www.matem.unam.mx/.
+http://www.circulosmatematicos.matem.unam.mx#https://www.matem.unam.mx/acerca-de/copy_of_historia
+http://www.circulosmatematicos.matem.unam.mx#https://www.matem.unam.mx/acerca-de/estructura-interna/directorio
+http://www.circulosmatematicos.matem.unam.mx#https://www.matem.unam.mx/acerca-de/estructura-interna/organigrama
+http://www.circulosmatematicos.matem.unam.mx#https://www.matem.unam.mx/acerca-de/mision-vision
+http://www.circulosmatematicos.matem.unam.mx#https://www.matem.unam.mx/investigacion/red/2015
+http://www.matcuer.unam.mx#https://www.matem.unam.mx/
+http://www.matcuer.unam.mx#https://www.matem.unam.mx/#menu
+http://www.matcuer.unam.mx#https://www.matem.unam.mx/.
+http://www.matcuer.unam.mx/#https://www.matem.unam.mx/acerca-de/estructura-interna/directorio
+http://www.matcuer.unam.mx/actividades/#https://www.matem.unam.mx/
+http://www.matcuer.unam.mx/actividades/#https://www.matem.unam.mx/#menu
+http://www.matcuer.unam.mx/actividades/#https://www.matem.unam.mx/.
+http://www.matcuer.unam.mx/seminarios.php?sem=5#http://www.matem.unam.mx/servicios/becarios
+http://www.matcuer.unam.mx/seminarios.php?sem=5#https://www.matem.unam.mx/
+http://www.matcuer.unam.mx/seminarios.php?sem=5#https://www.matem.unam.mx/#menu
+http://www.matcuer.unam.mx/seminarios.php?sem=5#https://www.matem.unam.mx/.
+http://www.matcuer.unam.mx/seminarios.php?sem=5#https://www.matem.unam.mx/acerca-de/copy_of_historia
+http://www.matcuer.unam.mx/seminarios.php?sem=5#https://www.matem.unam.mx/acerca-de/estructura-interna/directorio
+http://www.matcuer.unam.mx/seminarios.php?sem=5#https://www.matem.unam.mx/acerca-de/estructura-interna/organigrama
+http://www.matcuer.unam.mx/seminarios.php?sem=5#https://www.matem.unam.mx/acerca-de/mision-vision
+http://www.matcuer.unam.mx/seminarios.php?sem=5#https://www.matem.unam.mx/investigacion/red/2015
+http://www.matem-juriquilla.unam.mx#https://www.matem.unam.mx/
+http://www.matem-juriquilla.unam.mx#https://www.matem.unam.mx/#menu
+http://www.matem-juriquilla.unam.mx#https://www.matem.unam.mx/.
+http://www.sextofestivalconocimiento.unam.mx/#http://www.matem.unam.mx/servicios/becarios
+http://www.sextofestivalconocimiento.unam.mx/#https://www.matem.unam.mx/
+http://www.sextofestivalconocimiento.unam.mx/#https://www.matem.unam.mx/#menu
+http://www.sextofestivalconocimiento.unam.mx/#https://www.matem.unam.mx/.
+http://www.sextofestivalconocimiento.unam.mx/#https://www.matem.unam.mx/acerca-de/copy_of_historia
+http://www.sextofestivalconocimiento.unam.mx/#https://www.matem.unam.mx/acerca-de/estructura-interna/directorio
+http://www.sextofestivalconocimiento.unam.mx/#https://www.matem.unam.mx/acerca-de/estructura-interna/organigrama
+http://www.sextofestivalconocimiento.unam.mx/#https://www.matem.unam.mx/acerca-de/mision-vision
+http://www.sextofestivalconocimiento.unam.mx/#https://www.matem.unam.mx/investigacion/red/2015
+http://www.umi-lasol.matem.unam.mx/#https://www.matem.unam.mx/
+http://www.umi-lasol.matem.unam.mx/#https://www.matem.unam.mx/#menu
+http://www.umi-lasol.matem.unam.mx/#https://www.matem.unam.mx/.
+http://www.unam.mx#http://www.matem.unam.mx/servicios/becarios
+http://www.unam.mx#https://www.matem.unam.mx/
+http://www.unam.mx#https://www.matem.unam.mx/#menu
+http://www.unam.mx#https://www.matem.unam.mx/.
+http://www.unam.mx#https://www.matem.unam.mx/acerca-de/copy_of_historia
+http://www.unam.mx#https://www.matem.unam.mx/acerca-de/estructura-interna/directorio
+http://www.unam.mx#https://www.matem.unam.mx/acerca-de/estructura-interna/organigrama
+http://www.unam.mx#https://www.matem.unam.mx/acerca-de/mision-vision
+http://www.unam.mx#https://www.matem.unam.mx/investigacion/red/2015
+http://www.universum.unam.mx/exposiciones/imaginario-matematico#https://www.matem.unam.mx/
+http://www.universum.unam.mx/exposiciones/imaginario-matematico#https://www.matem.unam.mx/#menu
+http://www.universum.unam.mx/exposiciones/imaginario-matematico#https://www.matem.unam.mx/.
+http://xiisppe.eventos.cimat.mx/#https://www.matem.unam.mx/investigacion/red/2015
+https://fonts.googleapis.com/css?family=Open+Sans&display=swap#http://www.matem.unam.mx/servicios/becarios
+https://fonts.googleapis.com/css?family=Open+Sans&display=swap#https://www.matem.unam.mx/
+https://fonts.googleapis.com/css?family=Open+Sans&display=swap#https://www.matem.unam.mx/#menu
+https://fonts.googleapis.com/css?family=Open+Sans&display=swap#https://www.matem.unam.mx/.
+https://fonts.googleapis.com/css?family=Open+Sans&display=swap#https://www.matem.unam.mx/acerca-de/copy_of_historia
+https://fonts.googleapis.com/css?family=Open+Sans&display=swap#https://www.matem.unam.mx/acerca-de/estructura-interna/directorio
+https://fonts.googleapis.com/css?family=Open+Sans&display=swap#https://www.matem.unam.mx/acerca-de/estructura-interna/organigrama
+https://fonts.googleapis.com/css?family=Open+Sans&display=swap#https://www.matem.unam.mx/acerca-de/mision-vision
+https://fonts.googleapis.com/css?family=Open+Sans&display=swap#https://www.matem.unam.mx/investigacion/red/2015
+https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700#http://www.matem.unam.mx/servicios/becarios
+https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700#https://www.matem.unam.mx/
+https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700#https://www.matem.unam.mx/#menu
+https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700#https://www.matem.unam.mx/.
+https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700#https://www.matem.unam.mx/acerca-de/copy_of_historia
+https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700#https://www.matem.unam.mx/acerca-de/estructura-interna/directorio
+https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700#https://www.matem.unam.mx/acerca-de/estructura-interna/organigrama
+https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700#https://www.matem.unam.mx/acerca-de/mision-vision
+https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700#https://www.matem.unam.mx/investigacion/red/2015
+https://paginas.matem.unam.mx/computo/#http://www.matem.unam.mx/servicios/becarios
+https://paginas.matem.unam.mx/computo/#https://www.matem.unam.mx/
+https://paginas.matem.unam.mx/computo/#https://www.matem.unam.mx/#menu
+https://paginas.matem.unam.mx/computo/#https://www.matem.unam.mx/.
+https://paginas.matem.unam.mx/computo/#https://www.matem.unam.mx/acerca-de/copy_of_historia
+https://paginas.matem.unam.mx/computo/#https://www.matem.unam.mx/acerca-de/estructura-interna/directorio
+https://paginas.matem.unam.mx/computo/#https://www.matem.unam.mx/acerca-de/estructura-interna/organigrama
+https://paginas.matem.unam.mx/computo/#https://www.matem.unam.mx/acerca-de/mision-vision
+https://paginas.matem.unam.mx/computo/#https://www.matem.unam.mx/investigacion/red/2015
+https://sites.google.com/a/im.unam.mx/taller-alberto-chimal/#https://www.matem.unam.mx/
+https://sites.google.com/a/im.unam.mx/taller-alberto-chimal/#https://www.matem.unam.mx/#menu
+https://sites.google.com/a/im.unam.mx/taller-alberto-chimal/#https://www.matem.unam.mx/.
+https://twitter.com/imate_unam#http://www.matem.unam.mx/servicios/becarios
+https://twitter.com/imate_unam#https://www.matem.unam.mx/
+https://twitter.com/imate_unam#https://www.matem.unam.mx/#menu
+https://twitter.com/imate_unam#https://www.matem.unam.mx/.
+https://twitter.com/imate_unam#https://www.matem.unam.mx/acerca-de/copy_of_historia
+https://twitter.com/imate_unam#https://www.matem.unam.mx/acerca-de/estructura-interna/directorio
+https://twitter.com/imate_unam#https://www.matem.unam.mx/acerca-de/estructura-interna/organigrama
+https://twitter.com/imate_unam#https://www.matem.unam.mx/acerca-de/mision-vision
+https://twitter.com/imate_unam#https://www.matem.unam.mx/investigacion/red/2015
+https://www.facebook.com/imateunam/#http://www.matem.unam.mx/servicios/becarios
+https://www.facebook.com/imateunam/#https://www.matem.unam.mx/
+https://www.facebook.com/imateunam/#https://www.matem.unam.mx/#menu
+https://www.facebook.com/imateunam/#https://www.matem.unam.mx/.
+https://www.facebook.com/imateunam/#https://www.matem.unam.mx/acerca-de/copy_of_historia
+https://www.facebook.com/imateunam/#https://www.matem.unam.mx/acerca-de/estructura-interna/directorio
+https://www.facebook.com/imateunam/#https://www.matem.unam.mx/acerca-de/estructura-interna/organigrama
+https://www.facebook.com/imateunam/#https://www.matem.unam.mx/acerca-de/mision-vision
+https://www.facebook.com/imateunam/#https://www.matem.unam.mx/investigacion/red/2015
+https://www.instagram.com/imate.unam/#http://www.matem.unam.mx/servicios/becarios
+https://www.instagram.com/imate.unam/#https://www.matem.unam.mx/
+https://www.instagram.com/imate.unam/#https://www.matem.unam.mx/#menu
+https://www.instagram.com/imate.unam/#https://www.matem.unam.mx/.
+https://www.instagram.com/imate.unam/#https://www.matem.unam.mx/acerca-de/copy_of_historia
+https://www.instagram.com/imate.unam/#https://www.matem.unam.mx/acerca-de/estructura-interna/directorio
+https://www.instagram.com/imate.unam/#https://www.matem.unam.mx/acerca-de/estructura-interna/organigrama
+https://www.instagram.com/imate.unam/#https://www.matem.unam.mx/acerca-de/mision-vision
+https://www.instagram.com/imate.unam/#https://www.matem.unam.mx/investigacion/red/2015
+https://www.youtube.com/watch?v=_7zCtKl9yKM#https://www.matem.unam.mx/
+https://www.youtube.com/watch?v=_7zCtKl9yKM#https://www.matem.unam.mx/#menu
+https://www.youtube.com/watch?v=_7zCtKl9yKM#https://www.matem.unam.mx/.
+
+############################################################
+mail
+############################################################
+viry@matem.unam.mx
+irma@matem.unam.mx
+
+############################################################
+parameter scanner
+############################################################
+
+https://www.matem.unam.mx/portal_javascripts/IM%20Responsive%20Theme/++resource++collective.mathjax.resources/MathJax/MathJax.js:
+	config=TeX-AMS-MML_HTMLorMML]
+
+https://www.matem.unam.mx/++theme++complex/favicon.ico:
+	v=2]
+
+############################################################
+content
+############################################################
+https://www.matem.unam.mx/ -> [u'logintext2']
+https://www.matem.unam.mx/. -> [u'logintext2']
+https://www.matem.unam.mx/login
+https://www.matem.unam.mx/#menu -> [u'logintext2']
+https://www.matem.unam.mx/acerca-de/mision-vision -> [u'logintext2']
+https://www.matem.unam.mx/acerca-de/copy_of_historia -> [u'logintext2']
+https://www.matem.unam.mx/acerca-de/estructura-interna/organigrama -> [u'logintext2']
+https://www.matem.unam.mx/acerca-de/estructura-interna/directorio -> [u'Administrativa', u'Administrativo']
+https://www.matem.unam.mx/investigacion/red/2015 -> [u'logintext2']
+http://www.matem.unam.mx/servicios/becarios -> [u'logintext2']
+
+############################################################
+backup
+############################################################
+https://www.matem.unam.mx/portal_javascripts/IM%20Responsive%20Theme/++resource++collective.mathjax.resources/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+https://www.matem.unam.mx/portal_javascripts/IM%20Responsive%20Theme/resourcematem.responsivetheme.javascriptsrespond.src-cachekey-9dc8270116ac2d650471809b70306b5a.js
+https://www.matem.unam.mx/portal_javascripts/IM%20Responsive%20Theme/resourcematem.responsivetheme.javascriptsplone-rwd-nav-cachekey-18ec998fbc7711f0c0be2b53449178b0.js
+https://www.matem.unam.mx/portal_javascripts/IM%20Responsive%20Theme/resourcematem.responsivetheme.javascriptsios-orientationchange-fix-cachekey-c0ad1f3560976f4c0590d1cf86a73b12.js
+https://www.matem.unam.mx/portal_javascripts/IM%20Responsive%20Theme/resourcematem.responsivetheme.javascriptsjquery.slicebox.min-cachekey-4f29fe9a458a00fd653d6cf2d8af5615.js
+
+############################################################
+Resources
+############################################################
+
+https://www.matem.unam.mx/
+Form: https://www.matem.unam.mx/@@search
+Form: https://www.matem.unam.mx/@@search
+
+https://www.matem.unam.mx/.
+Form: https://www.matem.unam.mx/@@search
+Form: https://www.matem.unam.mx/@@search
+
+https://www.matem.unam.mx/#menu
+Form: https://www.matem.unam.mx/@@search
+Form: https://www.matem.unam.mx/@@search
+
+https://www.matem.unam.mx/acerca-de/mision-vision
+Form: https://www.matem.unam.mx/@@search
+Form: https://www.matem.unam.mx/@@search
+
+https://www.matem.unam.mx/acerca-de/copy_of_historia
+Form: https://www.matem.unam.mx/@@search
+Form: https://www.matem.unam.mx/@@search
+
+https://www.matem.unam.mx/acerca-de/estructura-interna/organigrama
+Form: https://www.matem.unam.mx/@@search
+Form: https://www.matem.unam.mx/@@search
+
+https://www.matem.unam.mx/acerca-de/estructura-interna/directorio
+Form: https://www.matem.unam.mx/@@search
+Form: https://www.matem.unam.mx/@@search
+
+https://www.matem.unam.mx/investigacion/red/2015
+Form: https://www.matem.unam.mx/@@search
+Form: https://www.matem.unam.mx/@@search
+
+http://www.matem.unam.mx/servicios/becarios
+Form: https://www.matem.unam.mx/@@search
+Form: https://www.matem.unam.mx/@@search
+
+############################################################
+Forms
+############################################################
+
+https://www.matem.unam.mx/@@search
+	GET
+	&lt;InputElement 7f99ac0b0ef0 name='path' type='checkbox'&gt;
+	&lt;InputElement 7f99ac0b0d70 name='SearchableText' type='text'&gt;
+
+############################################################
+sitemap
+############################################################
+https://www.matem.unam.mx/
+├── #menu
+├── acerca-de
+│   ├── mision-vision
+│   ├── copy_of_historia
+│   ├── estructura-interna
+│   │   ├── organigrama
+│   │   ├── directorio
+│   │   ├── consejo-interno
+│   │   └── secretaria-academica
+│   ├── noticias
+│   ├── avisos
+│   └── ingresos-y-visitantes
+├── investigacion
+│   ├── red
+│   │   ├── 2015
+│   │   ├── 2017
+│   │   └── 2016
+│   ├── proyectos
+│   └── fordecyt
+├── servicios
+│   ├── becarios
+│   └── correo-interno
+├── ++theme++complex
+│   ├── favicon.ico?v=2
+│   └── less
+│       └── theme-compiled.css
+├── portal_css
+│   └── IM%20Responsive%20Theme
+│       ├── reset-cachekey-b283c96f2b7e35f811777eb3da2d0db9.css
+│       ├── collective.js.jqueryui.custom.min-cachekey-b0ccd3f64233b9e106f4a7b5b829bfb9.css
+│       ├── resourcetinymce.stylesheetstinymce-cachekey-7cb004c08cdc92523e45e079187f09df.css
+│       ├── resourceplone.app.discussion.stylesheetsdiscussion-cachekey-aeb1d841ce625517df8fdb83493ef2a5.css
+│       ├── resourceplone.app.jquerytools.dateinput-cachekey-0e64aee6f6d84d1944a23a1bcf9bb99d.css
+│       ├── resourcecollective.js.fullcalendarfullcalendar-cachekey-091bcc66c28691157b24a95e05d7f9a2.css
+│       ├── resourcematem.cv.listnav-cachekey-7ecebd675fd613c415810d9ac2e8dd6e.css
+│       ├── mediaqueries-cachekey-6991097d5faebd5265fbbacf0026cb75.css
+│       ├── resourceimtheme.complexstylesheetssearch-cachekey-45d7a46dfca7ddb3d344ffdf431abdcb.css
+│       ├── resourceimtheme.complexstylesheetsportalimmain-cachekey-b8f1e9b36efeec2258b636dfb963c6ea.css
+│       ├── resourcejquery-cachekey-7d5c2d9bd0a21b4c0ca22d5b51f0bbab.css
+│       ├── base-cachekey-0a20429196d5414ba78b585baf08d9f0.css
+│       ├── columns-cachekey-1fc317929ec2ae56fda35a0f16688fbb.css
+│       ├── print-cachekey-3654183099d648723c5c644d26b5104d.css
+│       ├── solgema_contextualcontentmenu-cachekey-9ad567a6a5cb35a2628fc67857fc3fea.css
+│       ├── ploneCustom-cachekey-6dd0fcd60ccf400c552a6196ad767064.css
+│       ├── collage-cachekey-99de0646f20b4987c3466af6248e4ccc.css
+│       ├── resourceplonetruegallery-portlet-cachekey-03fcb52f15019159d05c60915f9fbb3d.css
+│       ├── resourcecollective.js.colorpicker-cachekey-97b7333ff7d15697942af596b02ae0ad.css
+│       └── mainpage-cachekey-07106f2c77a57dd7db04c75017a9ad14.css
+├── portal_javascripts
+│   └── IM%20Responsive%20Theme
+│       ├── resourceplone.app.jquery-cachekey-e2e7dc4583abc9d82ea055375581e82f.js
+│       ├── kss-bbb-cachekey-c8c19b31812c63eee731af2fd5d6a200.js
+│       ├── resourcechartform-cachekey-236a84acd1ee204a144748098e7e829c.js
+│       ├── ++resource++matem.cv.jquery-listnav-min.js
+│       ├── resourcejquery.ajaxfileupload-cachekey-4074748140bad86f0fcf6c1fa6052e9a.js
+│       ├── faceted_view-cachekey-d4927733289428499a652c080738a955.js
+│       ├── jquery.readmore-cachekey-80cffea85e14cbb6a71b38c81c971a5c.js
+│       ├── resourcecollage-resourcescollage-cachekey-0bbe4d0a7dee06a92ec0e1519d3c1e15.js
+│       ├── resourceplonetruegallery-portlet-cachekey-b31e7a44292d30a3cf8e3d3e0a1f30cb.js
+│       ├── ++resource++collective.mathjax.resources
+│       │   └── MathJax
+│       │       └── MathJax.js?config=TeX-AMS-MML_HTMLorMML
+│       ├── resourcecollective.js.fullcalendarfullcalendar.min-cachekey-aaac6a0542c25ec1b4dd3e87532bdf51.js
+│       ├── resourcecollective.js.colorpicker.jseye-cachekey-6e024afaaa6bd3d3cbb957283ca97623.js
+│       ├── resourceplone.formwidget.autocompletejquery.autocomplete.min-cachekey-58475346d307d1ad487d03f07bdfccc6.js
+│       ├── resourcematem.responsivetheme.javascriptsrespond.src-cachekey-9dc8270116ac2d650471809b70306b5a.js
+│       ├── resourcematem.responsivetheme.javascriptsplone-rwd-nav-cachekey-18ec998fbc7711f0c0be2b53449178b0.js
+│       ├── resourcematem.responsivetheme.javascriptsios-orientationchange-fix-cachekey-c0ad1f3560976f4c0590d1cf86a73b12.js
+│       └── resourcematem.responsivetheme.javascriptsjquery.slicebox.min-cachekey-4f29fe9a458a00fd653d6cf2d8af5615.js
+├── ++resource++imtheme.complex
+│   └── images
+│       ├── lupa.png
+│       ├── mail.png
+│       ├── facebook.png
+│       ├── twitter.png
+│       ├── instagram.png
+│       └── entrar.png
+├── login
+└── fsd
+    └── plazas
+
+############################################################
+dns subdomains
+############################################################
+ns2.unam.mx.
+ns5.unam.mx.
+ns4.unam.mx.
+ns3.unam.mx.
+ns1.unam.mx.
+0 gauss.matem.unam.mx.
+pc200.matem.unam.mx
+pc160.matem.unam.mx
+pc180.matem.unam.mx
+pc161.matem.unam.mx
+pc171.matem.unam.mx
+pc181.matem.unam.mx
+pc191.matem.unam.mx
+math1.matem.unam.mx
+pc152.matem.unam.mx
+pc172.matem.unam.mx
+math2.matem.unam.mx
+pc153.matem.unam.mx
+pc183.matem.unam.mx
+pc193.matem.unam.mx
+pc154.matem.unam.mx
+pc164.matem.unam.mx
+pc174.matem.unam.mx
+pc184.matem.unam.mx
+pc194.matem.unam.mx
+math4.matem.unam.mx
+pc155.matem.unam.mx
+pc175.matem.unam.mx
+pc185.matem.unam.mx
+math5.matem.unam.mx
+pc236.matem.unam.mx
+pc176.matem.unam.mx
+pc196.matem.unam.mx
+pc157.matem.unam.mx
+pc167.matem.unam.mx
+pc177.matem.unam.mx
+pc187.matem.unam.mx
+arta7.matem.unam.mx
+pc168.matem.unam.mx
+pc178.matem.unam.mx
+pc188.matem.unam.mx
+pc198.matem.unam.mx
+pc159.matem.unam.mx
+pc189.matem.unam.mx
+mac99.matem.unam.mx
+caoba.matem.unam.mx
+albahaca.matem.unam.mx
+oaxaca.matem.unam.mx
+biblioteca.matem.unam.mx
+fisica.matem.unam.mx
+bioinformatica.matem.unam.mx
+ada.matem.unam.mx
+jacaranda.matem.unam.mx
+atenea.matem.unam.mx
+concha.matem.unam.mx
+www.elfuturodelaciencia.matem.unam.mx
+lamia.matem.unam.mx
+dania.matem.unam.mx
+combinatoria.matem.unam.mx
+kentia.matem.unam.mx
+salvia.matem.unam.mx
+tequila.matem.unam.mx
+juriquilla.matem.unam.mx
+teorema.matem.unam.mx
+coa.matem.unam.mx
+jornadas-algebra.matem.unam.mx
+kodaira.matem.unam.mx
+vatra.matem.unam.mx
+optra.matem.unam.mx
+musa.matem.unam.mx
+conchita.matem.unam.mx
+negrita.matem.unam.mx
+jiricua.matem.unam.mx
+miroslava.matem.unam.mx
+eva.matem.unam.mx
+interactiva.matem.unam.mx
+kankaluya.matem.unam.mx
+bbb.matem.unam.mx
+festivalmcc.matem.unam.mx
+tlaloc.matem.unam.mx
+burnsie.matem.unam.mx
+alebrije.matem.unam.mx
+athene.matem.unam.mx
+cloe.matem.unam.mx
+penelope.matem.unam.mx
+xiiisppe.matem.unam.mx
+manticore.matem.unam.mx
+serre.matem.unam.mx
+ahuehuete.matem.unam.mx
+epazote.matem.unam.mx
+www.omdf.matem.unam.mx
+beowulf.matem.unam.mx
+zariski.matem.unam.mx
+schlaefli.matem.unam.mx
+calli.matem.unam.mx
+amoxcalli.matem.unam.mx
+tochtli.matem.unam.mx
+apantli.matem.unam.mx
+amoxtli.matem.unam.mx
+cuicuiri.matem.unam.mx
+ulk.matem.unam.mx
+pascal.matem.unam.mx
+tamal.matem.unam.mx
+nagual.matem.unam.mx
+festival.matem.unam.mx
+quetzal.matem.unam.mx

@@ -16,7 +16,7 @@ from detection.swcontroller import *
 from detection.swdetection import *
 from detection.vulncontroller import *
 from detection.vulndetection import *
-from sitemap import test
+from sitemap import site_mapper
 from utils import parseurls
 from utils import ubanner
 from utils.bruteforcer import *	# chanfle
@@ -567,7 +567,8 @@ class ClassyCrawler:
 			self.reportex.fromList(extres.splitlines(),False,True)
 		###################GENERACION XML Y SITEMAP####################
 		# sitemap
-		smapobj = test.parseResources(self.domain,unida,self.visitedresources+self.flist,listforms)
+		#smapobj = test.parseResources(self.domain,unida,self.visitedresources+self.flist,listforms)
+		smapobj = site_mapper.parseResources(self.domain,unida,self.visitedresources+self.flist,listforms)
 		#print '\n'.join(smap2[0])
 		print '\n'.join(smapobj.getMap()) # sitemap[0] = sitemap,ligas
 		self.reportex.sitemapexp(smapobj)
