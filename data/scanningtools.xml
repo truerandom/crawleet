@@ -36,7 +36,6 @@
 		<targ>--url</targ>
 		<targ>{url}</targ>
 		<targ>--disable-tls-checks</targ>
-		<targ>--batch</targ>
 		<targ>--force</targ>
 		<tflag score="1">[+]</tflag>
 		<tflag score="5">[!]</tflag>

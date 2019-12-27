@@ -25,6 +25,8 @@ class ConfigParser:
 			for p in pathlist: path = p.firstChild.data
 			if path is not None:
 				tools[tool_name] = path
+		print('Debug: getToolsPath')
+		print(tools)
 		self.toolspath = tools
 		
 	# Construye un diccionario con entradas 'software':[arg1,arg2,...]
@@ -42,25 +44,10 @@ class ConfigParser:
 			toolargs[tool_name] = args
 			args = []
 		self.toolargs = toolargs
+		print('Debug: getToolsArgs')
+		print(toolargs)
 		return self.toolargs
-		
-	# Recibe el software (cms)  y regresa la cadena de comandos 
-	# la herramienta debe sustituir su url
-	def getToolArg(self,sw):
-		if sw in self.toolspath:
-			tpath = self.toolspath[sw]
-			args = [tpath]
-			args.extend(self.toolargs[sw])
-			return args
-		else:
-			return None
 
-	# Returns the scanner path for passed cms
-	def getPath(self,cms):
-		try:
-			return self.toolspath[cms.lower()]
-		except:
-			return None
 	
 	# regresa un diccionario donde la llave es el nombre de la herramienta
 	# y el valor es una lista de tuplas donde la tupla es (marcador,score)
@@ -77,7 +64,26 @@ class ConfigParser:
 				tup = (str(p.firstChild.data),int(p.getAttribute('score')))
 				toolflags[tool_name].append(tup)
 		self.toolflags = toolflags
-		
+		print('Debug: getToolsFlags')
+		print(toolflags)
+
+	# Recibe el software (cms)  y regresa la cadena de comandos 
+	# la herramienta debe sustituir su url
+	def getToolArg(self,sw):
+		if sw in self.toolspath:
+			tpath = self.toolspath[sw]
+			args = [tpath]
+			args.extend(self.toolargs[sw])
+			return args
+		else:
+			return None
+
+	# Returns the scanner path for passed cms
+	def getPath(self,cms):
+		try:
+			return self.toolspath[cms.lower()]
+		except:
+			return None		
 	
 	# regresa una lista de tuplas para las banderas de la herramienta externa
 	#donde elem:=(marker,score)

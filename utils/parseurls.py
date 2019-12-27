@@ -225,11 +225,15 @@ def getBackupNames(resname):
 	debe quitarsele un nivel mas
 '''
 def getCMSRoot(reslist,defdirs):
-	#print "entre a @getCMSROOT"
 	founddirs = getDirectories(reslist)
-	#print "len found dirs %s"%len(founddirs)
-	#print "FOUND DIRS ",founddirs
-	#print "DEFDIRS ",defdirs.keys()
+	print('[i] getCMSRoot:')
+	print('Resource list:')
+	print(' '.join(reslist))
+	print('Default dirs:')
+	tmp = [ '%s:%s' % (dkey,defdirs[dkey]) for dkey in defdirs.keys()]
+	print(' '.join(tmp))
+	#print('found dirs: ')
+	#print('\n'.join(founddirs))
 	for ddir in founddirs:
 		for defdir in defdirs.keys():
 			if defdir in ddir:
@@ -277,8 +281,3 @@ def get_injection_points(url):
 			injection_points.append(fixed_url)
 		return injection_points
 
-"""
-tmp_url = 'https://www.domain.com/0/res.php?u=2017&&id=1496'
-print('tmp_url: %s' % tmp_url)
-print('\n'.join(get_injection_points(tmp_url)))
-"""

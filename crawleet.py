@@ -4,7 +4,7 @@ from optparse import OptionParser
 from detection.dnsenum import *
 from analysis import headers
 from crawler.ClassyCrawler import *
-from reports.report  import *		# reportes
+from reports.reporthtml  import *		# reportes
 from reports.reporttxt  import *		# reportes
 from reports.reportmgr import *
 from utils import ubanner			# banner

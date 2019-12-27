@@ -56,23 +56,26 @@ class reportexml:
 			#print r
 		self.numelems+=1
 		self.content+='\n'+' '*tab+'</%s>'% (name.replace(' ',''))
-
+		
+	"""
 	def sitemap(self,reslist):
 		pass
-			
+	"""	
 	# nuevo
+	"""
 	def sitemapXML(self,reslist):
 		tab = 4
 		self.content+='\n'+' '*tab+'<sitemap>'
 		for r in reslist:
 			self.content+='\n'+' '*(tab*2)+'%s'%r
 		self.content+='\n'+' '*tab+'</sitemap>'
+	"""
 	
 	#########################################################
-	def sitemapexp(self,mapobj):
+	def sitemap(self,mapobj):
 		pass
 	
-	def sitemapXMLexp(self,mapobj):
+	def sitemapXML(self,mapobj):
 		tab = 4
 		reslist = mapobj.getXML().splitlines()
 		self.content+='\n'+' '*tab+'<sitemap>'

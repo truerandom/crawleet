@@ -8,8 +8,8 @@ from anytree import *
 import posixpath 
 import cgi
 from urlparse import urlparse
-# clase para reportess
-from reports.report  import *
+# clase para reportes
+from reports.reporthtml  import *
 from results.nodoresultado import *
 from results.Formulario import *
 from detection.swcontroller import *
@@ -49,8 +49,13 @@ class ClassyCrawler:
 		self.runexternaltools = runexternaltools	# ejecutar herramientas externas
 		# detector de vulnerabilidades
 		self.vulndetector = vulncontroller(cfgfile,req,self.color)
-		# detector de software
-		self.swdetector = swcontroller(cfgfile,self.datadir,req,self.vulndetector,self.color)		# archivod de configuracion de herramientas ext
+		# detector de software , archivos de configuracion de herramientas externas
+		print('[i] Construyendo el swcontroller')
+		print('Cfg file: %s' % cfgfile)
+		print('[i] Data dir')
+		print('Data dir: %s' % self.datadir)
+		self.swdetector = swcontroller(cfgfile,self.datadir,req,self.vulndetector,self.color)		
+		print(self.swdetector)
 		#################### BRUTEFORCER ##########################
 		self.bruteforce = bruteforce	# variable para decidir si hacer bruteforce
 		self.bforcer = bruteforcer(req,extensions,delay,verbose,wordlist)
@@ -132,10 +137,13 @@ class ClassyCrawler:
 					campos.append(form.inputs[f])
 				actform.setControls(campos)
 				formlist.append(actform)
+				print(actform)
+				print(actform.xml())
 			self.puntuacion = self.puntuacion+(len(formlist)*5)
 			return formlist
-		except:
+		except Exception as e:
 			print "something wrong"
+			print e
 			return []
 		
 	# param: link
@@ -258,6 +266,7 @@ class ClassyCrawler:
 						toexclude = True
 				if not self.visited.has_key(actlink) and not self.tovisit.has_key(actlink) and not toexclude:
 					self.tovisit[actlink]=nodoresultado(actlink,pnode.getUrl(),nivel+1,pnode)
+					print(self.tovisit[actlink])
 					self.puntuacion = self.puntuacion + 1
 	
 	# Set additional start links, this will be queued in tovisit
@@ -325,10 +334,14 @@ class ClassyCrawler:
 			time.sleep(self.delay)
 			# Hago una peticion head
 			actreq = self.req.getHeadRequest(actualpage)
+			print('actreq')
+			print(actreq)
 			# Determino si es un recurso html (con los headers)
 			status = self.isHTML(actreq)
 			#print 'Status %s ' % status
 			self.visited[actualpage]=elem
+			print('status ',status)
+			print(type(status))
 			if status is not None and status[0] == True:
 				# Analizo por posibles vulnerabilidades en el recurso
 				self.vulndetector.fromFilename(actualpage)
@@ -571,8 +584,8 @@ class ClassyCrawler:
 		smapobj = site_mapper.parseResources(self.domain,unida,self.visitedresources+self.flist,listforms)
 		#print '\n'.join(smap2[0])
 		print '\n'.join(smapobj.getMap()) # sitemap[0] = sitemap,ligas
-		self.reportex.sitemapexp(smapobj)
-		self.reportex.sitemapXMLexp(smapobj)
+		self.reportex.sitemap(smapobj)
+		self.reportex.sitemapXML(smapobj)
 		################################################################
 		############			FIN DE REPORTES		########
 		################################################################

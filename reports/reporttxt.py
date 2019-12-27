@@ -48,6 +48,7 @@ class reportetxt:
 			#print r
 		self.numelems+=1
 
+	"""
 	def sitemap(self,reslist):
 		name = reslist[0]
 		#self.content+='\n\n%s' % (name)
@@ -55,13 +56,16 @@ class reportetxt:
 		# creo la tabla
 		for r in reslist[1:]:
 			self.content+='\n%s' % (r)
+	"""
 	
 	# nuevo
+	"""
 	def sitemapXML(self,reslist):
 		pass
+	"""
 	
 	#############################################################
-	def sitemapexp(self,mapobj):
+	def sitemap(self,mapobj):
 		name = 'sitemap'
 		#self.content+='\n\n%s' % (name)
 		self.content+='\n\n'+'#'*60+'\n%s'% (name)+'\n'+'#'*60
@@ -70,8 +74,7 @@ class reportetxt:
 		for r in reslist:
 			self.content+='\n%s' % (r)
 	
-	def sitemapXMLexp(self,mapobj):
-		pass
+	def sitemapXML(self,mapobj): pass
 	#############################################################	
 	
 	def fromResources(self,resources):
@@ -85,8 +88,7 @@ class reportetxt:
 					self.content+='\nForm: %s' % f.action
 		self.numelems+=1
 	
-	def writeCSSX(self):
-		pass
+	def writeCSSX(self): pass
 		
 	def fromForms(self,formres):
 		name = "Forms"

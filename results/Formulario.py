@@ -7,14 +7,17 @@ class Formulario:
 		self.controls = controls
 		
 	def __str__(self):
-		# return '\nName: '+self.name+"\nAction: "+self.action+"\nMethod: "+self.method+"\nControls:"+str(self.controls)+"\n"
 		tmp = ''
 		if self.name is not None and self.name !='': tmp+='\t'+self.name
 		if self.action is not None: tmp+='\n\t'+self.action
 		if self.method is not None: tmp+='\n\t'+self.method
 		if self.getControls() is not None: tmp+='\n\t'+self.getControls()+'\n'
-		return tmp
+		#return tmp
 		#return '\tName: '+self.name+"\n\tAction: "+self.action+"\n\tMethod: "+self.method+"\n\tControls:"+self.getControls()+"\n"
+		return 'Path:'+self.path+'\nName: '+self.name+"\nAction: "+self.action+"\nMethod: "+self.method+"\nControls:"+self.getControls()+"\n"
+		
+	def cadena(self):
+		return '\tName: '
 		
 	def addControl(self,control):
 		self.controls.append(control)
@@ -46,6 +49,7 @@ class Formulario:
 		
 	def getAction(self):
 		return self.action
+		
 	# exp
 	def getPath(self):
 		return self.path

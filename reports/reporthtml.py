@@ -9,7 +9,6 @@
 import os.path
 #import html
 import cgi
-
 class reporte:
 	
 	def __init__(self,domain,fname,template="/base.css"):
@@ -82,7 +81,7 @@ class reporte:
 		self.content+='</section>'
 
 	#############################################################
-	def sitemapexp(self,mapobj):
+	def sitemap(self,mapobj):
 		name = 'sitemap'
 		# reporte txt
 		#print '\n',name
@@ -117,10 +116,9 @@ class reporte:
 		self.content+='\n</td></tr></table>'
 		self.content+='</section>'
 	
-	def sitemapXMLexp(self,mapobj):
-		pass
+	def sitemapXML(self,mapobj): pass
 	#############################################################
-	
+	"""
 	def sitemap(self,reslist):
 		name = reslist[0]
 		# reporte txt
@@ -151,11 +149,13 @@ class reporte:
 		self.numelems+=1
 		self.content+='\n</td></tr></table>'
 		self.content+='</section>'
-	
+	"""
+	"""
 	# nuevo
 	def sitemapXML(self,reslist):
 		pass
-		
+	"""
+	
 	def fromResources(self,resources):
 		name = "Resources"
 		# reporte txt

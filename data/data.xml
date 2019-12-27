@@ -7,11 +7,11 @@
 			name=\"generator\"\s*content=\"(Wordpress.*)\"\s*/>,wp-includes
 		</wordpatterns>
 		<files>
-			wp-config,
-			wp-admin,
-			wp-login,
+			wp-settings.php,
+			wp-login.php,
 			wp-content,
-			wlwmanifest.xml
+			wlwmanifest.xml,
+			wp-cron.php
 		</files>
 		<directories>
 			wp-admin/,

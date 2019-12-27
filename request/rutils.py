@@ -1,4 +1,4 @@
-'''
+'''g
 Clase para realizar peticiones html
 Hace falta pasar el user agent
 '''
@@ -81,7 +81,8 @@ class rutils:
 		try:
 			r = self.s.head(direccion,timeout=self.timeout)
 			return r
-		except:
+		except Exception as e:
+			print(e)
 			return None
 	
 	# metodo que regresa un diccionario con las cookies pasadas como cadena

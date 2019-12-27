@@ -10,20 +10,15 @@ class vulncontroller:
 	# objeto para peticiones
 	def __init__(self,configfile,req,color=False,detectors = None):
 		self.configfile = configfile
-		self.color = color
-		self.detectors = detectors
+		print('vulncontroller: %s' % configfile)
 		self.req = req
-		self.tools = []
+		self.color = color
 		self.configparser = ConfigParser(self.configfile)
+		self.tools = []
 		self.initTools()
 		
 	def setConfFile(self,configfile):
 		if configfile is not None: self.configfile = configfile
-	
-	# Aqui solo pongo los detectores pasados como parametros
-	def setDetectors(self,detectors):
-		if detectors is not None:
-			self.detectors = detectors
 	
 	# define los modulos de deteccion a ocupar
 	def initTools(self):
@@ -52,20 +47,6 @@ class vulncontroller:
 		for tool in self.tools:
 			tool.fromFilename(filename)
 	
-	# regresa una lista con los resultados de las herramientas externas
-	# de cada modulo
-	def runExtTools(self):
-		"""
-		extres = []
-		for tool in self.tools:
-			if tool.hasDetections():
-				extr = tool.launchTool()
-				if extr is not None:
-					extres.append(extr)
-		return extres
-		"""
-		return []
-		
 	# regresa la suma de la puntuacion de los modulos		
 	def getPuntuation(self):
 		score = 0
@@ -95,31 +76,6 @@ class vulncontroller:
 				tool.setResources(resources,cmsroot)
 				# una vez que le paso los recursos ejecuta los exploits
 				tool.launchExploitsF()
-		
-	
-	# postcrawling, aqui obtengo los directorios no comunes y consulto los archivos default
-	# solo se hace para los modulos que tuvieron detecciones
-	def postCrawling(self):
-		pass
-		"""
-		for tool in self.tools:
-			if tool.hasDetections():
-				tool.postCrawling()
-		"""
-		
-	# Regresa una lista con los resultados de las herramientas externas
-	def externalResults(self):
-		return []
-		"""
-		print '*'*70
-		temp = []
-		for tool in self.tools:
-			# lista de cadenas
-			tmp = tool.getExternalResults()
-			if tmp is not None: temp.append(tmp)
-		# lista de cadenas
-		return temp
-		"""
 		
 	def __str__(self):
 		temp = ''

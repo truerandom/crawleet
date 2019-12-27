@@ -62,8 +62,6 @@ def siteXML(bnode,forms=None,estadisticas=None):
 		if node.getStatus() is not None:
 			tmpx+='\n'+' '*len(pre)+"<status>"+str(node.getStatus())+"</status>"
 		for frm in node.getForms():
-			#print frm
-			# Chanfle pueden ser nulos
 			if frm.name is not None:
 				tmpx+='\n'+' '*len(pre)+cgi.escape(str(frm.name))+"<Formulario>"
 			else:
@@ -94,29 +92,6 @@ def buscaRuta(nodo,ruta):
 	except Exception as ex:
 		return None
 		
-def agrega(base,path):
-	r = Resolver('name')
-	try:
-		if len(path)>0: # Busco si existe el nodo actual, si existe 
-			actnode = r.get(base,path[0])
-		if len(path) > 1: agrega(actnode,path[1:]) # Agrego los demas directorios , ie := actnode/../../
-	except Exception:
-		if len(path)>0:		# Si el nodo actual no existe lo agrego
-			#nodo = Node(path[0],parent=base)
-			nodo = simplenode(path[0],parent=base)
-			# test
-			'''
-			print "parent path -> ",base.getFPath()
-			print "nodo actual -> ",path[0]
-			'''
-			#print "parent -> ",base
-			#print "tipo parent -> ",type(base)
-			# Agrego la parte parcial de la url del padre
-			nodo.setFPath(base.getFPath())
-			# fin test
-		# Agrego los demas nodos
-		if len(path) > 1:
-			agrega(nodo,path[1:])
 '''
 	bnde = string
 '''
@@ -141,6 +116,30 @@ def buildMap(bnde,resources):
 		print 'Cant write sitemap imagefile'
 	return bnode
 
+def agrega(base,path):
+	r = Resolver('name')
+	try:
+		if len(path)>0: # Busco si existe el nodo actual, si existe 
+			actnode = r.get(base,path[0])
+		if len(path) > 1: agrega(actnode,path[1:]) # Agrego los demas directorios , ie := actnode/../../
+	except Exception:
+		if len(path)>0:		# Si el nodo actual no existe lo agrego
+			#nodo = Node(path[0],parent=base)
+			nodo = simplenode(path[0],parent=base)
+			# test
+			'''
+			print "parent path -> ",base.getFPath()
+			print "nodo actual -> ",path[0]
+			'''
+			#print "parent -> ",base
+			#print "tipo parent -> ",type(base)
+			# Agrego la parte parcial de la url del padre
+			nodo.setFPath(base.getFPath())
+			# fin test
+		# Agrego los demas nodos
+		if len(path) > 1:
+			agrega(nodo,path[1:])
+			
 #clean resource url
 def cleanrurl(rurl,rootnodeurl):
 	# Tomamos despues del dominio
@@ -166,6 +165,7 @@ Debo dividir este metodo en dos.
 # parametro la lista de formularios y pasarlo directamente a sitexml
 # 
 def parseResources(fname,rootnode,resources,forms=None):
+	print('debug_root_node: %s ' % rootnode)
 	rootisleaf=True
 	if rootnode.endswith('/'):
 		rootisleaf=False

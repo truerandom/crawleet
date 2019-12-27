@@ -8,14 +8,11 @@ try:
 	from colorama import init, Fore,Back, Style
 except:
 	pass
-# new
-# tengo que inicializar los archivos
+
 class detector(object):
 	def __init__(self,req=None,datadir=None,color=False):
-		try:
-			init(convert=True,autoreset=True) # colorama
-		except:
-			pass
+		try: init(convert=True,autoreset=True) # colorama
+		except: pass
 		self.color = False
 		# new
 		self.datadir = datadir
@@ -23,22 +20,23 @@ class detector(object):
 		self.headers = []
 		self.filelist = []
 		self.wordpatterns = []
+		# Objeto para realizar las peticiones
+		self.req = req
 		# holder cms root
 		self.cmsroot = None
 		# flags to search in external tool output
 		self.toolflags = []
-		# Objeto para realizar las peticiones
-		self.req = req
+		self.toolargs = []
 		self.toolpath = None
+		# Salida de la herramienta externa
+		self.output = None
+		
 		self.defaultdirs = []
 		self.defaultfiles = []
 		self.dicdefdirs = {}
 		self.detections = []
-		self.toolargs = []
 		# Bandera para hacer postcrawl cada modulo hara su funcion especifica
 		self.postcrawl = False
-		# Salida de la herramienta externa
-		self.output = None
 		# Puntuacion del detector
 		self.puntuation = 0	
 	
@@ -71,7 +69,8 @@ class detector(object):
 							self.toolargs[i] = self.cmsroot
 						else:
 							self.toolargs[i] = self.detections[0]
-				print 'El comando => ',str(self.toolargs)
+				print 'Ejecutando herramienta externa:'
+				print ' '.join(self.toolargs)
 				print 'Wait external scan in progress'
 				ps = subprocess.Popen((self.toolargs), stdout=subprocess.PIPE)
 				output, err = ps.communicate()
@@ -186,9 +185,13 @@ class detector(object):
 			#print 'debug self.detections ',self.detections
 			# Directorios encontrados
 			dirs = parseurls.getDirectories(self.detections)
+			print('found dirs: ')
+			print('\n'.join(dirs))
 			################### DIRECTORIOS NO COMUNES #################
 			uncommon = parseurls.uncommonDirectories(dirs,self.defaultdirs)
 			if len(uncommon)>0:
+				print('Uncommon directories:')
+				print('\n'.join(uncommon))
 				# Agrego esto a las detecciones
 				self.detections+=['...']+['Uncommon Dirs: ']+uncommon
 			######### BUSQUEDA DE ARCHIVOS DE CMS EN LOS DIRS ##########
@@ -268,7 +271,6 @@ class genscan(detector):
 		self.datadir = datadir
 		self.color = color
 		self.cmsroot = None
-		self.toolflags = []
 		self.headers = []
 		self.wordpatterns = wordpatterns
 		self.filelist = filelist
@@ -277,8 +279,9 @@ class genscan(detector):
 		self.themes = themes
 		self.postcrawl = postcrawl
 		self.dicdefdirs = {}
-		self.toolpath = None
 		self.detections = []
+		self.toolflags = []
+		self.toolpath = None
 		self.toolargs = []
 		self.output = None
 		# Puntuacion del detector

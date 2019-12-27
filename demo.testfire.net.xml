@@ -1,0 +1,441 @@
+<Reporte>
+    <execution>
+        <data>Crawleet by truerandom</data>
+        <data>Scan date: 2019-12-27</data>
+        <data>Startpage: http://demo.testfire.net/</data>
+        <data>Site IP: 65.61.137.117</data>
+        <data>Depth: 3</data>
+        <data>Delay: 0.2</data>
+        <data>MaxFiles: 50</data>
+        <data>Run External Tools: False</data>
+        <data>Excluded dirs: </data>
+        <data>Start links: </data>
+        <data>Bruteforce: False</data>
+        <data>Wordlist: /root/crawleet/data/wordlist.txt</data>
+        <data>Bruteforce extensions: </data>
+        <data>Config file: /root/crawleet/data/scanningtools.xml</data>
+        <data>Allow Redirects: True</data>
+        <data>Verify Certs: True</data>
+        <data>Cookies: &amp;lt;RequestsCookieJar[]&amp;gt;</data>
+        <data>Useragent: Mozilla/5.0 (X11; Linux x86_64; rv:55.0) Gecko</data>
+        <data>Tor: False</data>
+        <data>Proxies:{}</data>
+        <data>Timeout: 3.0</data>
+        <data>IP used: 187.143.62.173</data>
+    </execution>
+    <headers>
+        <data>************ Info Headers **************</data>
+        <data>server: Apache-Coyote/1.1</data>
+        <data>*********Missing Secure Headers*********</data>
+        <data>x-content-type-options not found</data>
+        <data>x-frame-options not found</data>
+        <data>strict-transport-security not found</data>
+        <data>x-xxs-protection not found</data>
+        <data>content-security-policy not found</data>
+        <data>public-key-pins not found</data>
+    </headers>
+    <httpmethods>
+        <data>PUT</data>
+        <data>POST</data>
+        <data>GET</data>
+    </httpmethods>
+    <statistics>
+        <data>Puntuation: 280</data>
+        <data>Priority: </data>
+        <data>5</data>
+        <data>Resources: 33</data>
+        <data>Broken Links: 3</data>
+        <data>Files found: 14</data>
+        <data>External links: 73</data>
+        <data>Directory listing: 0</data>
+        <data>parameter scanner: 1</data>
+        <data>content: 6</data>
+    </statistics>
+    <files>
+        <data>http://demo.testfire.net/doLogin</data>
+        <data>http://demo.testfire.net/images/b_main.jpg</data>
+        <data>http://demo.testfire.net/images/gradient.jpg</data>
+        <data>http://demo.testfire.net/images/header_pic.jpg</data>
+        <data>http://demo.testfire.net/images/home1.jpg</data>
+        <data>http://demo.testfire.net/images/home2.jpg</data>
+        <data>http://demo.testfire.net/images/home3.jpg</data>
+        <data>http://demo.testfire.net/images/inside6.jpg</data>
+        <data>http://demo.testfire.net/images/logo.gif</data>
+        <data>http://demo.testfire.net/images/p_main.jpg</data>
+        <data>http://demo.testfire.net/images/pf_lock.gif</data>
+        <data>http://demo.testfire.net/pr/communityannualreport.pdf</data>
+        <data>http://demo.testfire.net/style.css</data>
+        <data>http://demo.testfire.net/subscribe.swf</data>
+    </files>
+    <brokenlinks>
+        <data>http://demo.testfire.net/cgi.exe</data>
+        <data>http://demo.testfire.net/default.jsp?content=security.htm</data>
+        <data>http://demo.testfire.net/sendFeedback</data>
+    </brokenlinks>
+    <externallinks>
+        <data>clsid:d27cdb6e-ae6d-11cf-96b8-444553540000#http://demo.testfire.net/index.jsp?content=inside_contact.htm</data>
+        <data>http://demo-analytics.testfire.net/urchin.js#http://demo.testfire.net/index.jsp?content=personal_investments.htm</data>
+        <data>http://demo.testfire.net/disclaimer.htm?url=http://www.microsoft.com#http://demo.testfire.net/index.jsp?content=inside_contact.htm</data>
+        <data>http://demo.testfire.net/disclaimer.htm?url=http://www.netscape.com#http://demo.testfire.net/index.jsp?content=inside_contact.htm</data>
+        <data>http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0#http://demo.testfire.net/index.jsp?content=inside_contact.htm</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/feedback.jsp</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/index.jsp</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/index.jsp?content=business.htm</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/index.jsp?content=business_cards.htm</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/index.jsp?content=business_deposit.htm</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/index.jsp?content=business_insurance.htm</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/index.jsp?content=business_lending.htm</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/index.jsp?content=business_other.htm</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/index.jsp?content=business_retirement.htm</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/index.jsp?content=inside.htm</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/index.jsp?content=inside_about.htm</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/index.jsp?content=inside_careers.htm</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/index.jsp?content=inside_community.htm</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/index.jsp?content=inside_contact.htm</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/index.jsp?content=inside_investor.htm</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/index.jsp?content=inside_press.htm</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/index.jsp?content=personal.htm</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/index.jsp?content=personal_cards.htm</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/index.jsp?content=personal_checking.htm</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/index.jsp?content=personal_deposit.htm</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/index.jsp?content=personal_investments.htm</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/index.jsp?content=personal_loans.htm</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/index.jsp?content=personal_other.htm</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/index.jsp?content=personal_savings.htm</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/index.jsp?content=privacy.htm</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/index.jsp?content=security.htm</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/login.jsp</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/search.jsp</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/status_check.jsp</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/subscribe.jsp</data>
+        <data>http://www-142.ibm.com/software/products/us/en/subcategory/SWI10#http://demo.testfire.net/survey_questions.jsp</data>
+        <data>http://www.adobe.com/products/acrobat/readstep2.html#http://demo.testfire.net/index.jsp?content=inside_community.htm</data>
+        <data>http://www.cert.org/#http://demo.testfire.net/index.jsp?content=security.htm</data>
+        <data>http://www.newspapersyndications.tv#http://demo.testfire.net/index.jsp?content=inside_about.htm</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/feedback.jsp</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/index.jsp</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/index.jsp?content=business.htm</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/index.jsp?content=business_cards.htm</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/index.jsp?content=business_deposit.htm</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/index.jsp?content=business_insurance.htm</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/index.jsp?content=business_lending.htm</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/index.jsp?content=business_other.htm</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/index.jsp?content=business_retirement.htm</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/index.jsp?content=inside.htm</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/index.jsp?content=inside_about.htm</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/index.jsp?content=inside_careers.htm</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/index.jsp?content=inside_community.htm</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/index.jsp?content=inside_contact.htm</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/index.jsp?content=inside_investor.htm</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/index.jsp?content=inside_press.htm</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/index.jsp?content=personal.htm</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/index.jsp?content=personal_cards.htm</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/index.jsp?content=personal_checking.htm</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/index.jsp?content=personal_deposit.htm</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/index.jsp?content=personal_investments.htm</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/index.jsp?content=personal_loans.htm</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/index.jsp?content=personal_other.htm</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/index.jsp?content=personal_savings.htm</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/index.jsp?content=privacy.htm</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/index.jsp?content=security.htm</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/login.jsp</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/search.jsp</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/status_check.jsp</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/subscribe.jsp</data>
+        <data>https://github.com/AppSecDev/AltoroJ/#http://demo.testfire.net/survey_questions.jsp</data>
+        <data>javascript:checkSiteStatus('AltoroMutual')#http://demo.testfire.net/status_check.jsp</data>
+    </externallinks>
+    <parameterscanner>
+        <data>http://demo.testfire.net/default.jsp:content=security.htm]</data>
+    </parameterscanner>
+    <content>
+        <data>http://demo.testfire.net/login.jsp -&gt; [u'admin login']</data>
+        <data>http://demo.testfire.net/index.jsp?content=business_lending.htm -&gt; [u'Administration Loans']</data>
+        <data>http://demo.testfire.net/index.jsp?content=privacy.htm -&gt; [u'administer our business.']</data>
+        <data>http://demo.testfire.net/index.jsp?content=security.htm -&gt; [(u'Passwords and User IDs', u'Password', u'or'), (u'password. Try to create an original password', u'password', u'or'), (u'password to memory and don', u'password', u'or'), (u'passwords are better. ', u'password', u'or')]</data>
+        <data>http://demo.testfire.net/status_check.jsp -&gt; [u'administrators fix the issue.']</data>
+        <data>http://demo.testfire.net/doLogin</data>
+    </content>
+    <sitemap>
+        
+            <Form>
+                <Path>http://demo.testfire.net/search.jsp</Path>
+                <Method>GET</Method>
+                    <Control>&lt;InputElement 7f533f6c7290 name='query' type='text'&gt;</Control>
+            </Form>
+            <Form>
+                <Path>http://demo.testfire.net/doLogin</Path>
+                <Method>POST</Method>
+                    <Control>&lt;InputElement 7f533f6d2cb0 name='btnSubmit' type='submit'&gt;</Control>
+                    <Control>&lt;InputElement 7f533f6d2f50 name='passw' type='password'&gt;</Control>
+                    <Control>&lt;InputElement 7f533f6d2ef0 name='uid' type='text'&gt;</Control>
+            </Form>
+            <Form>
+                <Path>http://demo.testfire.net/sendFeedback</Path>
+                <Method>POST</Method>
+                    <Control>&lt;InputElement 7f533f6d9e90 name='cfile' type='hidden'&gt;</Control>
+                    <Control>&lt;InputElement 7f533f6d9e30 name='reset' type='reset'&gt;</Control>
+                    <Control>&lt;InputElement 7f533f6d9b90 name='name' type='text'&gt;</Control>
+                    <Control>&lt;InputElement 7f533f6d9ef0 name='email_addr' type='text'&gt;</Control>
+                    <Control>&lt;InputElement 7f533f6d9f50 name='submit' type='submit'&gt;</Control>
+                    <Control>&lt;TextareaElement 7f533f6d9fb0 name='comments'&gt;</Control>
+                    <Control>&lt;InputElement 7f533f6df050 name='subject' type='text'&gt;</Control>
+            </Form>
+            <Form>
+                <Path>http://demo.testfire.net/doSubscribe</Path>
+                <Method>POST</Method>
+                    <Control>&lt;InputElement 7f533f741e30 name='txtEmail' type='text'&gt;</Control>
+                    <Control>&lt;InputElement 7f533f735050 name='btnSubmit' type='submit'&gt;</Control>
+            </Form>
+            <Form>
+                <Path>javascript:checkSiteStatus('AltoroMutual')</Path>
+                <Method>GET</Method>
+            </Form>
+        <Resource>http://demo.testfire.net/
+        <status>200</status>
+        <Formulario>
+            <Action>/search.jsp</Action>
+        </Formulario>
+            <Resource>search.jsp
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+                </Resource>
+            <Resource>index.jsp
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+                </Resource>
+            <Resource>login.jsp
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+            <Formulario>
+                <Action>doLogin</Action>
+            </Formulario>
+                </Resource>
+            <Resource>index.jsp?content=inside_contact.htm
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+                </Resource>
+            <Resource>feedback.jsp
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+            <Formulario>
+                <Action>sendFeedback</Action>
+            </Formulario>
+                </Resource>
+            <Resource>index.jsp?content=personal.htm
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+                </Resource>
+            <Resource>index.jsp?content=business.htm
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+                </Resource>
+            <Resource>index.jsp?content=inside.htm
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+                </Resource>
+            <Resource>index.jsp?content=personal_deposit.htm
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+                </Resource>
+            <Resource>index.jsp?content=personal_checking.htm
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+                </Resource>
+            <Resource>index.jsp?content=personal_loans.htm
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+                </Resource>
+            <Resource>index.jsp?content=personal_cards.htm
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+                </Resource>
+            <Resource>index.jsp?content=personal_investments.htm
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+                </Resource>
+            <Resource>index.jsp?content=personal_other.htm
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+                </Resource>
+            <Resource>index.jsp?content=business_deposit.htm
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+                </Resource>
+            <Resource>index.jsp?content=business_lending.htm
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+                </Resource>
+            <Resource>index.jsp?content=business_cards.htm
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+                </Resource>
+            <Resource>index.jsp?content=business_insurance.htm
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+                </Resource>
+            <Resource>index.jsp?content=business_retirement.htm
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+                </Resource>
+            <Resource>index.jsp?content=business_other.htm
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+                </Resource>
+            <Resource>index.jsp?content=inside_about.htm
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+                </Resource>
+            <Resource>index.jsp?content=inside_investor.htm
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+                </Resource>
+            <Resource>index.jsp?content=inside_press.htm
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+                </Resource>
+            <Resource>index.jsp?content=inside_careers.htm
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+                </Resource>
+            <Resource>subscribe.jsp
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+            <Formulario>
+                <Action>doSubscribe</Action>
+            </Formulario>
+                </Resource>
+            <Resource>index.jsp?content=personal_savings.htm
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+                </Resource>
+            <Resource>index.jsp?content=privacy.htm
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+                </Resource>
+            <Resource>survey_questions.jsp
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+                </Resource>
+            <Resource>index.jsp?content=security.htm
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+                </Resource>
+            <Resource>status_check.jsp
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+            <Formulario>
+                <Action>javascript:checkSiteStatus('AltoroMutual')</Action>
+            </Formulario>
+                </Resource>
+            <Resource>swagger
+                <Resource>index.html
+                <status>200</status>
+                    </Resource>
+                </Resource>
+            <Resource>index.jsp?content=inside_community.htm
+            <status>200</status>
+            <Formulario>
+                <Action>/search.jsp</Action>
+            </Formulario>
+                </Resource>
+            <Resource>style.css
+                </Resource>
+            <Resource>images
+                <Resource>logo.gif
+                </Resource>
+                <Resource>gradient.jpg
+                </Resource>
+                <Resource>header_pic.jpg
+                </Resource>
+                <Resource>pf_lock.gif
+                </Resource>
+                <Resource>home1.jpg
+                </Resource>
+                <Resource>home2.jpg
+                </Resource>
+                <Resource>home3.jpg
+                </Resource>
+                <Resource>inside6.jpg
+                </Resource>
+                <Resource>p_main.jpg
+                </Resource>
+                <Resource>b_main.jpg
+                    </Resource>
+                </Resource>
+            <Resource>doLogin
+                </Resource>
+            <Resource>subscribe.swf
+                </Resource>
+            <Resource>pr
+                <Resource>communityannualreport.pdf
+                    </Resource>
+                </Resource>
+            </Resource>
+    </sitemap>
+    <dnssubdomains>
+        <data>demo.testfire.net</data>
+    </dnssubdomains>
+</Reporte>

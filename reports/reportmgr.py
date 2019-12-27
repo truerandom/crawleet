@@ -7,14 +7,14 @@
 #El segundo metodo recibe 2 cadenas, nombredeladeteccion,resultado
 import os.path
 #import html
-from reports.report  import *		# reportes
+from reports.reporthtml  import *		# reportes
 from reports.reporttxt  import *		# reportes
 from reports.reportxml  import *		# reportes
 class reportmgr:
 	
 	def __init__(self,domain,fname,formats='txt,html',template="/base.css"):
 		self.domain = domain
-		self.fname = fname
+		#self.fname = fname
 		# new
 		self.formats = formats
 		self.reports = []
@@ -31,7 +31,31 @@ class reportmgr:
 		if 'xml' in self.formats:
 			rxml = reportexml(self.domain,self.domain)
 			self.reports.append(rxml)
-		
+			
+	"""	
+	def sitemap(self,reslist):
+		for rp in self.reports:
+			rp.sitemap(reslist)
+			
+	def sitemapXML(self,reslist):
+		for rp in self.reports:
+			rp.sitemapXML(reslist)
+	"""
+	
+	############################################
+	def sitemap(self,mapobj):
+		for rp in self.reports:
+			rp.sitemap(mapobj)
+			
+	def sitemapXML(self,mapobj):
+		for rp in self.reports:
+			rp.sitemapXML(mapobj)
+			
+	#############################################			
+	def fromForms(self,formres):
+		for rp in self.reports:
+			rp.fromForms(formres)
+
 	'''
 		reslist: 	recursos a reportar (lineas de texto)
 		tolinks:	booleano para indicar si transformar las lineas a enlaces
@@ -45,32 +69,10 @@ class reportmgr:
 	def fromList(self,reslist,tolinks=False,extresults=False):
 		for rp in self.reports:
 			rp.fromList(reslist,tolinks,extresults)
-			
-	def sitemap(self,reslist):
-		for rp in self.reports:
-			rp.sitemap(reslist)
-			
-	def sitemapXML(self,reslist):
-		for rp in self.reports:
-			rp.sitemapXML(reslist)
-	
-	############################################
-	def sitemapexp(self,mapobj):
-		for rp in self.reports:
-			rp.sitemapexp(mapobj)
-			
-	def sitemapXMLexp(self,mapobj):
-		for rp in self.reports:
-			rp.sitemapXMLexp(mapobj)
-	#############################################
 	
 	def fromResources(self,resources):
 		for rp in self.reports:
 			rp.fromResources(resources)
-			
-	def fromForms(self,formres):
-		for rp in self.reports:
-			rp.fromForms(formres)
 			
 	# Escribe el numero de pestanias utilizadas en el reporte, esto es para poder utilizar el cambio de los tabs
 	def writeCSSX(self):

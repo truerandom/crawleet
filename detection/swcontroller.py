@@ -27,8 +27,10 @@ class swcontroller:
 		if configfile is not None: self.configfile = configfile
 	
 	# Aqui solo pongo los detectores pasados como parametros
+	"""
 	def setDetectors(self,detectors):
 		if detectors is not None: self.detectors = detectors
+	"""
 	
 	# define los modulos de deteccion a ocupar
 	def initTools(self):
@@ -51,7 +53,6 @@ class swcontroller:
 			scanners.append(actscan)
 		mail = mailscan(self.req,self.color)
 		params = paramscanner(self.req,self.color)
-		# test
 		content = contentscan(self.req,self.color)
 		backscan = backupscan(self.req,self.color)
 		self.tools = scanners+[mail,params,content,backscan]
@@ -104,15 +105,13 @@ class swcontroller:
 				pcdata = pcdata.replace('\n','').replace('\t','')
 				if pcdata == "True": pcdata = True
 				else: pcdata = False
-			"""
-			print 'wordpatterns ',wpdata,' len ',len(wpdata)
-			print 'files ',fidata,' len ',len(fidata)
-			print 'directories ',dirdata,' len ',len(dirdata)
-			print 'headers ',headdata,' len ',len(headdata)
-			print 'juicydata ',juicydata,' len ',len(juicydata)
-			print 'postcrawling ',pcdata,' type ',type(pcdata)
-			"""
 			sw[tool_name] = [wpdata,fidata,dirdata,headdata,juicydata,themedata,pcdata]
+		print('DEBUG swcontroller')
+		for skey in sw.keys():
+			print('\n{'+skey+':')
+			for sk_elem in sw[skey]:
+				print(sk_elem)
+			print('}')
 		return sw
 		
 	def fromHeaders(self,rheaders,direccion):
@@ -179,6 +178,7 @@ class swcontroller:
 				
 			
 	# Regresa una lista con los resultados de las herramientas externas
+	"""
 	def externalResults(self):
 		print '*'*70
 		temp = []
@@ -188,8 +188,9 @@ class swcontroller:
 			if tmp is not None: temp.append(tmp)
 		# lista de cadenas
 		return temp
-		
+	"""
+	
 	def __str__(self):
 		temp = ''
 		for tool in self.tools: temp+='\n'+tool.name
-		return 'Detectors available'+temp+'\n'
+		return 'Software detection modules'+temp+'\n'
