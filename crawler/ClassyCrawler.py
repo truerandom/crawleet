@@ -352,8 +352,11 @@ class ClassyCrawler:
 					status[1] = 500
 				# Obtenemos el codigo fuente si es un codigo < 400 
 				if status[1] < 400:
-					try: actualcode = self.req.getHTMLCode(actualpage).text
-					except Exception: actualcode = None
+					try: 
+						actualcode = self.req.getHTMLCode(actualpage).text
+					except Exception as e:
+						print(e) 
+						actualcode = None
 					if actualcode is not None:
 						# detecto elemetos del codigo fuente
 						self.swdetector.fromCode(actualcode,actualpage)

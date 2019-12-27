@@ -3,6 +3,7 @@ import base64
 import requests
 import subprocess
 import re
+import cgi
 from subprocess import check_output
 from utils import parseurls
 try: from colorama import init, Fore,Back, Style
@@ -513,12 +514,16 @@ class xssscan(vulndetector):
 		self.puntuation = 0	
 		self.standalone = True
 		self.cmsroot = None
+		self.already_tested = {} 
 		
 	def launchExploitFilename(self,dirurl):
 		if self.testXSS(dirurl):
 			print "VULNERABLE TO XSS: ",dirurl
 	
 	def testXSS(self,dirurl):
+		print('DEBUG: xss: already tested: ')
+		print(self.already_tested)
+		print('DEBUG: xss: testing %s' % dirurl)
 		#print('DEBUG : xssscan : testXSS', dirurl)
 		cve = 'XSSVULN'	
 		payload = ("")
@@ -528,23 +533,33 @@ class xssscan(vulndetector):
 		if injection_points is None: return
 		#print('injection_points is not none')
 		for injection_point in injection_points:
+			url_resource,url_to_inject,var_name = injection_point
+			#print('url_resource: %s ' % url_resource)
+			#print('url_to_inject: %s ' % url_to_inject)
+			#print('var_name: %s ' % var_name)
+			# la base_url
+			if url_resource not in self.already_tested:
+				self.already_tested[url_resource] = []
+			if var_name not in self.already_tested[url_resource]:
+				print('DEBUG:xssscan@testXSS : [i] trying to : %s' % url_to_inject)
 			# TODO: add data structure
 			#print('DEBUG : xssscan : testXSS ',injection_point)
-			"""
-			full_url = injection_point[1].replace('{TO_REPLACE}',tocheck)
-			try:
-				res = self.req.getHTMLCode(full_url)
-			except Exception as e:
-				pass
-			if res is not None and res.text is not None:
-				if tocheck in res.text:
-					print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
-					toappend = "[ "+injection_point+" ] ====== VULNERABLE TO: "+cve+" ====="
-					if toappend not in self.detections:
-						self.detections.append(toappend)
-						print('full_url es: %s' % full_url)
-						return True
-			"""
+				full_url = url_to_inject.replace('{TO_REPLACE}',tocheck)
+				print('DEBUG:xssscan@testXSS : [i] payload : %s' % full_url)
+				try:
+					res = self.req.getHTMLCode(full_url)
+				except Exception as e:
+					pass
+				if res is not None and res.text is not None:
+					if tocheck in res.text:
+						print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
+						toappend = "[ "+url_to_inject+" ] ====== VULNERABLE TO: "+cve+" ====="
+						if toappend not in self.detections:
+							self.already_tested[url_resource].append(var_name)
+							self.detections.append(cgi.escape(full_url))
+							print('full_url es: %s' % full_url)
+							return True
+				self.already_tested[url_resource].append(var_name)
 		return False					
 					
 class sqliscan(vulndetector):
@@ -849,6 +864,7 @@ class path_traversal_scan(vulndetector):
 									print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
 									toappend = "[ "+new_url+" ] ====== VULNERABLE TO: "+cve+" ====="
 									if toappend not in self.detections:
+										self.detections.append(new_url)
 										self.already_tested[url_resource].append(var_name)
 										return True
 				self.already_tested[url_resource].append(var_name)
