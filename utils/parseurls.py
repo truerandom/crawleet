@@ -254,7 +254,7 @@ def getCMSRootX(baseurl,defdir,level):
 	except Exception as e:
 		print "Error @getCMSRoot: ",e
 		return None
-
+#[(url_resource,url?var_to_inject=placeholder&var2=val...&varn=valn)...(url_res,url_to_inject,var_name)]
 def get_injection_points(url):
 	new_url = re.sub('&+','&',url)
 	# now we split with the token ?
@@ -264,7 +264,7 @@ def get_injection_points(url):
 	if len(list_split_base_url) < 2:
 		return None
 	else:
-		# http://dom/resource
+		# base_url = url_resource = http://dom/resource
 		base_url = "%s?" % list_split_base_url[0]
 		# url_vars_string = var1=val1&var2=val2&...&varn=valn
 		url_vars_string = ''.join(list_split_base_url[1:])
@@ -277,7 +277,14 @@ def get_injection_points(url):
 			var_info = var_list[i]
 			var_name = var_info.split('=')[0]
 			var_fixed = '%s={TO_REPLACE}' % var_name
-			fixed_url = '%s%s' % (base_url,'&'.join(var_list[0:i]+[var_fixed]+var_list[i+1:]))
-			injection_points.append(fixed_url)
+			url_to_inject = '%s%s' % (base_url,'&'.join(var_list[0:i]+[var_fixed]+var_list[i+1:]))
+			#injection_points.append(fixed_url)
+			#url_resource,url?var_to_inject=placeholder&var2=val...&varn=valn
+			injection_data = (base_url,url_to_inject,var_name)
+			#print('injection_data')
+			#print(injection_data)
+			injection_points.append(injection_data)
+		#print('injection_points: for %s ' % base_url)
+		#print(injection_points)
+		#print('\n'.join(injection_points))
 		return injection_points
-

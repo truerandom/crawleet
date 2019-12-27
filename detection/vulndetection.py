@@ -519,13 +519,19 @@ class xssscan(vulndetector):
 			print "VULNERABLE TO XSS: ",dirurl
 	
 	def testXSS(self,dirurl):
+		#print('DEBUG : xssscan : testXSS', dirurl)
 		cve = 'XSSVULN'	
 		payload = ("")
 		tocheck = '<script>alert(/TRUERANDOM/)</script>'
 		injection_points= parseurls.get_injection_points(dirurl)
+		#print(type(injection_points))
 		if injection_points is None: return
+		#print('injection_points is not none')
 		for injection_point in injection_points:
-			full_url = injection_point.replace('{TO_REPLACE}',tocheck)
+			# TODO: add data structure
+			#print('DEBUG : xssscan : testXSS ',injection_point)
+			"""
+			full_url = injection_point[1].replace('{TO_REPLACE}',tocheck)
 			try:
 				res = self.req.getHTMLCode(full_url)
 			except Exception as e:
@@ -538,6 +544,7 @@ class xssscan(vulndetector):
 						self.detections.append(toappend)
 						print('full_url es: %s' % full_url)
 						return True
+			"""
 		return False					
 					
 class sqliscan(vulndetector):
@@ -565,6 +572,13 @@ class sqliscan(vulndetector):
 		self.standalone = True
 		self.cmsroot = None
 		self.pat = re.compile('ERROR|MYSQL|SYNTAX',re.IGNORECASE)
+		# Diccionarios
+		# recurso: variable
+		# Si la variable ya existe con la llave recurso entonces skip
+		# Sino verifico y pruebo
+		self.already_tested_error_sqli = {}
+		self.already_tested_blind_sqli = {}
+		self.already_tested_union_sqli = {}
 		
 	def launchExploitFilename(self,dirurl):
 		if self.testSQLi(dirurl):
@@ -574,30 +588,83 @@ class sqliscan(vulndetector):
 		self.error_based_sqli(dirurl)
 		self.blind_sqli(dirurl)
 		self.union_sqli(dirurl)
-		
+	
+	"""
+	self.already_tested_error_sqli = 
+	{
+		'base_url1' = [var1_tested,var2_tested,...,varn_tested]
+		'base_url2' = [var1_tested,var2_tested,...,varn_tested]
+	}
+	if 'base_url' not in dicc: dicc['base_url'] = []
+	if var_name not in dicc['base_url']: analize
+	"""
 	def error_based_sqli(self,dirurl):
+		print('DEBUG: error_based_sqli: already tested: ')
+		print(self.already_tested_error_sqli)
+		print('DEBUG: error_based_sqli: testing %s' % dirurl)
 		cve = 'SQLi (Error Based)'
 		payload = "'"
 		injection_points = parseurls.get_injection_points(dirurl)
 		if injection_points is None: return 
 		orig_url = dirurl
-		# TODO: add pgsql|mssql... keywords
-		sql_keywords = ["error","mysql","syntax","manual","server"]
+		sql_keywords = ["error","mysql","syntax","manual","server"] # TODO: add pgsql|mssql... keywords
 		sql_payloads = ["1","1'","a'","a'-"]
+		# injection_point = (url_recurso,url?var_to_inject=placeholder&var2=val...&varn=valn)
 		for injection_point in injection_points:
-			for sql_p in sql_payloads:
-				mod_url = injection_point.replace("{TO_REPLACE}",sql_p)
-				words_not_in_orig_req = self.req.word_not_in_response(sql_keywords,orig_url)
-				words_not_in_mod_req = self.req.word_not_in_response(sql_keywords,mod_url)
-				if words_not_in_orig_req != words_not_in_mod_req:
-					print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
-					toappend = "[ "+injection_point+" ] ====== VULNERABLE TO: "+cve+" ====="
-					if toappend not in self.detections:
-						self.detections.append(toappend)
-					return True
+			# url_resource = dom/resource
+			url_resource,url_to_inject,var_name = injection_point
+			#print('url_resource: %s ' % url_resource)
+			#print('url_to_inject: %s ' % url_to_inject)
+			#print('var_name: %s ' % var_name)
+			# la base_url
+			if url_resource not in self.already_tested_error_sqli:
+				self.already_tested_error_sqli[url_resource] = []
+			if var_name not in self.already_tested_error_sqli[url_resource]:
+				print('DEBUG:sqliscan@errorbased : [i] trying to inject: %s' % url_to_inject)
+				for sql_p in sql_payloads:
+					mod_url = url_to_inject.replace("{TO_REPLACE}",sql_p)
+					words_not_in_orig_req = self.req.word_not_in_response(sql_keywords,orig_url)
+					words_not_in_mod_req = self.req.word_not_in_response(sql_keywords,mod_url)
+					if words_not_in_orig_req != words_not_in_mod_req:
+						print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
+						toappend = "[ "+url_to_inject+" ] ====== VULNERABLE TO: "+cve+" ====="
+						if toappend not in self.detections:
+							self.detections.append(toappend)
+							self.already_tested_error_sqli[url_resource].append(var_name)
+						return True
+				self.already_tested_error_sqli[url_resource].append(var_name)
+		"""
+		for injection_point in injection_points:
+			if injection_point not in self.already_tested_error_sqli:
+				for sql_p in sql_payloads:
+					mod_url = injection_point.replace("{TO_REPLACE}",sql_p)
+					words_not_in_orig_req = self.req.word_not_in_response(sql_keywords,orig_url)
+					words_not_in_mod_req = self.req.word_not_in_response(sql_keywords,mod_url)
+					if words_not_in_orig_req != words_not_in_mod_req:
+						print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
+						toappend = "[ "+injection_point+" ] ====== VULNERABLE TO: "+cve+" ====="
+						if toappend not in self.detections:
+							self.detections.append(toappend)
+						return True
+				self.already_tested_error_sqli.append(injection_point)
+		"""
 		return False	
-		
+	
+	"""
+	self.already_tested_blind_sqli = 
+	{
+		'base_url1' = [var1_tested,var2_tested,...,varn_tested]
+		'base_url2' = [var1_tested,var2_tested,...,varn_tested]
+	}
+	if 'base_url' not in dicc: dicc['base_url'] = []
+	if var_name not in dicc['base_url']: analize
+	"""	
 	def blind_sqli(self,dirurl):
+		"""
+		print('DEBUG: blind_based_sqli: already tested: ')
+		print(self.already_tested_blind_sqli)
+		print('DEBUG: blind_based_sqli: testing %s' % dirurl)
+		"""
 		cve = 'SQLi (Blind Based)'
 		payload = "'"
 		injection_points = parseurls.get_injection_points(dirurl)
@@ -615,61 +682,90 @@ class sqliscan(vulndetector):
 			("a","a' AND '2'>'1' -- -v","a' AND '2'>'3' -- -v")
 		]
 		for injection_point in injection_points:
-			for sql_p in blind_cases:
-				base_case,true_case,false_case = sql_p
-				
-				base_url = injection_point.replace("{TO_REPLACE}",base_case)
-				true_url = injection_point.replace("{TO_REPLACE}",true_case)
-				false_url = injection_point.replace("{TO_REPLACE}",false_case)
-				try:
-					base_r = self.req.getHTMLCode(base_url)
-					true_r = self.req.getHTMLCode(true_url)
-					false_r = self.req.getHTMLCode(false_url)
-				except Exception as e: pass
-				
-				if (true_r is not None and true_r.text is not None and
-					false_r is not None and false_r.text is not None and
-					base_r is not None and base_r.text is not None):
-					if true_r.text == base_r.text and true_r.text != false_r.text:
-						print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
-						toappend = "[ "+injection_point+" ] ====== VULNERABLE TO: "+cve+" ====="
-						if toappend not in self.detections:
-							self.detections.append(toappend)
-					return True
+			url_resource,url_to_inject,var_name = injection_point
+			if url_resource not in self.already_tested_blind_sqli:
+				self.already_tested_blind_sqli[url_resource] = []
+			if var_name not in self.already_tested_blind_sqli[url_resource]:
+				#print('DEBUG:sqliscan@blindbased :\n[i] trying to inject: %s' % url_to_inject)
+				for sql_p in blind_cases:
+					base_case,true_case,false_case = sql_p
+					
+					base_url = url_to_inject.replace("{TO_REPLACE}",base_case)
+					true_url = url_to_inject.replace("{TO_REPLACE}",true_case)
+					false_url = url_to_inject.replace("{TO_REPLACE}",false_case)
+					"""
+					print('\nDEBUG:sqliscan@blindbased[BaseCase]:\n%s' % base_url)
+					print('DEBUG:sqliscan@blindbased[TrueCase]:\n%s' % true_url) 
+					print('DEBUG:sqliscan@blindbased[FalseCase]:\n%s' % false_url) 
+					"""
+					try:
+						base_r = self.req.getHTMLCode(base_url)
+						true_r = self.req.getHTMLCode(true_url)
+						false_r = self.req.getHTMLCode(false_url)
+					except Exception as e: pass
+					
+					if (true_r is not None and true_r.text is not None and
+						false_r is not None and false_r.text is not None and
+						base_r is not None and base_r.text is not None):
+						if true_r.text == base_r.text and true_r.text != false_r.text:
+							print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
+							toappend = "[ "+injection_point+" ] ====== VULNERABLE TO: "+cve+" ====="
+							if toappend not in self.detections:
+								self.detections.append(toappend)
+						self.already_tested_blind_sqli[url_resource].append(var_name)
+						return True
+				self.already_tested_blind_sqli[url_resource].append(var_name)
 		return False	
 		
 	def union_sqli(self,dirurl):
+		"""
+		print('DEBUG: union_based_sqli: already tested: ')
+		print(self.already_tested_union_sqli)
+		print('DEBUG: union_based_sqli: testing %s' % dirurl)
+		"""
 		cve = 'SQLi (UNION BASED)'
 		payload = "'"
 		injection_points = parseurls.get_injection_points(dirurl)
 		if injection_points is None: return 
-		blind_cases  = [
+		union_cases  = [
 			("1","1 ORDER BY 1","1 ORDER BY 10000"),
 			("1'","1' ORDER BY 1 -- -v","1' ORDER BY 10000 -- -v"),
 			("a'","a' ORDER BY 1 -- -v","a' ORDER BY 10000 -- -v")
 		]
 		for injection_point in injection_points:
-			for sql_p in blind_cases:
-				base_case,true_case,false_case = sql_p
-				
-				base_url = injection_point.replace("{TO_REPLACE}",base_case)
-				true_url = injection_point.replace("{TO_REPLACE}",true_case)
-				false_url = injection_point.replace("{TO_REPLACE}",false_case)
-				try:
-					base_r = self.req.getHTMLCode(base_url)
-					true_r = self.req.getHTMLCode(true_url)
-					false_r = self.req.getHTMLCode(false_url)
-				except Exception as e: pass
-				
-				if (true_r is not None and true_r.text is not None and
-					false_r is not None and false_r.text is not None and
-					base_r is not None and base_r.text is not None):
-					if true_r.text == base_r.text and true_r.text != false_r.text:
-						print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
-						toappend = "[ "+injection_point+" ] ====== VULNERABLE TO: "+cve+" ====="
-						if toappend not in self.detections:
-							self.detections.append(toappend)
-					return True
+			url_resource,url_to_inject,var_name = injection_point
+			if url_resource not in self.already_tested_union_sqli:
+				self.already_tested_union_sqli[url_resource] = []
+			if var_name not in self.already_tested_union_sqli[url_resource]:
+				#print('DEBUG:sqliscan@unionbased :\n[i] trying to inject: %s' % url_to_inject)
+				for sql_p in union_cases:
+					base_case,true_case,false_case = sql_p
+					
+					base_url = url_to_inject.replace("{TO_REPLACE}",base_case)
+					true_url = url_to_inject.replace("{TO_REPLACE}",true_case)
+					false_url = url_to_inject.replace("{TO_REPLACE}",false_case)
+					"""
+					print('\nDEBUG:sqliscan@unionbased[BaseCase]:\n%s' % base_url)
+					print('DEBUG:sqliscan@blindbased[ValidCase]:\n%s' % true_url) 
+					print('DEBUG:sqliscan@blindbased[InvalidCase]:\n%s' % false_url) 
+					"""
+					try:
+						base_r = self.req.getHTMLCode(base_url)
+						true_r = self.req.getHTMLCode(true_url)
+						false_r = self.req.getHTMLCode(false_url)
+					except Exception as e: pass
+					
+					if (true_r is not None and true_r.text is not None and
+						false_r is not None and false_r.text is not None and
+						base_r is not None and base_r.text is not None):
+						if true_r.text == base_r.text and true_r.text != false_r.text:
+							print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
+							toappend = "[ "+injection_point+" ] ====== VULNERABLE TO: "+cve+" ====="
+							if toappend not in self.detections:
+								self.detections.append(toappend)
+						self.already_tested_union_sqli[url_resource].append(var_name)
+						return True
+				self.already_tested_union_sqli[url_resource].append(var_name)
 		return False
 
 class path_traversal_scan(vulndetector):
@@ -708,13 +804,17 @@ class path_traversal_scan(vulndetector):
 			"%2e%2e%2f%2e%2e%2f"
 		]
 		self.suffixes = ['','%00']
-		self.already_tested = []
+		self.already_tested = {}
 		
 	def launchExploitFilename(self,dirurl):
+		#print('DEBUG: path_traversal ',dirurl)
 		if self.test_traversal(dirurl):
 			print "VULNERABLE TO PATH TRAVERSAL: ",dirurl
 	
 	def test_traversal(self,dirurl):
+		print('DEBUG:path_traversal: already tested: ')
+		print(self.already_tested)
+		print('DEBUG:path_traversal: testing %s' % dirurl)
 		cve = 'Path traversal'
 		payload = "'"
 		try:
@@ -725,14 +825,18 @@ class path_traversal_scan(vulndetector):
 		injection_points = parseurls.get_injection_points(dirurl)
 		if injection_points is None: return 
 		for injection_point in injection_points:
-			if injection_point not in self.already_tested:
+			url_resource,url_to_inject,var_name = injection_point
+			if url_resource not in self.already_tested:
+				self.already_tested[url_resource] = []
+			if var_name not in self.already_tested[url_resource]:
+				print('DEBUG:path_traversal@test :\n[i] trying dotdot: %s' % url_to_inject)
 				for key in self.path_files:
 					# we find those strings that don't appear on orig_resp
 					if self.path_files[key].lower() not in orig_resp.text.lower():
 						for pfx in self.preffixes:
 							for sufx in self.suffixes:
 								#print('[*] inj_ppt: %s' % injection_point)
-								new_url = injection_point.replace('{TO_REPLACE}',"%s" % ('%s%s%s'% (pfx,key,sufx)))
+								new_url = url_to_inject.replace('{TO_REPLACE}',"%s" % ('%s%s%s'% (pfx,key,sufx)))
 								#print('[*] new_url: %s' % new_url)
 								try:
 									print('[i] testing path traversal: %s ' % new_url) 
@@ -745,7 +849,7 @@ class path_traversal_scan(vulndetector):
 									print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
 									toappend = "[ "+new_url+" ] ====== VULNERABLE TO: "+cve+" ====="
 									if toappend not in self.detections:
-										self.detections.append(toappend)
+										self.already_tested[url_resource].append(var_name)
 										return True
-				self.already_tested.append(injection_point)
+				self.already_tested[url_resource].append(var_name)
 		return False

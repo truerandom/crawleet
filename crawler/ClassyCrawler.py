@@ -266,7 +266,7 @@ class ClassyCrawler:
 						toexclude = True
 				if not self.visited.has_key(actlink) and not self.tovisit.has_key(actlink) and not toexclude:
 					self.tovisit[actlink]=nodoresultado(actlink,pnode.getUrl(),nivel+1,pnode)
-					print(self.tovisit[actlink])
+					#print('DEBUG: ClassyCrawler : ',self.tovisit[actlink])
 					self.puntuacion = self.puntuacion + 1
 	
 	# Set additional start links, this will be queued in tovisit
@@ -334,14 +334,14 @@ class ClassyCrawler:
 			time.sleep(self.delay)
 			# Hago una peticion head
 			actreq = self.req.getHeadRequest(actualpage)
-			print('actreq')
-			print(actreq)
+			#print('DEBUG: ClassyCrawler : actreq')
+			#print('DEBUG: ClassyCrawler : actreq' , actreq)
 			# Determino si es un recurso html (con los headers)
 			status = self.isHTML(actreq)
 			#print 'Status %s ' % status
 			self.visited[actualpage]=elem
-			print('status ',status)
-			print(type(status))
+			#print('DEBUG: status ',status)
+			#print('DEBUG: ',type(status))
 			if status is not None and status[0] == True:
 				# Analizo por posibles vulnerabilidades en el recurso
 				self.vulndetector.fromFilename(actualpage)

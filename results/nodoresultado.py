@@ -31,7 +31,8 @@ class nodoresultado(resultado,NodeMixin):
 		return True
 		
 	def __str__(self):
-		#return "Url: "+self.url+" Nivel "+str(self.nivel)+" Purl "+self.purl+" Status: "+str(self.status)+" #forms "+str(len(self.getForms()))+" #links "+str(len(self.links))
+		return "Url: "+self.url+" Nivel "+str(self.nivel)+" Purl "+self.purl+" Status: "+str(self.status)+" #forms "+str(len(self.getForms()))+" #links "+str(len(self.links))
+		"""
 		tmp= "*"*6
 		tmp+="\nNode: "
 		tmp+="\n"+"*"*6
@@ -39,6 +40,7 @@ class nodoresultado(resultado,NodeMixin):
 		tmp+="\nPurl: "+self.purl+"\nStatus: "+str(self.status)
 		tmp+="\n#Forms: "+str(len(self.getForms()))+"\n#Links: "+str(len(self.links))
 		return tmp
+		"""
 
 	def xml(self):
 		tmp = ''
