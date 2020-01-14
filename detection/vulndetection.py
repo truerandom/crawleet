@@ -724,7 +724,7 @@ class sqliscan(vulndetector):
 						base_r is not None and base_r.text is not None):
 						if true_r.text == base_r.text and true_r.text != false_r.text:
 							print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
-							toappend = "[ "+injection_point+" ] ====== VULNERABLE TO: "+cve+" ====="
+							toappend = "[ "+url_to_inject+" ] ====== VULNERABLE TO: "+cve+" ====="
 							if toappend not in self.detections:
 								self.detections.append(toappend)
 						self.already_tested_blind_sqli[url_resource].append(var_name)
@@ -775,7 +775,7 @@ class sqliscan(vulndetector):
 						base_r is not None and base_r.text is not None):
 						if true_r.text == base_r.text and true_r.text != false_r.text:
 							print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
-							toappend = "[ "+injection_point+" ] ====== VULNERABLE TO: "+cve+" ====="
+							toappend = "[ "+url_to_inject+" ] ====== VULNERABLE TO: "+cve+" ====="
 							if toappend not in self.detections:
 								self.detections.append(toappend)
 						self.already_tested_union_sqli[url_resource].append(var_name)
