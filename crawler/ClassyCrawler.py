@@ -20,6 +20,8 @@ from sitemap import site_mapper
 from utils import parseurls
 from utils import ubanner
 from utils.bruteforcer import *	# chanfle
+# test
+from urlparse import urlparse
 try:
 	from colorama import init, Fore,Back, Style
 except:
@@ -84,7 +86,10 @@ class ClassyCrawler:
 		
 	# define la base (subdominio) para hacer el crawl
 	def getDomain(self,direccion):
-		return direccion.split("//")[-1].split("/")[0].replace('www.','')
+		#return direccion.split("//")[-1].split("/")[0].replace('www.','')
+		parsed_uri = urlparse(direccion)
+		result = '{uri.scheme}://{uri.netloc}/'.format(uri=parsed_uri)
+		return result.replace('https://','').replace('http://','').replace('www.','')
 	
 	def fixUrl(self,url):
 		try:
@@ -206,20 +211,22 @@ class ClassyCrawler:
 						# si baseurl esta contenida en el link absoluto es un link interno
 						#if self.domain in self.getDomain(link) and self.getDomain(link).startswith(self.domain):
 						if self.domain in self.getDomain(link) and self.getDomain(link).startswith(self.domain):
-							"""
+							#"""
 							if self.verbose:
+								print "self.getDomain(%s): %s " % (link.strip(),self.getDomain(link))
 								print "link interno %s " % link.strip()
 								print "adding to intlinks"
-							"""
+							#"""
 							intlinks.append(link.strip())
 						else:
 							ext_link = "%s#%s" % (link.strip(),actualpage)
 							#if link.strip() not in self.extlinks:
 							if ext_link not in self.extlinks:
-								"""
-								print "link externo %s " % link.strip()
-								print "adding to extlinks"
-								"""
+								#"""
+								if self.verbose:
+									print "link externo %s " % link.strip()
+									print "adding to extlinks"
+								#"""
 								#self.extlinks.append(link.strip())
 								self.extlinks.append(ext_link)
 					else:
