@@ -592,10 +592,14 @@ class ClassyCrawler:
 		# sitemap
 		#smapobj = test.parseResources(self.domain,unida,self.visitedresources+self.flist,listforms)
 		smapobj = site_mapper.parseResources(self.domain,unida,self.visitedresources+self.flist,listforms)
+		#print('pase parseResources')
 		#print '\n'.join(smap2[0])
 		print '\n'.join(smapobj.getMap()) # sitemap[0] = sitemap,ligas
+		#print('pase getMap')
 		self.reportex.sitemap(smapobj)
+		#print('pase siteMap')
 		self.reportex.sitemapXML(smapobj)
+		#print('pase siteMapXML')
 		################################################################
 		############			FIN DE REPORTES		########
 		################################################################

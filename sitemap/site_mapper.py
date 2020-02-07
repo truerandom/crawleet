@@ -96,11 +96,9 @@ def buscaRuta(nodo,ruta):
 	bnde = string
 '''
 def buildMap(bnde,resources):
-	'''
-	print "ENtre a buildMap con ",bnde
-	print bnde
-	print "tipo ",type(bnde)
-	'''
+	#print "ENtre a buildMap con ",bnde
+	#print bnde
+	#print "tipo ",type(bnde)
 	bnode = simplenode(bnde,parent=None)
 	bnode.setFPath()
 	#print "<resources>\n",'\n'.join(resources),'\n</resources>'
@@ -165,36 +163,50 @@ Debo dividir este metodo en dos.
 # parametro la lista de formularios y pasarlo directamente a sitexml
 # 
 def parseResources(fname,rootnode,resources,forms=None):
-	print('debug_root_node: %s ' % rootnode)
-	rootisleaf=True
-	if rootnode.endswith('/'):
-		rootisleaf=False
-	links  = []
-	# Obtengo los links
-	for r in resources: links.append(r.getUrl())
-	# exp
-	if rootisleaf: rootnode+='/'
-	# Creacion de sitemap, se guarda en un nodo
-	rnode = buildMap(rootnode,links)
-	smap = sitemap(rnode)
-	mpobj = mapobj(smap[0],smap[1])
-	# Termine de crear el sitemap
-	# Una vez que tengo el sitemap itero sobre los recursos para inyectar info
-	for res in resources:
-		resurl = res.getUrl()
-		resurl = cleanrurl(resurl,rootnode)
-		# Apartir del nodo raiz busco el nodo con la ruta resurl
-		nactual = buscaRuta(rnode,resurl)
-		# Pongo los atributos que tendra el nodo simple
-		if nactual is not None:
-			nactual.setForms(res.getForms())
-			nactual.setStatus(res.getStatus())
-	#########################################################
-	# chanfle: aqui escribo el xml
-	# regresarlo en el segundo elemento de la tupla
-	sxml = siteXML(rnode,forms)
-	mpobj.setXML(sxml)
-	return mpobj
+	#print('debug_root_node: %s ' % rootnode)
+	try:
+		rootisleaf=True
+		if rootnode.endswith('/'):
+			rootisleaf=False
+		links  = []
+		# Obtengo los links
+		for r in resources: links.append(r.getUrl())
+		#print('pase resources')
+		# exp
+		if rootisleaf: rootnode+='/'
+		#print('pase rootisleaf')
+		# Creacion de sitemap, se guarda en un nodo
+		rnode = buildMap(rootnode,links)
+		#print('pase rnode')
+		smap = sitemap(rnode)
+		#print('pase smap')
+		mpobj = mapobj(smap[0],smap[1])
+		#print('pase mpobj')
+		# Termine de crear el sitemap
+		# Una vez que tengo el sitemap itero sobre los recursos para inyectar info
+		for res in resources:
+			resurl = res.getUrl()
+			#print('resurl %s ' % resurl)
+			resurl = cleanrurl(resurl,rootnode)
+			# Apartir del nodo raiz busco el nodo con la ruta resurl
+			nactual = buscaRuta(rnode,resurl)
+			# Pongo los atributos que tendra el nodo simple
+			if nactual is not None:
+				nactual.setForms(res.getForms())
+				nactual.setStatus(res.getStatus())
+		#########################################################
+		# chanfle: aqui escribo el xml
+		# regresarlo en el segundo elemento de la tupla
+		sxml = siteXML(rnode,forms)
+		#print('pase siteXML')
+		mpobj.setXML(sxml)
+		#print('pase mpobj set XML')
+		return mpobj
+	except Exception as e:
+		print('error at site_mapper@parseResources')
+		print(e)
+		pass
+		
 	
 reload(sys)  
 sys.setdefaultencoding('utf8')

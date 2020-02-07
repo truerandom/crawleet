@@ -110,92 +110,97 @@ def getDomain(direccion): return direccion.split("//")[-1].split("/")[0].replace
 print ubanner.getBanner()
 
 def scan(site):
-	req = rutils(not opts.skipcerts,opts.redirects,opts.cookies,opts.useragent,opts.tor,opts.timeout,opts.proxy)
-	# Obtenemos el domain
-	domain = getDomain(site)
-	#################### Reporte #######################
-	reportex = reportmgr(domain,domain,opts.output)
-	
-	#################### Parametros de ejecucion #################
-	ejecucion=[	
-				'Scan date: '+strftime("%Y-%m-%d", gmtime()),
-				'Startpage: '+site,
-				'Site IP: '+req.getSiteIP(site),
-				'Depth: '+str(opts.depth),
-				'Delay: '+str(opts.time),
-				'MaxFiles: '+str(opts.maxfiles),
-				'Run External Tools: '+str(opts.runexternaltools),
-				'Excluded dirs: '+','.join(opts.exclude),
-				'Start links: '+','.join(opts.startlinks),
-				'Bruteforce: '+str(opts.bruteforce),
-				'Wordlist: '+str(opts.wordlist),
-				'Bruteforce extensions: '+','.join(opts.extensions),
-				'Config file: '+str(opts.cfgfile),
-				'Allow Redirects: '+str(req.redirects()),
-				'Verify Certs: '+str(req.verifyCert()),
-				'Cookies: '+cgi.escape(str(req.cookies())),
-				'Useragent: '+str(req.userAgent()),
-				'Tor: '+str(req.useTor()),
-				'Proxies:'+str(req.getProxys()),
-				'Timeout: '+str(req.getTimeout()),
-				'IP used: '+str(req.getIP()).rstrip()
-	]
-	
-	if opts.save:
-		print 'Saving startpage'
-		req.savePage(site)
+	try:
+		req = rutils(not opts.skipcerts,opts.redirects,opts.cookies,opts.useragent,opts.tor,opts.timeout,opts.proxy)
+		# Obtenemos el domain
+		domain = getDomain(site)
+		#################### Reporte #######################
+		reportex = reportmgr(domain,domain,opts.output)
 		
-	# ejecucion
-	if opts.color:
-		try: print (Fore.BLUE+"Execution\n"+Style.RESET_ALL+'\n'.join(ejecucion))
-		except: print '\nExecution','\n'.join(ejecucion)
-	else:
-		print '\nExecution','\n'.join(ejecucion)
-	reportex.fromList(['execution']+["Crawleet by truerandom"]+ejecucion,False,True)
+		#################### Parametros de ejecucion #################
+		ejecucion=[	
+					'Scan date: '+strftime("%Y-%m-%d", gmtime()),
+					'Startpage: '+site,
+					'Site IP: '+req.getSiteIP(site),
+					'Depth: '+str(opts.depth),
+					'Delay: '+str(opts.time),
+					'MaxFiles: '+str(opts.maxfiles),
+					'Run External Tools: '+str(opts.runexternaltools),
+					'Excluded dirs: '+','.join(opts.exclude),
+					'Start links: '+','.join(opts.startlinks),
+					'Bruteforce: '+str(opts.bruteforce),
+					'Wordlist: '+str(opts.wordlist),
+					'Bruteforce extensions: '+','.join(opts.extensions),
+					'Config file: '+str(opts.cfgfile),
+					'Allow Redirects: '+str(req.redirects()),
+					'Verify Certs: '+str(req.verifyCert()),
+					'Cookies: '+cgi.escape(str(req.cookies())),
+					'Useragent: '+str(req.userAgent()),
+					'Tor: '+str(req.useTor()),
+					'Proxies:'+str(req.getProxys()),
+					'Timeout: '+str(req.getTimeout()),
+					'IP used: '+str(req.getIP()).rstrip()
+		]
+		
+		if opts.save:
+			print 'Saving startpage'
+			req.savePage(site)
+			
+		# ejecucion
+		if opts.color:
+			try: print (Fore.BLUE+"Execution\n"+Style.RESET_ALL+'\n'.join(ejecucion))
+			except: print '\nExecution','\n'.join(ejecucion)
+		else:
+			print '\nExecution','\n'.join(ejecucion)
+		reportex.fromList(['execution']+["Crawleet by truerandom"]+ejecucion,False,True)
 
-	# Headers
-	headersinfo=headers.headersAnalysis(req,parseurls.getDomain(site))
-	if opts.color:
-		try: print (Fore.BLUE+"\nHeaders\n"+Style.RESET_ALL+'\n'.join(headersinfo))
-		except: print '\nHeaders','\n'.join(headersinfo)
-	else:
-		print '\nHeaders','\n'.join(headersinfo)
-	reportex.fromList(['headers']+headersinfo)
+		# Headers
+		headersinfo=headers.headersAnalysis(req,parseurls.getDomain(site))
+		if opts.color:
+			try: print (Fore.BLUE+"\nHeaders\n"+Style.RESET_ALL+'\n'.join(headersinfo))
+			except: print '\nHeaders','\n'.join(headersinfo)
+		else:
+			print '\nHeaders','\n'.join(headersinfo)
+		reportex.fromList(['headers']+headersinfo)
 
-	# Metodos http 
-	metodos = req.getMethods(parseurls.getDomain(site)).keys()
-	if opts.color:
-		try: print (Fore.BLUE+"\nHTTP methods\n"+Style.RESET_ALL+'\n'.join(metodos))
-		except: print '\nHTTP methods','\n'.join(metodos)
-	else:
-		print '\nHTTP methods','\n'.join(metodos)
-	reportex.fromList(['http methods']+metodos)
+		# Metodos http 
+		metodos = req.getMethods(parseurls.getDomain(site)).keys()
+		if opts.color:
+			try: print (Fore.BLUE+"\nHTTP methods\n"+Style.RESET_ALL+'\n'.join(metodos))
+			except: print '\nHTTP methods','\n'.join(metodos)
+		else:
+			print '\nHTTP methods','\n'.join(metodos)
+		reportex.fromList(['http methods']+metodos)
 
-	# Crawling
-	crawly = ClassyCrawler(req,reportex,site,opts.depth,opts.time,
-		opts.bruteforce,opts.backups,opts.wordlist,opts.runexternaltools,
-		opts.cfgfile,opts.datadir,opts.extensions,opts.verbose,
-		opts.exclude,opts.maxfiles,opts.color)
-	
-	# Si se proporcionaron links adicionales para hacer el crawling
-	crawly.setStartLinks(opts.startlinks)
-	
-	# crawling
-	crawly.crawl()
+		# Crawling
+		crawly = ClassyCrawler(req,reportex,site,opts.depth,opts.time,
+			opts.bruteforce,opts.backups,opts.wordlist,opts.runexternaltools,
+			opts.cfgfile,opts.datadir,opts.extensions,opts.verbose,
+			opts.exclude,opts.maxfiles,opts.color)
+		
+		# Si se proporcionaron links adicionales para hacer el crawling
+		crawly.setStartLinks(opts.startlinks)
+		
+		# crawling
+		crawly.crawl()
+		#print('pase crawl')
+		# Registros DNS 
+		dnsmod= dnsenum()
+		subdominios = dnsmod.getResults(getDomain(site),opts.timeout)
+		#print('pase subdominios')
+		if opts.color:
+			try: print (Fore.BLUE+'\n'+'\n'.join(subdominios)+Style.RESET_ALL)
+			except: print '\nSubdominios\n','\n'.join(subdominios)
+		else:
+			print '\nSubdominios\n','\n'.join(subdominios)
+		reportex.fromList(subdominios)
 
-	# Registros DNS 
-	dnsmod= dnsenum()
-	subdominios = dnsmod.getResults(getDomain(site))
-	if opts.color:
-		try: print (Fore.BLUE+'\n'+'\n'.join(subdominios)+Style.RESET_ALL)
-		except: print '\nSubdominios\n','\n'.join(subdominios)
-	else:
-		print '\nSubdominios\n','\n'.join(subdominios)
-	reportex.fromList(subdominios)
-
-	# Terminamos el reporte
-	reportex.finish()
-	
+		# Terminamos el reporte
+		reportex.finish()
+	except Exception as e:
+		print('problem with %s' % site)
+		print(e)
+		
 ##################### PARAMETROS ########################
 argp = argsparser()
 opts, args = argp.parser.parse_args()

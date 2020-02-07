@@ -161,7 +161,7 @@ class strutscan(vulndetector):
 		)
 		tocheck = 'TRUERANDOM'
 		fullurl = dirurl+payload
-		#print 'testing %s' % fullurl
+		print 'testing %s' % fullurl
 		response = self.req.getHTMLCode(fullurl)
 		try:
 			if tocheck in response.text:
@@ -808,7 +808,8 @@ class path_traversal_scan(vulndetector):
 		self.standalone = True
 		self.cmsroot = None
 		# preffix file suffix
-		self.path_files = {'/etc/passwd':'root:x:0:0:root:/root:',
+		self.path_files = {
+			'/etc/passwd':'root:x:0:0:root:/root:',
 			'/etc/group':'root:x:0:',
 			'C:/Windows/system.ini':'; for 16-bit app support',
 			'C:/Windows/win.ini':'; for 16-bit app support'
