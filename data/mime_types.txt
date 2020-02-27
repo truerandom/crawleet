@@ -1,0 +1,145 @@
+3GP,video/3gpp,.3gp,Wikipedia: 3GP
+3GP2,video/3gpp2,.3g2,Wikipedia: 3G2
+7-Zip,application/x-7z-compressed,.7z,Wikipedia: 7-Zip
+AbiWord,application/x-abiword,.abw,Wikipedia: AbiWord
+Ace Archive,application/x-ace-compressed,.ace,Wikipedia: ACE
+Active Content Compression,application/vnd.americandynamics.acc,.acc,IANA: Active Content Compression
+Adobe Flash,application/x-shockwave-flash,.swf,Wikipedia: Adobe Flash
+Adobe Portable Document Format,application/pdf,.pdf,Adobe PDF
+Adobe PostScript Printer Description File Format,application/vnd.cups-ppd,.ppd,IANA: Cups
+Advanced Audio Coding (AAC),audio/x-aac,.aac,Wikipedia: AAC
+Amazon Kindle eBook format,application/vnd.amazon.ebook,.azw,Kindle Direct Publishing
+Android Package Archive,application/vnd.android.package-archive,.apk,Wikipedia: APK File Format
+Arista Networks Software Image,application/vnd.aristanetworks.swi,.swi,IANA: Arista Networks Software Image
+Atom Publishing Protocol,application/atomcat+xml,.atomcat,RFC 5023
+Atom Publishing Protocol Service Document,application/atomsvc+xml,.atomsvc,RFC 5023
+Atom Syndication Format,application/atom+xml,".atom, .xml",RFC 4287
+Attribute Certificate,application/pkix-attr-cert,.ac,RFC 5877
+Audio Interchange File Format,audio/x-aiff,.aif,Wikipedia: Audio Interchange File Format
+Audio Video Interleave (AVI),video/x-msvideo,.avi,Wikipedia: AVI
+Audiograph,application/vnd.audiograph,.aep,IANA: Audiograph
+AutoCAD DXF,image/vnd.dxf,.dxf,Wikipedia: AutoCAD DXF
+Autodesk Design Web Format (DWF),model/vnd.dwf,.dwf,Wikipedia: Design Web Format
+BAS Partitur Format,text/plain-bas,.par,Phonetik BAS
+Binary CPIO Archive,application/x-bcpio,.bcpio,Wikipedia: cpio
+Binary Data,application/octet-stream,.bin,
+Bitmap Image File,image/bmp,.bmp,Wikipedia: BMP File Format
+Blackberry COD File,application/vnd.rim.cod,.cod,
+Bzip Archive,application/x-bzip,.bz,Wikipedia: Bzip
+Bzip2 Archive,application/x-bzip2,.bz2,Wikipedia: Bzip
+C Shell Script,application/x-csh,.csh,Wikipedia: C Shell
+C Source File,text/x-c,.c,Wikipedia: C Programming Language
+Cascading Style Sheets (CSS),text/css,.css,Wikipedia: CSS
+Comma-Seperated Values,text/csv,.csv,Wikipedia: CSV
+DECE Mobile Video,video/vnd.dece.mobile,.uvm,IANA: DECE Mobile Video
+DECE MP4,video/vnd.uvvu.mp4,.uvu,IANA: DECE MP4
+DjVu,image/vnd.djvu,.djvu,Wikipedia: DjVu
+Document Type Definition,application/xml-dtd,.dtd,W3C DTD
+DRA Audio,audio/vnd.dra,.dra,IANA: DRA
+DTS Audio,audio/vnd.dts,.dts,IANA: DTS
+DWG Drawing,image/vnd.dwg,.dwg,Wikipedia: DWG
+EFI Proteus,application/vnd.proteus.magazine,.mgz,IANA: EFI Proteus
+Electronic Publication,application/epub+zip,.epub,Wikipedia: EPUB
+Email Message,message/rfc822,.eml,RFC 2822
+eXtended Image File Format (XIFF),image/vnd.xiff,.xif,IANA: XIFF
+Extensible Forms Description Language,application/vnd.xfdl,.xfdl,IANA: Extensible Forms Description Language
+FastBid Sheet,image/vnd.fastbidsheet,.fbs,IANA: FastBid Sheet
+Flash Video,video/x-f4v,.f4v,Wikipedia: Flash Video
+Flash Video,video/x-flv,.flv,Wikipedia: Flash Video
+FLEXSTOR,text/vnd.fmi.flexstor,.flx,IANA: FLEXSTOR
+Google Earth - KML,application/vnd.google-earth.kml+xml,.kml,IANA: Google Earth
+Google Earth - Zipped KML,application/vnd.google-earth.kmz,.kmz,IANA: Google Earth
+Graphics Interchange Format,image/gif,.gif,Wikipedia: Graphics Interchange Format
+Graphviz,text/vnd.graphviz,.gv,IANA: Graphviz
+H.261,video/h261,.h261,Wikipedia: H.261
+H.263,video/h263,.h263,Wikipedia: H.263
+H.264,video/h264,.h264,Wikipedia: H.264
+Icon Image,image/x-icon,.ico,Wikipedia: ICO File Format
+Image Exchange Format,image/ief,.ief,RFC 1314
+JPEG 2000 Compound Image File Format,video/jpm,.jpm,IANA: JPM
+JPEG Image,image/jpeg,".jpeg, .jpg",RFC 1314
+JPEG Image (Citrix client),image/x-citrix-jpeg,".jpeg, .jpg",RFC 1314
+JPEG Image (Progressive),image/pjpeg,.pjpeg,JPEG image compression FAQ
+JPGVideo,video/jpeg,.jpgv,RFC 3555
+KDE KOffice Office Suite - Karbon,application/vnd.kde.karbon,.karbon,IANA: KDE KOffice Office Suite
+KDE KOffice Office Suite - KChart,application/vnd.kde.kchart,.chrt,IANA: KDE KOffice Office Suite
+KDE KOffice Office Suite - Kformula,application/vnd.kde.kformula,.kfo,IANA: KDE KOffice Office Suite
+KDE KOffice Office Suite - Kivio,application/vnd.kde.kivio,.flw,IANA: KDE KOffice Office Suite
+KDE KOffice Office Suite - Kontour,application/vnd.kde.kontour,.kon,IANA: KDE KOffice Office Suite
+KDE KOffice Office Suite - Kpresenter,application/vnd.kde.kpresenter,.kpr,IANA: KDE KOffice Office Suite
+KDE KOffice Office Suite - Kspread,application/vnd.kde.kspread,.ksp,IANA: KDE KOffice Office Suite
+KDE KOffice Office Suite - Kword,application/vnd.kde.kword,.kwd,IANA: KDE KOffice Office Suite
+LaTeX,application/x-latex,.latex,Wikipedia: LaTeX
+M3U (Multimedia Playlist),audio/x-mpegurl,.m3u,Wikipedia: M3U
+M4v,video/x-m4v,.m4v,Wikipedia: M4v
+Media Server Control Markup Language,application/mediaservercontrol+xml,.mscml,RFC 5022
+MediaRemote,application/vnd.mediastation.cdkey,.cdkey,IANA: MediaRemote
+Microsoft Access,application/x-msaccess,.mdb,Wikipedia: Microsoft Access
+Microsoft Application,application/x-msdownload,.exe,Wikipedia: EXE
+Microsoft Cabinet File,application/vnd.ms-cab-compressed,.cab,IANA: MS Cabinet File
+Microsoft Document Imaging Format,image/vnd.ms-modi,.mdi,Wikipedia: Microsoft Document Image Format
+Microsoft Excel,application/vnd.ms-excel,.xls,IANA: MS Excel
+Microsoft Excel - Add-In File,application/vnd.ms-excel.addin.macroenabled.12,.xlam,IANA: MS Excel
+Microsoft Excel - Binary Workbook,application/vnd.ms-excel.sheet.binary.macroenabled.12,.xlsb,IANA: MS Excel
+Microsoft Excel - Macro-Enabled Template File,application/vnd.ms-excel.template.macroenabled.12,.xltm,IANA: MS Excel
+Microsoft Excel - Macro-Enabled Workbook,application/vnd.ms-excel.sheet.macroenabled.12,.xlsm,IANA: MS Excel
+Microsoft Office - OOXML - Presentation,application/vnd.openxmlformats-officedocument.presentationml.presentation,.pptx,IANA: OOXML - Presentation
+Microsoft Office - OOXML - Presentation (Slide),application/vnd.openxmlformats-officedocument.presentationml.slide,.sldx,IANA: OOXML - Presentation
+Microsoft Office - OOXML - Presentation (Slideshow),application/vnd.openxmlformats-officedocument.presentationml.slideshow,.ppsx,IANA: OOXML - Presentation
+Microsoft Office - OOXML - Presentation Template,application/vnd.openxmlformats-officedocument.presentationml.template,.potx,IANA: OOXML - Presentation Template
+Microsoft Office - OOXML - Spreadsheet,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,.xlsx,IANA: OOXML - Spreadsheet
+Microsoft Office - OOXML - Spreadsheet Template,application/vnd.openxmlformats-officedocument.spreadsheetml.template,.xltx,IANA: OOXML - Spreadsheet Template
+Microsoft Office - OOXML - Word Document,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,IANA: OOXML - Word Document
+Microsoft Office - OOXML - Word Document Template,application/vnd.openxmlformats-officedocument.wordprocessingml.template,.dotx,IANA: OOXML - Word Document Template
+Microsoft PowerPoint,application/vnd.ms-powerpoint,.ppt,IANA: MS PowerPoint
+Microsoft Publisher,application/x-mspublisher,.pub,Wikipedia: Microsoft Publisher
+Microsoft Silverlight,application/x-silverlight-app,.xap,Wikipedia: Silverlight
+Microsoft Windows Media,video/x-ms-wm,.wm,Wikipedia: Advanced Systems Format (ASF)
+Microsoft Windows Media Audio,audio/x-ms-wma,.wma,Wikipedia: Windows Media Audio
+Microsoft Windows Media Video,video/x-ms-wmv,.wmv,Wikipedia: Advanced Systems Format (ASF)
+Microsoft Windows Media Video Playlist,video/x-ms-wvx,.wvx,Wikipedia: Advanced Systems Format (ASF)
+Microsoft Word,application/msword,.doc,Wikipedia: Microsoft Word
+MIDI - Musical Instrument Digital Interface,audio/midi,.mid,Wikipedia: MIDI
+Motion JPEG 2000,video/mj2,.mj2,IANA: MJ2
+MPEG Audio,audio/mpeg,.mpga,Wikipedia: MPGA
+MPEG Url,video/vnd.mpegurl,.mxu,IANA: MPEG Url
+MPEG Video,video/mpeg,.mpeg,Wikipedia: MPEG
+MPEG-4 Audio,audio/mp4,.mp4a,Wikipedia: MP4A
+MPEG-4 Video,video/mp4,.mp4,Wikipedia: MP4
+MPEG4,application/mp4,.mp4,RFC 4337
+Ogg,application/ogg,.ogx,Wikipedia: Ogg
+Ogg Audio,audio/ogg,.oga,Wikipedia: Ogg
+Ogg Video,video/ogg,.ogv,Wikipedia: Ogg
+OpenOffice - Calc (Spreadsheet),application/vnd.sun.xml.calc,.sxc,Wikipedia: OpenOffice
+OpenOffice - Draw (Graphics),application/vnd.sun.xml.draw,.sxd,Wikipedia: OpenOffice
+OpenOffice - Impress (Presentation),application/vnd.sun.xml.impress,.sxi,Wikipedia: OpenOffice
+OpenOffice - Math (Formula),application/vnd.sun.xml.math,.sxm,Wikipedia: OpenOffice
+OpenOffice - Writer (Text - HTML),application/vnd.sun.xml.writer,.sxw,Wikipedia: OpenOffice
+OpenOffice - Writer (Text - HTML),application/vnd.sun.xml.writer.global,.sxg,Wikipedia: OpenOffice
+PCX Image,image/x-pcx,.pcx,Wikipedia: PCX
+Photoshop Document,image/vnd.adobe.photoshop,.psd,Wikipedia: Photoshop Document
+Portable Anymap Image,image/x-portable-anymap,.pnm,Wikipedia: Netpbm Format
+Portable Bitmap Format,image/x-portable-bitmap,.pbm,Wikipedia: Netpbm Format
+Portable Compiled Format,application/x-font-pcf,.pcf,Wikipedia: Portable Compiled Format
+Portable Font Resource,application/font-tdpfr,.pfr,RFC 3073
+Portable Game Notation (Chess Games),application/x-chess-pgn,.pgn,Wikipedia: Portable Game Notationb
+Portable Graymap Format,image/x-portable-graymap,.pgm,Wikipedia: Netpbm Format
+Portable Network Graphics (PNG),image/png,.png,RFC 2083
+Portable Network Graphics (PNG) (Citrix client),image/x-citrix-png,.png,RFC 2083
+Portable Network Graphics (PNG) (x-token),image/x-png,.png,RFC 2083
+Portable Pixmap Format,image/x-portable-pixmap,.ppm,Wikipedia: Netpbm Format
+PostScript,application/postscript,.ai,Wikipedia: PostScript
+PostScript Fonts,application/x-font-type1,.pfa,Wikipedia: PostScript Fonts
+RAR Archive,application/x-rar-compressed,.rar,Wikipedia: RAR
+Real Audio Sound,audio/x-pn-realaudio,.ram,Wikipedia: RealPlayer
+Rich Text Format,application/rtf,.rtf,Wikipedia: Rich Text Format
+Rich Text Format (RTF),text/richtext,.rtx,Wikipedia: Rich Text Format
+Scalable Vector Graphics (SVG),image/svg+xml,.svg,Wikipedia: SVG
+SGI Movie,video/x-sgi-movie,.movie,SGI Facts
+Silicon Graphics RGB Bitmap,image/x-rgb,.rgb,RGB Image Format
+Tagged Image File Format,image/tiff,.tiff,Wikipedia: TIFF
+TeX,application/x-tex,.tex,Wikipedia: TeX
+Text File,text/plain,.txt,Wikipedia: Text File
+Waveform Audio File Format (WAV),audio/x-wav,.wav,Wikipedia: WAV
+XML - Extensible Markup Language,application/xml,.xml,W3C XML
+XML Configuration Access Protocol - XCAP Diff,application/xcap-diff+xml,.xdf,Wikipedia: XCAP

@@ -48,6 +48,7 @@ class argsparser:
 		parser.add_option("-x", "--exts", dest="extensions",default='',help = "Extensions for bruteforce")
 		parser.add_option("-y", "--backups", dest="backups",default=False,action="store_true",help = "Search for backup files")
 		parser.add_option("-z", "--maxfiles", dest="maxfiles",default=1000,help = "Max files in the site to analyze")
+		parser.add_option("--blacklist", dest="blacklistdir", default='%s/data/extensions_blacklist.txt'%(sys.path[0]),help="data directory ")
 		parser.add_option("--datadir", dest="datadir", default='%s/data/data.xml'%(sys.path[0]),help="data directory ")
 		parser.add_option("--save",dest="save",default=False,action="store_true",help = "Save the start page source code")
 		parser.add_option("--threads",dest="threads",default=1,help = "Number of threads to use")

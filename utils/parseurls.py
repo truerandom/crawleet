@@ -2,48 +2,19 @@
 import re
 #import urllib
 from urlparse import urljoin
-'''
-Metodos auxiliares para el tratamiento de urls
-Utilizado en la union de recursos y la union de sus formularios
-'''
-'''
-Sea recurl = http:recpath/recfinal la url de la paguna actual
-	ie recfinal es lo que esta al final de la ultima diagonal
-Action url es la url que tiene el formulario ie donde se enviaran los datos
-recurl y action url
-Casos de action url:
-	[A] es absoluta:
-		path = actionurl
-	[B] No es absoluta
-		[1] acturl no tiene (..) ie acturl en el mismo nivel o bajo que recurl
-			[1]acturl tiene /s"
-				[1]acturl empieza con /:
-					NEW
-						Esto implica que es una ruta absoluta desde el dominio??
-						tomo el dominio y le pego la actionurl
-					OLD
-						quito recfinal de recurl
-						quito la primera diagonal de acturl=:: acturlfix
-						pego estas dos
-				[2]actual no empieza:
-					quito recfinal de recurl
-					return recurl+acturl
-			[2]	acturl no /s (tiene esta en el mismo nivel):
-					quito recfinal
-					pego a recurl acturl	
-				Se quita recfinal y se pega acturl
-		[2] acturl tiene .. ie esta en niveles superiores ie acturl 
-			Remuevo el recfinal de recurl
-			Ie acturl es de la forma ../../algo
-			Tengo que contar el numero de dos puntos en acturl
-			Este es el numero de directorios a quitar de recurl
-			Despues tengo que quitar el numero de directorios ie el 
-			numero de dos puntos encontrados de izq a derecha
-			en recurl =:: recurlfix
-			Luego concateno el recfinal de acturl a recurlfix
-			y regreso esto
-'''
 
+def get_extension(the_url):
+	last_idx = the_url.rfind('.')
+	if last_idx !=-1:
+		ext = the_url[last_idx:]
+		try:
+			m = re.search("(\.[A-Za-z0-9]+)",the_url[last_idx:])
+			return m.group()
+		except Exception as e:
+			return ""
+	else:
+		return ""
+		
 #Funcion que regresa http[s]://dominio de una url sin la diagonal al final
 def getDomain(url):
 	proto = "".join(url.split('//')[0])+'//'
@@ -58,8 +29,6 @@ def domainOnly(url):
 	
 # Obtiene todos los directorios basados en los recursos encontrados
 def getDirectories(urls):
-	#print "debug: entre a get directories urls[0] "+urls[0]
-	#print 'debug: fullurls ',urls
 	dirs = []
 	domain = ''
 	if len(urls)>0:
@@ -254,6 +223,7 @@ def getCMSRootX(baseurl,defdir,level):
 	except Exception as e:
 		print "Error @getCMSRoot: ",e
 		return None
+		
 #[(url_resource,url?var_to_inject=placeholder&var2=val...&varn=valn)...(url_res,url_to_inject,var_name)]
 def get_injection_points(url):
 	new_url = re.sub('&+','&',url)
