@@ -12,12 +12,14 @@ class vulncontroller:
 	def __init__(self,configfile,blacklist,req,color=False,detectors = None):
 		self.configfile = configfile
 		self.blacklist = parseurls.getList(blacklist)
+		"""
 		print('vulncontroller: %s' % configfile)
 		print('Cfgfile %s' % configfile)
 		print('Blacklist %s' % blacklist)
 		print('type blacklist %s' % type(blacklist))
 		print('color %s' % color)
 		print('len blacklist %s' % len(self.blacklist))
+		"""
 		self.req = req
 		self.color = color
 		self.configparser = ConfigParser(self.configfile)

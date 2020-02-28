@@ -533,9 +533,9 @@ class xssscan(vulndetector):
 				print "VULNERABLE TO XSS: ",dirurl
 	
 	def testXSS(self,dirurl):
-		print('DEBUG: xss: already tested: ')
-		print(self.already_tested)
-		print('DEBUG: xss: testing %s' % dirurl)
+		#print('DEBUG: xss: already tested: ')
+		#print(self.already_tested)
+		#print('DEBUG: xss: testing %s' % dirurl)
 		#print('DEBUG : xssscan : testXSS', dirurl)
 		cve = 'XSSVULN'	
 		payload = ("")
@@ -552,12 +552,11 @@ class xssscan(vulndetector):
 			# la base_url
 			if url_resource not in self.already_tested:
 				self.already_tested[url_resource] = []
-			if var_name not in self.already_tested[url_resource]:
-				print('DEBUG:xssscan@testXSS : [i] trying to : %s' % url_to_inject)
+			#if var_name not in self.already_tested[url_resource]: print('DEBUG:xssscan@testXSS : [i] trying to : %s' % url_to_inject)
 			# TODO: add data structure
 			#print('DEBUG : xssscan : testXSS ',injection_point)
 				full_url = url_to_inject.replace('{TO_REPLACE}',tocheck)
-				print('DEBUG:xssscan@testXSS : [i] payload : %s' % full_url)
+				#print('DEBUG:xssscan@testXSS : [i] payload : %s' % full_url)
 				try:
 					res = self.req.getHTMLCode(full_url)
 				except Exception as e:
@@ -628,9 +627,11 @@ class sqliscan(vulndetector):
 	if var_name not in dicc['base_url']: analize
 	"""
 	def error_based_sqli(self,dirurl):
+		"""
 		print('DEBUG: error_based_sqli: already tested: ')
 		print(self.already_tested_error_sqli)
 		print('DEBUG: error_based_sqli: testing %s' % dirurl)
+		"""
 		cve = 'SQLi (Error Based)'
 		payload = "'"
 		injection_points = parseurls.get_injection_points(dirurl)
@@ -649,7 +650,7 @@ class sqliscan(vulndetector):
 			if url_resource not in self.already_tested_error_sqli:
 				self.already_tested_error_sqli[url_resource] = []
 			if var_name not in self.already_tested_error_sqli[url_resource]:
-				print('DEBUG:sqliscan@errorbased : [i] trying to inject: %s' % url_to_inject)
+				#print('DEBUG:sqliscan@errorbased : [i] trying to inject: %s' % url_to_inject)
 				for sql_p in sql_payloads:
 					mod_url = url_to_inject.replace("{TO_REPLACE}",sql_p)
 					words_not_in_orig_req = self.req.word_not_in_response(sql_keywords,orig_url)
@@ -844,9 +845,9 @@ class path_traversal_scan(vulndetector):
 				print "VULNERABLE TO PATH TRAVERSAL: ",dirurl
 	
 	def test_traversal(self,dirurl):
-		print('DEBUG:path_traversal: already tested: ')
-		print(self.already_tested)
-		print('DEBUG:path_traversal: testing %s' % dirurl)
+		#print('DEBUG:path_traversal: already tested: ')
+		#print(self.already_tested)
+		#print('DEBUG:path_traversal: testing %s' % dirurl)
 		cve = 'Path traversal'
 		payload = "'"
 		try:

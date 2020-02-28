@@ -180,7 +180,6 @@ def scan(site):
 			opts.bruteforce,opts.backups,opts.wordlist,opts.runexternaltools,
 			opts.cfgfile,opts.datadir,opts.blacklistdir,opts.extensions,opts.verbose,
 			opts.exclude,opts.maxfiles,opts.color)
-		print('pase construccion de crawleet')
 		
 		# Si se proporcionaron links adicionales para hacer el crawling
 		crawly.setStartLinks(opts.startlinks)

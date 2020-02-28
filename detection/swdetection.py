@@ -185,15 +185,15 @@ class detector(object):
 			#print 'debug self.detections ',self.detections
 			# Directorios encontrados
 			dirs = parseurls.getDirectories(self.detections)
-			print('found dirs: ')
+			print('\n%s found dirs: ' % self.name)
 			print('\n'.join(dirs))
 			################### DIRECTORIOS NO COMUNES #################
 			uncommon = parseurls.uncommonDirectories(dirs,self.defaultdirs)
 			if len(uncommon)>0:
-				print('Uncommon directories:')
+				print('\n%s uncommon directories:' % self.name)
 				print('\n'.join(uncommon))
 				# Agrego esto a las detecciones
-				self.detections+=['...']+['Uncommon Dirs: ']+uncommon
+				self.detections+=['...']+['%s Uncommon Dirs: ' % self.name]+uncommon
 			######### BUSQUEDA DE ARCHIVOS DE CMS EN LOS DIRS ##########
 			#print "\n","*"*30," "+self.name+" bruteforcing ","*"*30
 			if self.color:

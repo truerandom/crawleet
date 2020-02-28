@@ -106,7 +106,7 @@ class swcontroller:
 				if pcdata == "True": pcdata = True
 				else: pcdata = False
 			sw[tool_name] = [wpdata,fidata,dirdata,headdata,juicydata,themedata,pcdata]
-		print('DEBUG swcontroller')
+		#print('DEBUG swcontroller')
 		for skey in sw.keys():
 			print('\n{'+skey+':')
 			for sk_elem in sw[skey]:

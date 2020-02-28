@@ -17,8 +17,8 @@ def get_extension(the_url):
 		
 def getList(file_name):
 	try:
-		print('parseurl.getList with %s' % file_name)
-		print(type(file_name))
+		#print('parseurl.getList with %s' % file_name)
+		#print(type(file_name))
 		with open(file_name) as f:
 			return f.read().splitlines()
 	except Exception as e:
@@ -209,11 +209,11 @@ def getCMSRoot(reslist,defdirs):
 	print('[i] getCMSRoot:')
 	print('Resource list:')
 	print(' '.join(reslist))
-	print('Default dirs:')
+	#print('Default dirs:')
 	tmp = [ '%s:%s' % (dkey,defdirs[dkey]) for dkey in defdirs.keys()]
 	print(' '.join(tmp))
-	#print('found dirs: ')
-	#print('\n'.join(founddirs))
+	print('found dirs: ')
+	print('\n'.join(founddirs))
 	for ddir in founddirs:
 		for defdir in defdirs.keys():
 			if defdir in ddir:

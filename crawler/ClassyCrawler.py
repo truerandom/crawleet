@@ -52,14 +52,8 @@ class ClassyCrawler:
 		self.runexternaltools = runexternaltools	# ejecutar herramientas externas
 		# detector de vulnerabilidades
 		# TODO: include blacklist
-		print('before vulndetector')
 		self.vulndetector = vulncontroller(cfgfile,self.blacklistdir,req,self.color)
-		print('after vulndetector')
 		# detector de software , archivos de configuracion de herramientas externas
-		print('[i] Construyendo el swcontroller')
-		print('Cfg file: %s' % cfgfile)
-		print('[i] Data dir')
-		print('Data dir: %s' % self.datadir)
 		self.swdetector = swcontroller(cfgfile,self.datadir,req,self.vulndetector,self.color)		
 		print(self.swdetector)
 		#################### BRUTEFORCER ##########################
@@ -215,22 +209,22 @@ class ClassyCrawler:
 						# si baseurl esta contenida en el link absoluto es un link interno
 						#if self.domain in self.getDomain(link) and self.getDomain(link).startswith(self.domain):
 						if self.domain in self.getDomain(link) and self.getDomain(link).startswith(self.domain):
-							#"""
+							"""
 							if self.verbose:
 								print "self.getDomain(%s): %s " % (link.strip(),self.getDomain(link))
 								print "link interno %s " % link.strip()
 								print "adding to intlinks"
-							#"""
+							"""
 							intlinks.append(link.strip())
 						else:
 							ext_link = "%s#%s" % (link.strip(),actualpage)
 							#if link.strip() not in self.extlinks:
 							if ext_link not in self.extlinks:
-								#"""
+								"""
 								if self.verbose:
 									print "link externo %s " % link.strip()
 									print "adding to extlinks"
-								#"""
+								"""
 								#self.extlinks.append(link.strip())
 								self.extlinks.append(ext_link)
 					else:
@@ -461,31 +455,43 @@ class ClassyCrawler:
 					if fx.action is not None:
 						print '\tForm: ',fx.action
 		####################### Links rotos ###############################
-		if self.color:
-			try: print (Fore.BLUE+"\nBroken Links: \n"+Style.RESET_ALL+"\n".join(self.brokenlist))
-			except: print "\nBroken Links: \n","\n".join(self.brokenlist)
-		else:
-			print "\nBroken Links: \n","\n".join(self.brokenlist)
+		if len(self.brokenlist)>0:
+			if self.color:
+				try: print (Fore.BLUE+"\nBroken Links: \n"+Style.RESET_ALL+"\n".join(self.brokenlist))
+				except: print "\nBroken Links: \n","\n".join(self.brokenlist)
+			else:
+				print "\nBroken Links: \n","\n".join(self.brokenlist)
 		####################### Files found ###############################
-		if self.color:
-			try:print (Fore.BLUE+"\nFiles found: \n"+Style.RESET_ALL)
-			except: print "\nFiles found:\n"
-		else:
-			print "\nFiles found:\n"
-		for f in self.flist:
-			print f.getUrl()
+		if len(self.flist)>0:
+			if self.color:
+				try:print (Fore.BLUE+"\nFiles found: \n"+Style.RESET_ALL)
+				except: print "\nFiles found:\n"
+			else:
+				print "\nFiles found:\n"
+			for f in self.flist:
+				print f.getUrl()
+
+		####################### Bruteforced files #######################
+		if len(self.bforcer.found_resources) > 0:
+			if self.color:
+				try: print (Fore.BLUE+"\nBruteforced files: \n"+Style.RESET_ALL+"\n".join(self.bforcer.found_resources))
+				except: print "\nBruteforced files: \n","\n".join(self.bforcer.found_resources)
+			else:
+				print "\nBruteforced files: \n","\n".join(self.bforcer.found_resources)
 		####################### Ext Links ###############################
-		if self.color:
-			try: print (Fore.BLUE+"\nExternal links: \n"+Style.RESET_ALL+"\n".join(self.extlinks))
-			except: print "\nExternal links:\n","\n".join(self.extlinks)
-		else:
-			print "\nExternal links:\n","\n".join(self.extlinks)
+		if len(self.extlinks)>0:
+			if self.color:
+				try: print (Fore.BLUE+"\nExternal links: \n"+Style.RESET_ALL+"\n".join(self.extlinks))
+				except: print "\nExternal links:\n","\n".join(self.extlinks)
+			else:
+				print "\nExternal links:\n","\n".join(self.extlinks)
 		####################### DirListing ###############################
-		if self.color:
-			try: print (Fore.BLUE+"\nDir Listing: \n"+Style.RESET_ALL+"\n".join(sorted(set(self.directories))))
-			except: print "\nDirectory Listing:\n","\n".join(sorted(set(self.directories)))
-		else:
-			print "\nDirectory Listing:\n","\n".join(sorted(set(self.directories)))
+		if len(self.directories)>0:
+			if self.color:
+				try: print (Fore.BLUE+"\nDir Listing: \n"+Style.RESET_ALL+"\n".join(sorted(set(self.directories))))
+				except: print "\nDirectory Listing:\n","\n".join(sorted(set(self.directories)))
+			else:
+				print "\nDirectory Listing:\n","\n".join(sorted(set(self.directories)))
 		####################### Raiz ##################################
 		try: nraiz = self.visitedresources[0]
 		except Exception as e: print "no visited elements: %s " % e
@@ -538,6 +544,8 @@ class ClassyCrawler:
 		for f in self.flist: filelist.append(f.getUrl())
 		if len(filelist)>0:
 			self.reportex.fromList(['files']+sorted(filelist),True)
+		if len(self.bforcer.found_resources) > 0:
+			self.reportex.fromList(['Bruteforced files']+sorted(self.bforcer.found_resources),True)
 		if len(self.brokenlist)>0:
 			self.reportex.fromList(['broken links']+sorted(self.brokenlist))
 		if len(self.extlinks)>0:
