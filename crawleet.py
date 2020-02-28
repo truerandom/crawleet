@@ -131,6 +131,8 @@ def scan(site):
 					'Start links: '+','.join(opts.startlinks),
 					'Bruteforce: '+str(opts.bruteforce),
 					'Wordlist: '+str(opts.wordlist),
+					#
+					'Blacklist: '+str(opts.blacklistdir),
 					'Bruteforce extensions: '+','.join(opts.extensions),
 					'Config file: '+str(opts.cfgfile),
 					'Allow Redirects: '+str(req.redirects()),
@@ -173,17 +175,19 @@ def scan(site):
 			print '\nHTTP methods','\n'.join(metodos)
 		reportex.fromList(['http methods']+metodos)
 
-		# Crawling
+		# Crawling : Include blacklist opts.blacklistdir
 		crawly = ClassyCrawler(req,reportex,site,opts.depth,opts.time,
 			opts.bruteforce,opts.backups,opts.wordlist,opts.runexternaltools,
-			opts.cfgfile,opts.datadir,opts.extensions,opts.verbose,
+			opts.cfgfile,opts.datadir,opts.blacklistdir,opts.extensions,opts.verbose,
 			opts.exclude,opts.maxfiles,opts.color)
+		print('pase construccion de crawleet')
 		
 		# Si se proporcionaron links adicionales para hacer el crawling
 		crawly.setStartLinks(opts.startlinks)
 		
 		# crawling
 		crawly.crawl()
+		print('pase crawl')
 		#print('pase crawl')
 		# Registros DNS 
 		dnsmod= dnsenum()

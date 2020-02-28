@@ -15,6 +15,17 @@ def get_extension(the_url):
 	else:
 		return ""
 		
+def getList(file_name):
+	try:
+		print('parseurl.getList with %s' % file_name)
+		print(type(file_name))
+		with open(file_name) as f:
+			return f.read().splitlines()
+	except Exception as e:
+		print('error parseurl@getList')
+		print(e)
+		return []		
+		
 #Funcion que regresa http[s]://dominio de una url sin la diagonal al final
 def getDomain(url):
 	proto = "".join(url.split('//')[0])+'//'

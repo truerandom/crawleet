@@ -8,30 +8,38 @@ from utils import parseurls
 class vulncontroller:
 	#def __init__(self,configfile,detectors = None):
 	# objeto para peticiones
-	def __init__(self,configfile,req,color=False,detectors = None):
+	# TODO: include blacklist
+	def __init__(self,configfile,blacklist,req,color=False,detectors = None):
 		self.configfile = configfile
+		self.blacklist = parseurls.getList(blacklist)
 		print('vulncontroller: %s' % configfile)
+		print('Cfgfile %s' % configfile)
+		print('Blacklist %s' % blacklist)
+		print('type blacklist %s' % type(blacklist))
+		print('color %s' % color)
+		print('len blacklist %s' % len(self.blacklist))
 		self.req = req
 		self.color = color
 		self.configparser = ConfigParser(self.configfile)
 		self.tools = []
 		self.initTools()
-		
+	
 	def setConfFile(self,configfile):
 		if configfile is not None: self.configfile = configfile
 	
 	# define los modulos de deteccion a ocupar
 	def initTools(self):
-		strutscanner =  strutscan(self.req,self.color)
-		drupalscanner =  drupalscan(self.req,self.color)
-		wordpresscanner = wordpresscan(self.req,self.color)
-		joomlascanner = joomlascan(self.req,self.color)
-		moodlescanner = moodlescan(self.req,self.color)
-		magentoscanner = magentoscan(self.req,self.color)
+		print('en initTools')
+		strutscanner =  strutscan(self.req,self.blacklist,self.color)
+		drupalscanner =  drupalscan(self.req,self.blacklist,self.color)
+		wordpresscanner = wordpresscan(self.req,self.blacklist,self.color)
+		joomlascanner = joomlascan(self.req,self.blacklist,self.color)
+		moodlescanner = moodlescan(self.req,self.blacklist,self.color)
+		magentoscanner = magentoscan(self.req,self.blacklist,self.color)
 		# nuevo modulo 
-		xssscanner = xssscan(self.req,self.color)
-		sqliscanner = sqliscan(self.req,self.color)
-		path_tscan = path_traversal_scan(self.req,self.color)
+		xssscanner = xssscan(self.req,self.blacklist,self.color)
+		sqliscanner = sqliscan(self.req,self.blacklist,self.color)
+		path_tscan = path_traversal_scan(self.req,self.blacklist,self.color)
 		self.tools = [strutscanner,drupalscanner,wordpresscanner,joomlascanner,
 		moodlescanner,magentoscanner,xssscanner,sqliscanner,path_tscan]		
 		

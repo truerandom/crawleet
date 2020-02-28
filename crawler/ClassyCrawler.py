@@ -27,7 +27,7 @@ try:
 except:
 	pass
 class ClassyCrawler:
-	def __init__(self,req,reportex,url,depth,delay,bruteforce,backups,wordlist,runexternaltools,cfgfile,datadir,extensions,verbose,exclude,maxfiles=1000,color=False):
+	def __init__(self,req,reportex,url,depth,delay,bruteforce,backups,wordlist,runexternaltools,cfgfile,datadir,blacklistdir,extensions,verbose,exclude,maxfiles=1000,color=False):
 		self.banner = ubanner.getBanner()
 		self.reportex = reportex			# modulo de reportes	
 		self.url = url						# url
@@ -48,9 +48,13 @@ class ClassyCrawler:
 		self.visitedresources = []			# visited resources (objetos)
 		self.cfgfile = cfgfile				# directorio de el archivo de cfg para exttool
 		self.datadir = datadir				# directorio de data para las detecciones
+		self.blacklistdir = blacklistdir    # exts blacklist
 		self.runexternaltools = runexternaltools	# ejecutar herramientas externas
 		# detector de vulnerabilidades
-		self.vulndetector = vulncontroller(cfgfile,req,self.color)
+		# TODO: include blacklist
+		print('before vulndetector')
+		self.vulndetector = vulncontroller(cfgfile,self.blacklistdir,req,self.color)
+		print('after vulndetector')
 		# detector de software , archivos de configuracion de herramientas externas
 		print('[i] Construyendo el swcontroller')
 		print('Cfg file: %s' % cfgfile)
@@ -362,6 +366,7 @@ class ClassyCrawler:
 					try: 
 						actualcode = self.req.getHTMLCode(actualpage).text
 					except Exception as e:
+						print('crawler@crawl problem with %s' % actualpage)
 						print(e) 
 						actualcode = None
 					if actualcode is not None:
