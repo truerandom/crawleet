@@ -1,0 +1,15 @@
+CHANGELOG.txt
+phpinfo.php
+.git/HEAD
+phpmyadmin
+.svn
+config
+_notes/dwsync.xml
+sitemap.xml
+access_log
+web.config
+laravel.log
+server.cfg
+main.yaml
+.bash_history
+_layouts/settings
