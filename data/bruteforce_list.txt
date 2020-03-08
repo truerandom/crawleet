@@ -11,5 +11,6 @@ web.config
 laravel.log
 server.cfg
 main.yaml
+usage/index.html
 .bash_history
 _layouts/settings
